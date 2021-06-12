@@ -12,10 +12,18 @@ module.exports = {
         '84': '21rem',
         '96': '24rem',
         '10vh': '10vh',
+        '90vh' :'90vh'
       },
       colors: {
         'text-gray': '#3f4954',
         'midnight':'#104f55',
+        'ghostwhite': '#f8f7fc'
+      },
+      fontFamily: {
+        Abel : ['Abel'],
+        TT : ['TT'],
+        Champagne : ['Champagne'],
+        Oswald : ['Oswald'],
       }
     },
   },
