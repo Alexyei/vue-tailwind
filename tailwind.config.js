@@ -17,13 +17,18 @@ module.exports = {
       colors: {
         'text-gray': '#3f4954',
         'midnight':'#104f55',
-        'ghostwhite': '#f8f7fc'
+        'ghostwhite': '#f8f7fc',
+        'whitesmoke': '#edeef0',
+        'text-dark': '#444'
       },
       fontFamily: {
         Abel : ['Abel'],
         TT : ['TT'],
         Champagne : ['Champagne'],
         Oswald : ['Oswald'],
+      },
+      zIndex: {
+        '9': 9
       }
     },
   },
