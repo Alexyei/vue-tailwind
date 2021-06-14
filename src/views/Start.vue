@@ -6,8 +6,8 @@
       <div class="bg-white px-6 py-4 rounded-3xl flex flex-col justify-center items-center">
           <h2 class="text-4xl font-TT text-text-dark mb-6 font-bold">Выберите:</h2>
         <div class="block z-9">
-          <input class="checkbox-budget" type="radio" name="budget" id="budget-1" checked>
-          <label class="for-checkbox-budget" for="budget-1">
+          <input class="checkbox-budget absolute invisible" type="radio" name="budget" id="budget-1" checked>
+          <label class="for-checkbox-budget text-transparent text-stroke-white text-stroke-1 text-fill-transparent transition duration-300 ease-linear cursor-pointer overflow-hidden rounded-2xl text-center font-Ubuntu relative flex justify-center items-center px-5 py-5 mx-1.25 mb-5 text-radioM sm:text-radio font-bold tracking-one" for="budget-1">
             <span data-hover="ХИРАГАНА">ХИРАГАНА</span>
           </label>
 
@@ -20,7 +20,7 @@
           <label class="for-checkbox-budget" for="budget-3">
             <span data-hover="ИЕРОГЛИФЫ">ИЕРОГЛИФЫ</span>
           </label>
-          <button class="btn solid">Далее</button>
+<!--          <button class="btn solid">Далее</button>-->
           <button class=" font-Raleway w-37.5 h-12.5 rounded-full uppercase font-semibold my-2.5 cursor-pointer hover:bg-none bg-120 from-medium-blue to-light-blue text-text-dark transition duration-300 ease-in-out border-2 hover:border-text-dark border-white">Далее</button>
         </div>
       </div>
