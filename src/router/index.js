@@ -5,12 +5,12 @@ import Start from "../views/Start";
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'Главная',
     component: Start
   },
   {
-    path: '/select',
-    name: 'About',
+    path: '/about',
+    name: 'O нас',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.

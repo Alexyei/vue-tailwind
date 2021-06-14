@@ -13,28 +13,31 @@
     </div>
 
     <ul class="font-Abel text-text-dark md:visible md:opacity-100 transition-opacity duration-300 fixed top-0 left-0 w-full md:w-auto md:h-auto md:static md:m-0 md:p-0 h-full flex flex-col md:flex-row justify-center md:justify-start items-center z-1 bg-white" :class="{'opacity-0':!isActive}">
-      <li class="md:hover:bg-white hover:bg-midnight text-center md:text-left text-3xl leading-none md:text-lg md:relative w-full md:w-auto">
+<!--      md:hover:bg-white -->
+      <li class="transition duration-300 ease-in-out hover:bg-medium-blue md:hover:bg-white text-center md:text-left text-3xl leading-none md:text-lg md:relative w-full md:w-auto">
 <!--        <a class="py-6.4 px-4 block hover:text-white md:hover:text-current" href="#">Главная</a>-->
-        <router-link class="py-6.4 px-4 block hover:text-white md:hover:text-current" :to="{name: 'Home'}">Главная</router-link>
+<!--         md:hover:text-current-->
+        <router-link class="md:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue md:border-b-4 py-6.4 md:py-4 px-4 block" :to="{name: 'Главная'}" :class="{'border-medium-blue':$route.name === 'Главная'}">
+          Главная</router-link>
       </li>
-      <li class="md:hover:bg-white hover:bg-midnight text-center md:text-left text-3xl leading-none md:text-lg md:relative w-full md:w-auto">
-        <a class="py-6.4 px-4 block hover:text-white md:hover:text-current" href="#">Категории</a>
+      <li class="transition duration-300 ease-in-out hover:bg-medium-blue md:hover:bg-white text-center md:text-left text-3xl leading-none md:text-lg md:relative w-full md:w-auto">
+        <a class="py-6.4 px-4 block md:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue md:border-b-4 md:py-4 " href="#">Категории</a>
       </li>
-      <li class="md:hover:bg-white hover:bg-midnight text-center md:text-left text-3xl leading-none md:text-lg md:relative w-full md:w-auto">
-        <a class="py-6.4 px-4 block hover:text-white md:hover:text-current" href="#">Теги</a>
+      <li class="transition duration-300 ease-in-out hover:bg-medium-blue md:hover:bg-white text-center md:text-left text-3xl leading-none md:text-lg md:relative w-full md:w-auto">
+        <a class="py-6.4 px-4 block md:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue md:border-b-4 md:py-4 " href="#">Теги</a>
       </li>
 
 <!--      <li class="nav-link">-->
 <!--        <a href="{{route('logout')}}">Выйти</a>-->
 <!--      </li>-->
 
-      <li class="md:hover:bg-white hover:bg-midnight  text-center md:text-left text-3xl leading-none md:text-lg md:relative w-full md:w-auto">
-        <a class="py-6.4 px-4 block hover:text-white md:hover:text-current" href="#">Войти</a>
+      <li class="transition duration-300 ease-in-out hover:bg-medium-blue md:hover:bg-white text-center md:text-left text-3xl leading-none md:text-lg md:relative w-full md:w-auto">
+        <a class="py-6.4 px-4 block md:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue md:border-b-4 md:py-4 " href="#">Войти</a>
       </li>
 
 
-      <li class="md:hover:bg-white hover:bg-midnight  text-center md:text-left text-3xl leading-none md:text-lg md:relative w-full md:w-auto">
-        <a class="py-6.4 px-4 block hover:text-white md:hover:text-current" href="#">Контакты</a>
+      <li class="transition duration-300 ease-in-out hover:bg-medium-blue md:hover:bg-white text-center md:text-left text-3xl leading-none md:text-lg md:relative w-full md:w-auto">
+        <a class="py-6.4 px-4 block md:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue md:border-b-4 md:py-4 " href="#">Контакты</a>
       </li>
     </ul>
   </div>
