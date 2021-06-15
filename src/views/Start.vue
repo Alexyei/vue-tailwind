@@ -6,29 +6,30 @@
       <div class="bg-white px-6 py-4 rounded-3xl flex flex-col justify-center items-center">
           <h2 class="text-4xl font-TT text-text-dark mb-6 font-bold">Выберите:</h2>
         <div class="block z-9">
-          <input class="absolute invisible" type="radio" name="budget" id="budget-1" v-model="picked" value="ХИРАГАНА" checked>
+          <div v-for="(btn, index) in buttons" :key="btn.name">
+          <input class="absolute invisible" type="radio" name="budget" :id="index" v-model="picked" :value="btn.name" checked>
           <label
-              :class="{'hover:shadow-labelh bg-light shadow-npicked text-stroke-dark-blue text-stroke-1':picked!=='ХИРАГАНА',
-              'shadow-picked bg-transparent':picked==='ХИРАГАНА'}"
-              class="for-checkbox-budget text-transparent text-stroke-white text-stroke-1 text-fill-transparent transition duration-300 ease-linear cursor-pointer overflow-hidden rounded-2xl text-center font-Ubuntu relative flex justify-center items-center px-5 py-5 mx-1.25 mb-5 text-radioM sm:text-radio font-bold tracking-one" for="budget-1">
-            <span class="lbf bg-120 from-red to-light-blue absolute left-0 top-0 w-full h-full rounded -z-1"></span>
-            <span class="font-Ubuntu relative block" data-hover="ХИРАГАНА">ХИРАГАНА
+              :class="{'hover:shadow-labelh bg-light shadow-npicked text-stroke-dark-blue text-stroke-1':picked!==btn.name,
+              'shadow-picked bg-transparent':picked===btn.name}"
+              class="text-transparent text-stroke-white text-stroke-1 text-fill-transparent transition duration-300 ease-linear cursor-pointer overflow-hidden rounded-2xl text-center font-Ubuntu relative flex justify-center items-center px-5 py-5 mx-1.25 mb-5 text-radioM sm:text-radio font-bold tracking-one" :for="index">
+            <span :class="btn.grad" class="lbf absolute left-0 top-0 w-full h-full rounded -z-1"></span>
+            <span class="font-Ubuntu relative block">{{ btn.name }}
             <span
-                :class="{'max-h-0':picked!=='ХИРАГАНА',
-              'max-h-full':picked==='ХИРАГАНА'}"
-                class="lsbf transition duration-300 absolute left-0 top-0 overflow-hidden text-stroke-transparent text-fill-white text-white">ХИРАГАНА</span>
+                :class="{'max-h-0':picked!==btn.name,
+              'max-h-full':picked===btn.name}"
+                class="lsbf transition duration-300 absolute left-0 top-0 overflow-hidden text-stroke-transparent text-fill-white text-white">{{ btn.name }}</span>
             </span>
           </label>
+          </div>
+<!--          <input class="checkbox-budget" type="radio" name="budget" id="budget-2" v-model="picked" value="КАТАКАНА">-->
+<!--          <label class="for-checkbox-budget" for="budget-2">-->
+<!--            <span data-hover="КАТАКАНА">КАТАКАНА</span>-->
+<!--          </label>-->
 
-          <input class="checkbox-budget" type="radio" name="budget" id="budget-2" v-model="picked" value="КАТАКАНА">
-          <label class="for-checkbox-budget" for="budget-2">
-            <span data-hover="КАТАКАНА">КАТАКАНА</span>
-          </label>
-
-          <input class="checkbox-budget" type="radio" name="budget" id="budget-3" v-model="picked" value="ИЕРОГЛИФЫ">
-          <label class="for-checkbox-budget" for="budget-3">
-            <span data-hover="ИЕРОГЛИФЫ">ИЕРОГЛИФЫ</span>
-          </label>
+<!--          <input class="checkbox-budget" type="radio" name="budget" id="budget-3" v-model="picked" value="ИЕРОГЛИФЫ">-->
+<!--          <label class="for-checkbox-budget" for="budget-3">-->
+<!--            <span data-hover="ИЕРОГЛИФЫ">ИЕРОГЛИФЫ</span>-->
+<!--          </label>-->
 <!--          <button class="btn solid">Далее</button>-->
           <button class=" font-Raleway w-37.5 h-12.5 rounded-full uppercase font-semibold my-2.5 cursor-pointer hover:bg-none bg-120 from-medium-blue to-light-blue text-text-dark transition duration-300 ease-in-out border-2 hover:border-text-dark border-white">Далее</button>
         </div>
@@ -48,7 +49,18 @@ export default {
   },
   data(){
     return {
-      picked: 'ХИРАГАНА'
+      picked: 'ХИРАГАНА',
+      buttons: [
+        {name: 'ХИРАГАНА',
+          grad: 'bg-120 from-red to-light-blue'
+        },
+        {name: 'КАТАКАНА',
+          grad: 'bg-120 from-medium-blue to-yellow'
+        },
+        {name: 'ИЕРОГЛИФЫ',
+          grad: 'bg-120 from-yellow to-red'
+        }
+      ]
     }
   }
 }
