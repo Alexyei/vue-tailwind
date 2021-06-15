@@ -19,7 +19,7 @@ module.exports = {
       },
       spacing: {
         '0.75': '0.1875rem',
-        '1.25': '0,3125rem',
+        '1.25': '0.3125rem',
         '2.75': '0.6875rem',
         '6.4': '1.6rem',
         '7.5': '1.875rem',
@@ -31,6 +31,11 @@ module.exports = {
         '10vh': '10vh',
         '90vh' :'90vh'
       },
+      boxShadow: {
+        npicked: '0 1px 4px 0 rgba(0, 0, 0, 0.05)',
+        picked: '0 8px 16px 0 rgba(0, 0, 0, 0.2)',
+        labelh: '0 8px 16px 0 rgba(0, 0, 0, 0.2)'
+      },
       colors: {
         'text-gray': '#3f4954',
         'midnight':'#104f55',
@@ -38,7 +43,11 @@ module.exports = {
         'whitesmoke': '#edeef0',
         'text-dark': '#444',
         'medium-blue': '#a1c4fd',
-        'light-blue': '#c2e9fb'
+        'light-blue': '#c2e9fb',
+        'dark-blue': '#1f2029',
+        'light': '#f0eff3',
+        'red': '#da2c4d',
+        'yellow': '#f8ab37'
       },
       fontFamily: {
         Abel : ['Abel'],
@@ -59,7 +68,8 @@ module.exports = {
         '120': 'linear-gradient(120deg, var(--tw-gradient-stops))'
       },
       zIndex: {
-        '9': 9
+        '9': 9,
+        '-1':-1
       }
     },
   },
@@ -72,24 +82,21 @@ module.exports = {
       backgroundImage: ['hover', 'focus'],
       textColor: [
         'responsive',
-        'not',
         'hover',
         'focus',
         'before',
-        'after',
+        'after','checked',
         'hover::before',
         'hover::after',
         'focus::before',
-        'checked:hover',
-        'checked:hover::before',
+        // 'checked:hover',
+        // 'checked:hover::before',
       ],
     },
   },
   plugins: [
     require('tailwindcss-text-fill-stroke')(),
     require('tailwindcss-pseudo-elements')({
-      contentUtilities: false,
-      emptyContent: false,
       classNameReplacer: {
         'hover:before:text-black': 'hbt',
       },

@@ -6,17 +6,26 @@
       <div class="bg-white px-6 py-4 rounded-3xl flex flex-col justify-center items-center">
           <h2 class="text-4xl font-TT text-text-dark mb-6 font-bold">Выберите:</h2>
         <div class="block z-9">
-          <input class="checkbox-budget absolute invisible" type="radio" name="budget" id="budget-1" checked>
-          <label class="for-checkbox-budget text-transparent text-stroke-white text-stroke-1 text-fill-transparent transition duration-300 ease-linear cursor-pointer overflow-hidden rounded-2xl text-center font-Ubuntu relative flex justify-center items-center px-5 py-5 mx-1.25 mb-5 text-radioM sm:text-radio font-bold tracking-one" for="budget-1">
-            <span data-hover="ХИРАГАНА">ХИРАГАНА</span>
+          <input class="absolute invisible" type="radio" name="budget" id="budget-1" v-model="picked" value="ХИРАГАНА" checked>
+          <label
+              :class="{'hover:shadow-labelh bg-light shadow-npicked text-stroke-dark-blue text-stroke-1':picked!=='ХИРАГАНА',
+              'shadow-picked bg-transparent':picked==='ХИРАГАНА'}"
+              class="for-checkbox-budget text-transparent text-stroke-white text-stroke-1 text-fill-transparent transition duration-300 ease-linear cursor-pointer overflow-hidden rounded-2xl text-center font-Ubuntu relative flex justify-center items-center px-5 py-5 mx-1.25 mb-5 text-radioM sm:text-radio font-bold tracking-one" for="budget-1">
+            <span class="lbf bg-120 from-red to-light-blue absolute left-0 top-0 w-full h-full rounded -z-1"></span>
+            <span class="font-Ubuntu relative block" data-hover="ХИРАГАНА">ХИРАГАНА
+            <span
+                :class="{'max-h-0':picked!=='ХИРАГАНА',
+              'max-h-full':picked==='ХИРАГАНА'}"
+                class="lsbf transition duration-300 absolute left-0 top-0 overflow-hidden text-stroke-transparent text-fill-white text-white">ХИРАГАНА</span>
+            </span>
           </label>
 
-          <input class="checkbox-budget" type="radio" name="budget" id="budget-2">
+          <input class="checkbox-budget" type="radio" name="budget" id="budget-2" v-model="picked" value="КАТАКАНА">
           <label class="for-checkbox-budget" for="budget-2">
             <span data-hover="КАТАКАНА">КАТАКАНА</span>
           </label>
 
-          <input class="checkbox-budget" type="radio" name="budget" id="budget-3">
+          <input class="checkbox-budget" type="radio" name="budget" id="budget-3" v-model="picked" value="ИЕРОГЛИФЫ">
           <label class="for-checkbox-budget" for="budget-3">
             <span data-hover="ИЕРОГЛИФЫ">ИЕРОГЛИФЫ</span>
           </label>
@@ -36,6 +45,11 @@ export default {
   name: "Start",
   components: {
     NavBar
+  },
+  data(){
+    return {
+      picked: 'ХИРАГАНА'
+    }
   }
 }
 </script>
@@ -139,6 +153,7 @@ export default {
 .checkbox-budget:not(:checked) + label:hover{
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
+
 .checkbox-budget:checked + label::before,
 .checkbox-budget:not(:checked) + label::before{
   position: absolute;
@@ -183,7 +198,7 @@ export default {
   max-height: 0;
 }
 .checkbox-budget:checked + label span::before{
-  max-height: 200%;
+  max-height: 100%;
 }
 
 /*.checkbox:checked ~ .section .container .row .col-xl-10 .checkbox-budget:not(:checked) + label{*/
