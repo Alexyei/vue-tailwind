@@ -2,11 +2,25 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import NotFound from '../views/404.vue'
 import Start from "../views/Start";
+import Select from "../views/Select";
 const routes = [
   {
     path: '/',
     name: 'Главная',
     component: Start
+  },
+  {
+    path: '/select/:mode/:link?',
+    name: 'select',
+    component: Select,
+    beforeEnter: (to, from, next) => {
+      if(['hiragana', 'katakana', 'kanji'].includes(to.params.mode)) {
+        next()
+      } else {
+        next(false)
+      }
+    }
+
   },
   {
     path: '/about',

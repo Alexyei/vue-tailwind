@@ -31,7 +31,7 @@
 <!--            <span data-hover="ИЕРОГЛИФЫ">ИЕРОГЛИФЫ</span>-->
 <!--          </label>-->
 <!--          <button class="btn solid">Далее</button>-->
-          <button class=" font-Raleway w-37.5 h-12.5 rounded-full uppercase font-semibold my-2.5 cursor-pointer hover:bg-none bg-120 from-medium-blue to-light-blue text-text-dark transition duration-300 ease-in-out border-2 hover:border-text-dark border-white">Далее</button>
+          <button @click.prevent="$router.push({ name: 'select', params: { mode: picked.toLowerCase() } })" class=" font-Raleway w-37.5 h-12.5 rounded-full uppercase font-semibold my-2.5 cursor-pointer hover:bg-none bg-120 from-medium-blue to-light-blue text-text-dark transition duration-300 ease-in-out border-2 hover:border-text-dark border-white">Далее</button>
         </div>
       </div>
 
