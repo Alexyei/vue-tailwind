@@ -3,7 +3,7 @@
   <nav class=" box-border  bg-white w-full justify-center items-center flex" :class="{'z-10':isActive}">
   <div class="lg:container px-8 w-full flex justify-between items-center">
     <div>
-      <a href="#" class="text-text-dark text-2xl leading-none py-4 pl-2 block font-TT">Мой блог</a>
+      <slot><a href="#" class="text-text-dark text-2xl leading-none py-4 pl-2 block font-TT">Мой блог</a></slot>
     </div>
     <div class="flex flex-col justify-between items-center relative w-7.5 h-7.5 cursor-pointer z-10 md:invisible md:opacity-0"  @click="isActive = !isActive">
 

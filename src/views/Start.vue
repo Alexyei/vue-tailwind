@@ -6,17 +6,18 @@
       <div class="bg-white px-6 py-4 rounded-3xl flex flex-col justify-center items-center">
           <h2 class="text-4xl font-TT text-text-dark mb-6 font-bold">Выберите:</h2>
         <div class="block z-9">
-          <div v-for="(btn, index) in buttons" :key="btn.name">
-          <input class="absolute invisible" type="radio" name="budget" :id="index" v-model="picked" :value="btn.name" checked>
+          <div v-for="(btn, index) in buttons" :key="btn.value">
+          <input class="absolute invisible" type="radio" name="budget" :id="index" v-model="picked" :value="btn.value" checked>
           <label
-              :class="{'hover:shadow-labelh bg-light shadow-npicked text-stroke-dark-blue text-stroke-1':picked!==btn.name,
-              'shadow-picked bg-transparent':picked===btn.name}"
+              :class="{'hover:shadow-labelh bg-light shadow-npicked text-stroke-dark-blue text-stroke-1':picked!==btn.value,
+              'shadow-picked bg-transparent':picked===btn.value}"
               class="text-transparent text-stroke-white text-stroke-1 text-fill-transparent transition duration-300 ease-linear cursor-pointer overflow-hidden rounded-2xl text-center font-Ubuntu relative flex justify-center items-center px-5 py-5 mx-1.25 mb-5 text-radioM sm:text-radio font-bold tracking-one" :for="index">
-            <span :class="btn.grad" class="lbf absolute left-0 top-0 w-full h-full rounded -z-1"></span>
+            <span aria-hidden="true" :class="btn.grad"  class="lbf absolute left-0 top-0 w-full h-full rounded -z-1"></span>
             <span class="font-Ubuntu relative block">{{ btn.name }}
             <span
-                :class="{'max-h-0':picked!==btn.name,
-              'max-h-full':picked===btn.name}"
+                aria-hidden="true"
+                :class="{'max-h-0':picked!==btn.value,
+              'max-h-full':picked===btn.value}"
                 class="lsbf transition duration-300 absolute left-0 top-0 overflow-hidden text-stroke-transparent text-fill-white text-white">{{ btn.name }}</span>
             </span>
           </label>
@@ -49,15 +50,18 @@ export default {
   },
   data(){
     return {
-      picked: 'ХИРАГАНА',
+      picked: 'hiragana',
       buttons: [
         {name: 'ХИРАГАНА',
+          value: 'hiragana',
           grad: 'bg-120 from-red to-light-blue'
         },
         {name: 'КАТАКАНА',
+          value: 'katakana',
           grad: 'bg-120 from-medium-blue to-yellow'
         },
         {name: 'ИЕРОГЛИФЫ',
+          value: 'kanji',
           grad: 'bg-120 from-yellow to-red'
         }
       ]

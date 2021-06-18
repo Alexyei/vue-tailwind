@@ -14,7 +14,9 @@ const routes = [
     name: 'select',
     component: Select,
     beforeEnter: (to, from, next) => {
+      console.log(to.params.mode)
       if(['hiragana', 'katakana', 'kanji'].includes(to.params.mode)) {
+        console.log("OK")
         next()
       } else {
         next(false)
