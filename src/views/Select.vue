@@ -3,7 +3,10 @@
     <nav-bar><span class="text-text-dark text-2xl leading-none py-4 pl-2 block font-TT">Выбрано: 100 из 9999</span>
     </nav-bar>
     <div class="flex-grow flex justify-center items-center w-full px-4 md:px-14 py-4 md:py-7">
-{{isMobile}}
+      <div class="flex items-center h-full w-full">
+        <div class="bg-white h-full pl-6 p-4 mr-4 rounded-3xl flex flex-col justify-center items-center"></div>
+        <div class="bg-white h-full pr-6 py-4 flex-grow rounded-3xl flex flex-col justify-center items-center"></div>
+      </div>
     </div>
   </div>
 </template>
