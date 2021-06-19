@@ -12,7 +12,7 @@
       <span class="block w-7.5 h-0.75 my-0.75 mx-auto transition duration-300 ease-in-out bg-text-dark" :class="{'transform -translate-y-2.75 -rotate-45':isActive}"></span>
     </div>
 
-    <ul class="font-Abel text-text-dark md:visible md:opacity-100 transition-opacity duration-300 fixed top-0 left-0 w-full md:w-auto md:h-auto md:static md:m-0 md:p-0 h-full flex flex-col md:flex-row justify-center md:justify-start items-center z-1 bg-white" :class="{'opacity-0':!isActive}">
+    <ul class="font-Abel text-text-dark md:visible md:opacity-100 transition-opacity duration-300 fixed top-0 left-0 w-full md:w-auto md:h-auto md:static md:m-0 md:p-0 h-full flex flex-col md:flex-row justify-center md:justify-start items-center z-1 bg-white" :class="{'opacity-0 invisible':!isActive}">
 <!--      md:hover:bg-white -->
       <li class="transition duration-300 ease-in-out hover:bg-medium-blue md:hover:bg-white text-center md:text-left text-3xl leading-none md:text-lg md:relative w-full md:w-auto">
 <!--        <a class="py-6.4 px-4 block hover:text-white md:hover:text-current" href="#">Главная</a>-->

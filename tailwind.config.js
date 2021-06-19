@@ -37,6 +37,8 @@ module.exports = {
         labelh: '0 8px 16px 0 rgba(0, 0, 0, 0.2)'
       },
       colors: {
+        'dark-gray': '#474747',
+
         'text-gray': '#3f4954',
         'midnight':'#104f55',
         'ghostwhite': '#f8f7fc',
