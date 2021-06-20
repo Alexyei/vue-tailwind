@@ -1,30 +1,31 @@
 <template>
   <div class="bg-whitesmoke w-full min-h-full h-full flex flex-col">
-    <nav-bar><span class="text-text-dark text-2xl leading-none py-4 pl-2 block font-TT">Выбрано: 100 из 9999</span>
+    <nav-bar><span class="text-text-dark text-2xl leading-none py-4 pl-2 block font-TT">{{ isActive }}: 100 из 9999</span>
     </nav-bar>
     <div class="flex-grow flex justify-center items-center w-full px-4 md:px-14 py-4 md:py-7">
-      <div class="flex items-center h-full w-full">
-        <div class="font-TT font-bold bg-white h-full mr-4 rounded-3xl flex flex-col justify-center items-center">
+      <div class=" relative rounded-3xl overflow-hidden flex items-center h-full w-full flex-col-reverse md:flex-row">
+        <div class="z-10 font-TT font-bold text-sm sm:text-base bg-white w-full md:w-auto md:h-full mt-4 md:mt-0 md:mr-4 rounded-3xl flex flex-row md:flex-col px-4 md:px-0 justify-between md:justify-center items-center">
 
-          <div class="my-2 px-2  flex justify-center items-center flex-col">
+          <div class="py-2 md:mx-0 md:py-0 md:my-2 md:px-2  flex justify-center items-center flex-col">
             <svg class="text-blue-500 hover:text-dark-gray w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"></path></svg>
             <p>Назад</p>
           </div>
-          <div class="my-2 px-2  flex justify-center items-center flex-col">
+          <div class="py-2 md:mx-0 md:py-0 md:my-2 md:px-2  flex justify-center items-center flex-col">
             <svg class="text-blue-500 hover:text-dark-gray w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
             <p>Ссылка</p>
           </div>
-          <div class="my-2 px-2 transform hover:rotate-45 border-2 hover:border-dark-gray border-white bg-120 from-medium-blue to-light-blue transition duration-300 ease-in-out hover:bg-none text-dark-gray hover:text-dark-gray flex justify-center items-center flex-col w-12 h-12 rounded-full">
+<!--          transform hover:rotate-45 -->
+          <div :class="{'transform rotate-45':isActive}" @click.prevent="isActive=!isActive" class="py-2 md:mx-0 md:py-0 md:my-2 md:px-2  border-2 hover:border-dark-gray border-white bg-120 from-medium-blue to-light-blue transition duration-300 ease-in-out hover:bg-none text-dark-gray hover:text-dark-gray flex justify-center items-center flex-col w-12 h-12 rounded-full">
               <svg class=" w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
             </div>
-          <div class="my-2 px-2   flex justify-center items-center flex-col">
+          <div class="py-2 md:mx-0 md:py-0 md:my-2 md:px-2   flex justify-center items-center flex-col">
             <svg class="fill-current text-blue-500 hover:text-dark-gray w-8 h-8" height="512" viewBox="-59 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
               <path d="m344.675781 39.398438h-48.671875v-19.398438c0-11.046875-8.953125-20-20-20h-157.339844c-11.046874 0-20 8.953125-20 20v19.398438h-48.664062c-27.570312 0-50 22.429687-50 50v372.601562c0 27.570312 22.429688 50 50 50h294.675781c27.570313 0 50-22.429688 50-50v-372.601562c0-27.570313-22.433593-50-50-50zm-88.671875.601562v38.800781h-117.34375c0-13.292969 0-24.273437 0-38.800781zm98.671875 422c0 5.515625-4.488281 10-10 10h-294.675781c-5.515625 0-10-4.484375-10-10v-372.601562c0-5.511719 4.484375-10 10-10h48.660156v19.402343c0 11.046875 8.957032 20 20 20h157.34375c11.042969 0 20-8.953125 20-20v-19.402343h48.671875c5.511719 0 10 4.488281 10 10zm-64.535156-228.480469c7.8125 7.8125 7.8125 20.476563 0 28.285157l-105.101563 105.101562c-7.808593 7.8125-20.472656 7.8125-28.285156 0l-52.230468-52.230469c-7.808594-7.808593-7.808594-20.472656 0-28.285156 7.8125-7.808594 20.472656-7.808594 28.285156 0l38.089844 38.089844 90.957031-90.957031c7.8125-7.8125 20.472656-7.8125 28.285156-.003907zm0 0"/>
 
             </svg>
             <p>Все</p>
           </div>
-          <div class="my-2 px-2 flex justify-center items-center flex-col">
+          <div class="py-2 md:mx-0 md:py-0 md:my-2 md:px-2 flex justify-center items-center flex-col">
             <svg class="fill-current text-blue-500 hover:text-dark-gray w-8 h-8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                  xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
                  viewBox="0 0 511.77638 511" style="enable-background:new 0 0 512 512" xml:space="preserve">
@@ -47,7 +48,8 @@
             <p>Начать</p>
           </div>
         </div>
-        <div class="bg-white h-full pr-6 py-4 flex-grow rounded-3xl flex flex-col justify-center items-center"></div>
+        <div class="transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col h-32 md:h-full w-full md:w-64 bottom-0 md:top-0 left-0  bg-medium-blue" :class="{'transform translate-y-0 md:translate-x-0':isActive, 'transform translate-y-full md:translate-y-0 md:-translate-x-full':!isActive }" ></div>
+        <div class="bg-white h-full w-full md:w-auto pr-6 py-4 flex-grow rounded-3xl flex flex-col justify-center items-center"></div>
       </div>
     </div>
   </div>
@@ -63,6 +65,7 @@ export default {
   },
   data() {
     return {
+      isActive: false,
       isMobile: 100
       // mode: this.$router.currentRoute.params.mode,
       // chars: () => import('../mocks/' + this.mode + '.js')
