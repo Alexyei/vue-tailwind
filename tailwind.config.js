@@ -70,6 +70,7 @@ module.exports = {
         '120': 'linear-gradient(120deg, var(--tw-gradient-stops))'
       },
       zIndex: {
+        '2': 2,
         '9': 9,
         '-1':-1
       }

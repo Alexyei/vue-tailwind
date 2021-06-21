@@ -1,8 +1,8 @@
 <template>
-  <div class="middle">
+  <div class="middle w-full relative max-w-lg">
     <div class="multi-range-slider">
-      <input @mouseover="isLeftHover=true" @mouseout="isLeftHover=false" @mousedown="isLeftActive=true" @mouseup="isLeftActive=false" type="range" id="input-left" :min="min" :max="max" :value="left"  @input="evt => onChange(evt.target.value, true)">
-      <input @mouseover="isRightHover=true" @mouseout="isRightHover=false" @mousedown="isRightActive=true" @mouseup="isRightActive=false" type="range" id="input-right" :min="min" :max="max" :value="right" @input="evt => onChange(evt.target.value, false)">
+      <input class="opacity-0 w-full h-2.5 absolute left-0 top-0 pointer-events-none appearance-none z-2" @mouseover="isLeftHover=true" @mouseout="isLeftHover=false" @mousedown="isLeftActive=true" @mouseup="isLeftActive=false" type="range" id="input-left" :min="min" :max="max" :value="left"  @input="evt => onChange(evt.target.value, true)">
+      <input class="opacity-0 w-full h-2.5 absolute left-0 top-0 pointer-events-none appearance-none z-2" @mouseover="isRightHover=true" @mouseout="isRightHover=false" @mousedown="isRightActive=true" @mouseup="isRightActive=false" type="range" id="input-right" :min="min" :max="max" :value="right" @input="evt => onChange(evt.target.value, false)">
 
       <div class="slider">
         <div class="track"></div>
@@ -96,11 +96,11 @@ body {
   /*background-color: #e5e5e5;*/
 }
 
-.middle {
-  position: relative;
-  width: 50%;
-  max-width: 500px;
-}
+/*.middle {*/
+/*  position: relative;*/
+/*  width: 50%;*/
+/*  max-width: 500px;*/
+/*}*/
 
 .slider {
   position: relative;
@@ -153,17 +153,17 @@ body {
   box-shadow: 0 0 0 40px rgba(98,0,238,.2);
 }
 
-input[type=range] {
-  position: absolute;
-  left:0;
-  top:0;
-  pointer-events: none;
-  -webkit-appearance: none;
-  z-index: 2;
-  height: 10px;
-  width: 100%;
-  opacity: 0;
-}
+/*input[type=range] {*/
+/*  position: absolute;*/
+/*  left:0;*/
+/*  top:0;*/
+/*  pointer-events: none;*/
+/*  -webkit-appearance: none;*/
+/*  z-index: 2;*/
+/*  height: 10px;*/
+/*  width: 100%;*/
+/*  opacity: 0;*/
+/*}*/
 input[type=range]::-webkit-slider-thumb {
   pointer-events: all;
   width: 30px;
@@ -174,13 +174,4 @@ input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
 }
 
-
-.youtube-link {
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
-  color: #000;
-  text-decoration: none;
-  font-size: 12px;
-}
 </style>
