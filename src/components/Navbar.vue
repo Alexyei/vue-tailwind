@@ -1,6 +1,6 @@
 <template>
 
-  <nav class=" box-border  bg-white w-full justify-center items-center flex" :class="{'z-10':isActive}">
+  <nav class=" box-border  bg-white w-full justify-center items-center flex" :class="{'z-20':isActive}">
   <div class="lg:container px-8 w-full flex justify-between items-center">
     <div>
       <slot><a href="#" class="text-text-dark text-2xl leading-none py-4 pl-2 block font-TT">Мой блог</a></slot>

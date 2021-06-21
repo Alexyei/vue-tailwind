@@ -48,8 +48,11 @@
             <p>Начать</p>
           </div>
         </div>
-        <div class="transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col h-32 md:h-full w-full md:w-64 bottom-0 md:top-0 left-0  bg-medium-blue" :class="{'transform translate-y-0 md:translate-x-0':isActive, 'transform translate-y-full md:translate-y-0 md:-translate-x-full':!isActive }" ></div>
-        <div class="bg-white h-full w-full md:w-auto pr-6 py-4 flex-grow rounded-3xl flex flex-col justify-center items-center"></div>
+        <div class="transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col h-32 md:h-full w-full md:w-64 bottom-0 md:top-0 left-0  bg-medium-blue bg-120 from-medium-blue to-light-blue" :class="{'transform translate-y-0 md:translate-x-0':isActive, 'transform translate-y-full md:translate-y-0 md:-translate-x-full':!isActive }" ></div>
+        <div class="bg-white h-full w-full md:w-auto pr-6 py-4 flex-grow rounded-3xl flex flex-col justify-center items-center">
+          <dual-range-slider v-model="scroll"></dual-range-slider>
+          <p>{{scroll}}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -57,18 +60,20 @@
 
 <script>
 import NavBar from "../components/Navbar";
-
+import DualRangeSlider from "../components/DualRangeSlider";
 export default {
   name: "Select",
   components: {
-    NavBar
+    NavBar,
+    DualRangeSlider
   },
   data() {
     return {
       isActive: false,
-      isMobile: 100
+      isMobile: 100,
       // mode: this.$router.currentRoute.params.mode,
       // chars: () => import('../mocks/' + this.mode + '.js')
+      scroll: []
     }
   },
   methods: {
