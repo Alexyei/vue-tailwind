@@ -1,14 +1,14 @@
 <template>
   <div class="middle w-full relative max-w-lg">
     <div class="multi-range-slider">
-      <input class="opacity-0 w-full h-2.5 absolute left-0 top-0 pointer-events-none appearance-none z-2" @mouseover="isLeftHover=true" @mouseout="isLeftHover=false" @mousedown="isLeftActive=true" @mouseup="isLeftActive=false" type="range" id="input-left" :min="min" :max="max" :value="left"  @input="evt => onChange(evt.target.value, true)">
-      <input class="opacity-0 w-full h-2.5 absolute left-0 top-0 pointer-events-none appearance-none z-2" @mouseover="isRightHover=true" @mouseout="isRightHover=false" @mousedown="isRightActive=true" @mouseup="isRightActive=false" type="range" id="input-right" :min="min" :max="max" :value="right" @input="evt => onChange(evt.target.value, false)">
+      <input class="opacity-0 w-full h-2.5 absolute left-0 top-0 pointer-events-none appearance-none z-2" @mouseover="isHover=true" @mouseout="isHover=false" @mousedown="isActive=true" @mouseup="isActive=false" type="range" id="input-left" :min="min" :max="max" :value="value"  @input="evt => onChange(evt.target.value)">
+<!--      <input class="opacity-0 w-full h-2.5 absolute left-0 top-0 pointer-events-none appearance-none z-2" @mouseover="isRightHover=true" @mouseout="isRightHover=false" @mousedown="isRightActive=true" @mouseup="isRightActive=false" type="range" id="input-right" :min="min" :max="max" :value="right" @input="evt => onChange(evt.target.value, false)">-->
 
       <div class="slider">
         <div class="track"></div>
-        <div :style="{left: percentLeft, right: percentRight}" class="range"></div>
-        <div :class="{active: isLeftActive, hover:isLeftHover}" :style="{left: percentLeft }" class="thumb left"></div>
-        <div :class="{active: isRightActive, hover:isRightHover}" :style="{right: percentRight }" class="thumb right"></div>
+<!--        <div :style="{left: percentLeft, right: percentRight}" class="range"></div>-->
+        <div :class="{active: isActive, hover:isHover}" :style="{left: percent }" class="thumb left"></div>
+<!--        <div :class="{active: isRightActive, hover:isRightHover}" :style="{right: percentRight }" class="thumb right"></div>-->
       </div>
     </div>
   </div>
@@ -16,38 +16,30 @@
 
 <script>
 export default {
-  name: "DualRangeSlider",
+  name: "RangeSlider",
   props: {
-    left_p: { type: Number, default: 1, },
-    right_p: { type: Number, default: 7, },
+    value_p: { type: Number, default: 10, },
     min_p: { type: Number, default: 1, },
-    max_p: { type: Number, default: 7, },
+    max_p: { type: Number, default: 100, },
   },
   data() {
     return {
-      left: this.left_p,
-      right: this.right_p,
+      value: this.value_p,
       min: this.min_p,
       max: this.max_p,
-      isLeftActive : false,
-      isRightActive: false,
-      isLeftHover: false,
-      isRightHover: false
+      isActive : false,
+      isHover: false,
     }
   },
   computed:{
-    percentLeft() {
+    percent() {
       // `this` points to the vm instance
-      return ((this.left - this.min) / (this.max - this.min)) * 100 + '%'
+      return ((this.value - this.min) / (this.max - this.min)) * 100 + '%'
     },
-    percentRight() {
-      // `this` points to the vm instance
-      return (100 - ((this.right - this.min) / (this.max - this.min)) * 100) + '%'
-    }
+
   },
   methods:{
-    onChange(value, left=true) {
-      console.log("here")
+    onChange(value) {
       // function setLeftValue() {
       //   var _this = inputLeft,
       //       min = parseInt(_this.min),
@@ -61,10 +53,9 @@ export default {
       //   range.style.left = percent + "%";
       // }
       // setLeftValue();
-      if (left)
-        this.left = Math.min(value, this.right-1)
-      else
-        this.right = Math.max(value,this.left+1)
+
+      this.value = value;
+
 
       // function setRightValue() {
       //   var _this = inputRight,
@@ -79,7 +70,7 @@ export default {
       //   range.style.right = (100 - percent) + "%";
       // }
       // setRightValue();
-        this.$emit('update:modelValue', [this.left, this.right])
+      this.$emit('update:modelValue', this.value)
     }
   }
 }

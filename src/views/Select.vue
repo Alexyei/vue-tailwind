@@ -48,10 +48,14 @@
             <p>Начать</p>
           </div>
         </div>
-        <div class="transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col h-32 md:h-full w-full md:w-64 bottom-0 md:top-0 left-0  bg-medium-blue bg-120 from-medium-blue to-light-blue" :class="{'transform translate-y-0 md:translate-x-0':isActive, 'transform translate-y-full md:translate-y-0 md:-translate-x-full':!isActive }" ></div>
+        <div class="pb-20 md:pb-0 md:pl-20 transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col justify-center items-center h-64 md:h-full w-full md:w-64 bottom-0 md:top-0 left-0  bg-medium-blue bg-120 from-medium-blue to-light-blue" :class="{'transform translate-y-0 md:translate-x-0':isActive, 'transform translate-y-full md:translate-y-0 md:-translate-x-full':!isActive }" >
+          <dual-range-slider v-model="wordLength"></dual-range-slider>
+          <p>{{wordLength}}</p>
+          <range-slider v-model="wordsCount"></range-slider>
+          <p>{{wordsCount}}</p>
+        </div>
         <div class="bg-white h-full w-full md:w-auto pr-6 py-4 flex-grow rounded-3xl flex flex-col justify-center items-center">
-          <dual-range-slider v-model="scroll"></dual-range-slider>
-          <p>{{scroll}}</p>
+
         </div>
       </div>
     </div>
@@ -61,11 +65,13 @@
 <script>
 import NavBar from "../components/Navbar";
 import DualRangeSlider from "../components/DualRangeSlider";
+import RangeSlider from "../components/RangeSlider";
 export default {
   name: "Select",
   components: {
     NavBar,
-    DualRangeSlider
+    DualRangeSlider,
+    RangeSlider
   },
   data() {
     return {
@@ -73,7 +79,8 @@ export default {
       isMobile: 100,
       // mode: this.$router.currentRoute.params.mode,
       // chars: () => import('../mocks/' + this.mode + '.js')
-      scroll: []
+      wordLength: [1,7],
+      wordsCount: 10
     }
   },
   methods: {
