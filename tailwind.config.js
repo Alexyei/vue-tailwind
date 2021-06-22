@@ -24,6 +24,7 @@ module.exports = {
         '6.4': '1.6rem',
         '7.5': '1.875rem',
         '12.5': '3.125rem',
+        '27.5': '6.875rem',
         '37.5': '9.375rem',
         '72': '18rem',
         '84': '21rem',
@@ -32,13 +33,14 @@ module.exports = {
         '90vh' :'90vh'
       },
       boxShadow: {
+        checkbox: '0 2px 4px 0 rgba(0, 0, 0, 0.1)',
         npicked: '0 1px 4px 0 rgba(0, 0, 0, 0.05)',
         picked: '0 8px 16px 0 rgba(0, 0, 0, 0.2)',
         labelh: '0 8px 16px 0 rgba(0, 0, 0, 0.2)'
       },
       colors: {
         'dark-gray': '#474747',
-
+        'dark-light': '#353746',
         'text-gray': '#3f4954',
         'midnight':'#104f55',
         'ghostwhite': '#f8f7fc',
@@ -67,7 +69,8 @@ module.exports = {
         one: '1px',
       },
       backgroundImage: {
-        '120': 'linear-gradient(120deg, var(--tw-gradient-stops))'
+        '120': 'linear-gradient(120deg, var(--tw-gradient-stops))',
+        '298':'linear-gradient(120deg, var(--tw-gradient-stops))'
       },
       zIndex: {
         '2': 2,

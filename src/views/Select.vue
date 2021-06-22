@@ -48,14 +48,14 @@
             <p>Начать</p>
           </div>
         </div>
-        <div class="pb-20 md:pb-0 md:pl-20 transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col justify-center items-center h-64 md:h-full w-full md:w-64 bottom-0 md:top-0 left-0  bg-medium-blue bg-120 from-medium-blue to-light-blue" :class="{'transform translate-y-0 md:translate-x-0':isActive, 'transform translate-y-full md:translate-y-0 md:-translate-x-full':!isActive }" >
-          <dual-range-slider v-model="wordLength"></dual-range-slider>
-          <p>{{wordLength}}</p>
-          <range-slider v-model="wordsCount"></range-slider>
-          <p>{{wordsCount}}</p>
+        <div class="p-8 pb-20 md:pb-0 md:pl-20 transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col justify-center items-center h-64 md:h-full w-full md:w-3/5 bottom-0 md:top-0 left-0  bg-medium-blue bg-120 from-medium-blue to-light-blue" :class="{'transform translate-y-0 md:translate-x-0':isActive, 'transform translate-y-full md:translate-y-0 md:-translate-x-full':!isActive }" >
+          <p class=" text-text-dark font-TT font-bold text-xl">Длина слов: от {{wordLength[0]}} до {{wordLength[1]}}</p>
+          <dual-range-slider class="my-4" v-model="wordLength"></dual-range-slider>
+          <p class="text-text-dark font-TT font-bold text-xl">Количество слов: {{wordsCount}}</p>
+          <range-slider class="my-4" v-model="wordsCount"></range-slider>
         </div>
         <div class="bg-white h-full w-full md:w-auto pr-6 py-4 flex-grow rounded-3xl flex flex-col justify-center items-center">
-
+          <card-checkbox></card-checkbox>
         </div>
       </div>
     </div>
@@ -66,12 +66,14 @@
 import NavBar from "../components/Navbar";
 import DualRangeSlider from "../components/DualRangeSlider";
 import RangeSlider from "../components/RangeSlider";
+import CardCheckbox from "../components/CardCheckbox";
 export default {
   name: "Select",
   components: {
     NavBar,
     DualRangeSlider,
-    RangeSlider
+    RangeSlider,
+    CardCheckbox
   },
   data() {
     return {
