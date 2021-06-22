@@ -21,7 +21,13 @@ export default {
   },
   props: {
     value: { type: String, default: 'あ', },
-    modelValue: { type: Array, default: () => [], },
+    key: {type: Number, default: 1},
+    checked: {type: Boolean, default: true},
+    modelValue: { type: Set, default: () => new Set(), },
+  },
+  created() {
+    this.picked = this.checked
+    this.setSync()
   },
   methods: {
     onChange() {
@@ -29,12 +35,22 @@ export default {
       if (this.value==='')
         return;
       this.picked = !this.picked;
-      if (this.modelValue.includes(this.value)) {
-        this.$emit('update:modelValue', this.modelValue.filter(cv => cv !== this.value))
-      }
-      else {
-        this.$emit('update:modelValue', this.modelValue.concat(this.value))
-      }
+      this.setSync()
+      // if (this.modelValue.includes(this.value)) {
+      //   this.$emit('update:modelValue', this.modelValue.filter(cv => cv !== this.value))
+      // }
+      // else {
+      //   this.$emit('update:modelValue', this.modelValue.concat(this.value))
+      // }
+
+      this.$emit('update:modelValue', this.modelValue)
+    },
+    setSync(){
+      if (this.picked)
+        this.modelValue.add(this.key)
+      else
+        this.modelValue.delete(this.key)
+      console.log(this.modelValue)
     }
   }
 }
