@@ -20,6 +20,9 @@ module.exports = {
       textStrokeWidth: {
         '1': '1px',
       },
+      height: {
+        main: 'calc(100vh - 4rem - 3.5rem)',
+      },
       spacing: {
         '0.75': '0.1875rem',
         '1.25': '0.3125rem',
