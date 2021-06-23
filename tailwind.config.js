@@ -14,6 +14,9 @@ module.exports = {
       'msf': { paintOrder: 'markers stroke fill' },
     },
     extend: {
+      maxWidth: {
+        '1/6': '15%',
+      },
       textStrokeWidth: {
         '1': '1px',
       },
@@ -24,6 +27,10 @@ module.exports = {
         '6.4': '1.6rem',
         '7.5': '1.875rem',
         '12.5': '3.125rem',
+        '21':'5.25rem',
+        '22':'5.5rem',
+        '23':'5.75rem',
+        '25.5':'6.375rem',
         '27.5': '6.875rem',
         '37.5': '9.375rem',
         '72': '18rem',
@@ -62,6 +69,7 @@ module.exports = {
         Ubuntu : ['Ubuntu']
       },
       fontSize: {
+        // card: ['8px', '8px'],
         radio: ['52px', '52px'],
         radioM: ['24px','30px'],
       },

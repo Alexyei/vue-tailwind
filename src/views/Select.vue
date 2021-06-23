@@ -2,7 +2,7 @@
   <div class="bg-whitesmoke w-full min-h-full h-full flex flex-col">
     <nav-bar><span class="text-text-dark text-2xl leading-none py-4 pl-2 block font-TT">{{ isActive }}: 100 из 9999</span>
     </nav-bar>
-    <div class="flex-grow flex justify-center items-center w-full px-4 md:px-14 py-4 md:py-7">
+    <div class="flex-grow flex justify-center items-center w-full px-4 md:px-10 py-4 md:py-7">
       <div class=" relative rounded-3xl overflow-hidden flex items-center h-full w-full flex-col-reverse md:flex-row">
         <div class="z-10 font-TT font-bold text-sm sm:text-base bg-white w-full md:w-auto md:h-full mt-4 md:mt-0 md:mr-4 rounded-3xl flex flex-row md:flex-col px-4 md:px-0 justify-between md:justify-center items-center">
 
@@ -54,8 +54,28 @@
           <p class="text-text-dark font-TT font-bold text-xl">Количество слов: {{wordsCount}}</p>
           <range-slider class="my-4" v-model="wordsCount"></range-slider>
         </div>
-        <div class="bg-white h-full w-full md:w-auto pr-6 py-4 flex-grow rounded-3xl flex flex-col justify-center items-center">
-          <card-checkbox></card-checkbox>
+        <div class="bg-white h-full w-full md:w-auto py-4 px-1 flex-grow rounded-3xl flex flex-col  items-center">
+          <div class="flex justify-between items-stretch">
+<!--          <button @click="selectRow()">селект стр</button>-->
+<!--          <svg  @click="selectRow()" class="self-center text-blue-500 hover:text-dark-gray w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"></path></svg>-->
+            <svg  @click="selectRow()" class="self-center text-blue-500 hover:text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          <card-checkbox v-model="charsList" value="ф" :cardKey="1"></card-checkbox>
+          <card-checkbox v-model="charsList" value="п" :cardKey="2" textValue="португальского"></card-checkbox>
+          <card-checkbox v-model="charsList" value="р" :cardKey="3"></card-checkbox>
+          <card-checkbox v-model="charsList" value="г" :cardKey="4"></card-checkbox>
+          <card-checkbox v-model="charsList" value="" textValue=""></card-checkbox>
+          </div>
+          <div class="flex justify-between items-stretch">
+            <!--          <button @click="selectRow()">селект стр</button>-->
+            <!--          <svg  @click="selectRow()" class="self-center text-blue-500 hover:text-dark-gray w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"></path></svg>-->
+            <svg  @click="selectRow()" class="self-center text-blue-500 hover:text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            <card-checkbox v-model="charsList" value="ф" :cardKey="11"></card-checkbox>
+            <card-checkbox v-model="charsList" value="п" :cardKey="21" textValue="порт"></card-checkbox>
+            <card-checkbox v-model="charsList" value="р" :cardKey="31"></card-checkbox>
+            <card-checkbox v-model="charsList" value="г" :cardKey="41"></card-checkbox>
+            <card-checkbox v-model="charsList" value="0" :cardKey="51"></card-checkbox>
+          </div>
+          {{charsList}}
         </div>
       </div>
     </div>
@@ -82,13 +102,17 @@ export default {
       // mode: this.$router.currentRoute.params.mode,
       // chars: () => import('../mocks/' + this.mode + '.js')
       wordLength: [1,7],
-      wordsCount: 10
+      wordsCount: 10,
+      charsList: new Set([3,4]),
     }
   },
   methods: {
     // isMobile() {
     //   return screen.width <= 760;
     // },
+    selectRow(){
+     console.log([3,4].every(v => this.charsList.has(v)))
+    },
     onResize () {
       this.isMobile = (window.innerWidth
           || document.documentElement.clientWidth
