@@ -22,6 +22,7 @@ module.exports = {
       },
       height: {
         main: 'calc(100vh - 4rem - 3.5rem)',
+        mobileMain: 'calc(100vh - 3.5rem - 4.5rem - 3rem)'
       },
       spacing: {
         '0.75': '0.1875rem',

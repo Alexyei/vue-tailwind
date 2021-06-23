@@ -48,13 +48,13 @@
             <p>Начать</p>
           </div>
         </div>
-        <div class="p-8 pb-20 md:pb-0 md:pl-20 transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col justify-center items-center h-64 md:h-full w-full md:w-3/5 bottom-0 md:top-0 left-0  bg-medium-blue bg-120 from-medium-blue to-light-blue" :class="{'transform translate-y-0 md:translate-x-0':isActive, 'transform translate-y-full md:translate-y-0 md:-translate-x-full':!isActive }" >
+        <div class="z-9 p-8 pb-20 md:pb-0 md:pl-20 transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col justify-center items-center h-64 md:h-full w-full md:w-3/5 bottom-0 md:top-0 left-0  bg-medium-blue bg-120 from-medium-blue to-light-blue" :class="{'transform translate-y-0 md:translate-x-0':isActive, 'transform translate-y-full md:translate-y-0 md:-translate-x-full':!isActive }" >
           <p class=" text-text-dark font-TT font-bold text-xl">Длина слов: от {{wordLength[0]}} до {{wordLength[1]}}</p>
           <dual-range-slider class="my-4" v-model="wordLength"></dual-range-slider>
           <p class="text-text-dark font-TT font-bold text-xl">Количество слов: {{wordsCount}}</p>
           <range-slider class="my-4" v-model="wordsCount"></range-slider>
         </div>
-        <div  class="overflow-y-scroll block overflow-x-hidden bg-white h-main  w-full md:w-auto py-4 px-1 pr-2 flex-grow rounded-3xl flex flex-col  items-center">
+        <div  class="overflow-y-auto block overflow-x-hidden bg-white h-mobileMain md:h-main w-full md:w-auto py-4 px-1 pr-2 flex-grow rounded-3xl flex flex-col  items-center">
           <span class="text-text-dark text-2xl leading-none py-4 pl-2 block font-TT">Выбрано: {{charsList.size}} из 9999</span>
           <div class="flex justify-between items-stretch">
 <!--          <button @click="selectRow()">селект стр</button>-->
