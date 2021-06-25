@@ -14,7 +14,11 @@ module.exports = {
       'msf': { paintOrder: 'markers stroke fill' },
     },
     extend: {
+      minWidth: {
+        '1/6': '15%',
+      },
       maxWidth: {
+        '16': '4rem',
         '1/6': '15%',
       },
       textStrokeWidth: {
