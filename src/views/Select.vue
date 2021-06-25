@@ -1,13 +1,13 @@
 <template>
   <div class="bg-whitesmoke w-full min-h-full h-full flex flex-col">
     <nav-bar>
-<!--      <span class="text-text-dark text-2xl leading-none py-4 pl-2 block font-TT">{{ isActive }}: {{charsList.size}} из 9999</span>-->
+      <span class="text-text-dark text-xl sm:text-2xl leading-none py-4 block font-TT">Выбрано: {{charsList.size}} из 9999</span>
     </nav-bar>
     <div class="flex-grow flex justify-center items-center w-full px-4 md:px-10 py-4 md:py-7">
       <div class=" relative rounded-3xl overflow-hidden flex items-center h-full w-full flex-col-reverse md:flex-row">
         <div class="z-10 font-TT font-bold text-sm sm:text-base bg-white w-full md:w-auto md:h-full mt-4 md:mt-0 md:mr-4 rounded-3xl flex flex-row md:flex-col px-4 md:px-0 justify-between md:justify-center items-center">
 
-          <div class="py-2 md:mx-0 md:py-0 md:my-2 md:px-2  flex justify-center items-center flex-col">
+          <div @click.prevent="$router.push({ name: 'Главная'})" class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2  flex justify-center items-center flex-col">
             <svg class="text-blue-500 hover:text-dark-gray w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"></path></svg>
             <p>Назад</p>
           </div>
@@ -19,8 +19,8 @@
           <div :class="{'transform rotate-45':isActive}" @click.prevent="isActive=!isActive" class="py-2 md:mx-0 md:py-0 md:my-2 md:px-2  border-2 hover:border-dark-gray border-white bg-120 from-medium-blue to-light-blue transition duration-300 ease-in-out hover:bg-none text-dark-gray hover:text-dark-gray flex justify-center items-center flex-col w-12 h-12 rounded-full">
               <svg class=" w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
             </div>
-          <div class="py-2 md:mx-0 md:py-0 md:my-2 md:px-2   flex justify-center items-center flex-col">
-            <svg class="fill-current text-blue-500 hover:text-dark-gray w-8 h-8" height="512" viewBox="-59 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+          <div @click.prevent="selectAll" class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2   flex justify-center items-center flex-col">
+            <svg   class="fill-current text-blue-500 hover:text-dark-gray w-8 h-8" height="512" viewBox="-59 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
               <path d="m344.675781 39.398438h-48.671875v-19.398438c0-11.046875-8.953125-20-20-20h-157.339844c-11.046874 0-20 8.953125-20 20v19.398438h-48.664062c-27.570312 0-50 22.429687-50 50v372.601562c0 27.570312 22.429688 50 50 50h294.675781c27.570313 0 50-22.429688 50-50v-372.601562c0-27.570313-22.433593-50-50-50zm-88.671875.601562v38.800781h-117.34375c0-13.292969 0-24.273437 0-38.800781zm98.671875 422c0 5.515625-4.488281 10-10 10h-294.675781c-5.515625 0-10-4.484375-10-10v-372.601562c0-5.511719 4.484375-10 10-10h48.660156v19.402343c0 11.046875 8.957032 20 20 20h157.34375c11.042969 0 20-8.953125 20-20v-19.402343h48.671875c5.511719 0 10 4.488281 10 10zm-64.535156-228.480469c7.8125 7.8125 7.8125 20.476563 0 28.285157l-105.101563 105.101562c-7.808593 7.8125-20.472656 7.8125-28.285156 0l-52.230468-52.230469c-7.808594-7.808593-7.808594-20.472656 0-28.285156 7.8125-7.808594 20.472656-7.808594 28.285156 0l38.089844 38.089844 90.957031-90.957031c7.8125-7.8125 20.472656-7.8125 28.285156-.003907zm0 0"/>
 
             </svg>
@@ -55,8 +55,8 @@
           <p class="text-text-dark font-TT font-bold text-xl">Количество слов: {{wordsCount}}</p>
           <range-slider class="my-4" v-model="wordsCount"></range-slider>
         </div>
-        <div  class="overflow-y-auto block overflow-x-hidden bg-white h-mobileMain md:h-main w-full md:w-auto py-4 px-1 pr-2 flex-grow rounded-3xl flex flex-col  items-center">
-          <span class="text-text-dark text-2xl leading-none pb-4 pl-2 block font-TT">Выбрано: {{charsList.size}} из 9999</span>
+        <div  class="overflow-y-auto block overflow-x-hidden bg-white h-mobileMain md:h-main w-full md:w-auto py-8 px-1 pr-2 flex-grow rounded-3xl flex flex-col  items-center">
+<!--          <span class="text-text-dark text-2xl leading-none pb-4 pl-2 block font-TT">Выбрано: {{charsList.size}} из 9999</span>-->
 <!--          <div class="flex justify-between items-stretch">-->
 <!--&lt;!&ndash;          <button @click="selectRow()">селект стр</button>&ndash;&gt;-->
 <!--&lt;!&ndash;          <svg  @click="selectRow()" class="self-center text-blue-500 hover:text-dark-gray w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"></path></svg>&ndash;&gt;-->
@@ -123,7 +123,7 @@
 <!--            {{row}}-->
             <!--          <button @click="selectRow()">селект стр</button>-->
             <!--          <svg  @click="selectRow()" class="self-center text-blue-500 hover:text-dark-gray w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"></path></svg>-->
-            <svg  @click="selectRow(row.filter(item=>item.char).map(item=>item.char))" class="self-center hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            <svg  @click.prevent="selectRow(row.filter(item=>item.char).map(item=>item.char))" class="self-center hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             <card-checkbox v-model="charsList" v-for="(item, i) in row" :value="item.char" :textValue="item.translate" :key="i"></card-checkbox>
 <!--            <card-checkbox v-model="charsList" :value="chars[r*5+1].char" :textValue="chars[r*5+1].translate"></card-checkbox>-->
 <!--            <card-checkbox v-model="charsList" :value="chars[r*5+2].char" :textValue="chars[r*5+2].translate"></card-checkbox>-->
@@ -167,17 +167,25 @@ export default {
     //   return screen.width <= 760;
     // },
     selectRow(chars){
-      console.log("func")
-      console.log(chars);
+      // console.log("func")
+      // console.log(chars);
       if (chars.every(char => this.charsList.has(char)))
         chars.forEach(char => this.charsList.delete(char))
       else{
-        console.log("add")
+        // console.log("add")
         chars.forEach(char => this.charsList.add(char))
 
       }
-      console.log(this.charsList)
+      // console.log(this.charsList)
      // console.log([3,4].every(v => this.charsList.has(v)))
+    },
+    selectAll(){
+      let chars = [].concat(...this.chars).filter(item=>item.char)
+      // console.log(chars)
+      if (this.charsList.size === chars.length)
+        this.charsList.clear()
+      else
+        chars.forEach( item => this.charsList.add(item.char))
     },
     onResize () {
       this.isMobile = (window.innerWidth
@@ -187,13 +195,13 @@ export default {
     async loadChars(){
       // let mode = this.$router.currentRoute.params
       let mode = useRoute().params.mode
-      console.log(mode)
+      // console.log(mode)
       // let chars = (() => import('../mocks/' + mode + '.js').then(module => ))()
-      let chars = (await import('../mocks/' + mode + '.js')).default
+      let chars = (await import('../mocks/' + mode + '.js')).default.slice(0)
       // console.log("chars11")
       // let chars = []
       // import('../mocks/' + mode + '.js').then(module => {console.log('11111');chars=module.default})
-      // console.log("chars1")
+      console.log("chars1")
       console.log(chars)
       let emptyItem = {
         id: 0,
@@ -208,16 +216,16 @@ export default {
       chars.splice(48, 0, emptyItem);
       // chars.splice(49, 0, emptyItem);
 
-      chars.splice(51, 0, emptyItem);
-      chars.splice(52, 0, emptyItem);
-      chars.splice(53, 0, emptyItem);
-      chars.splice(54, 0, emptyItem);
+      chars.splice(50, 0, emptyItem);
+      chars.splice(50, 0, emptyItem);
+      chars.splice(50, 0, emptyItem);
+      chars.splice(50, 0, emptyItem);
 
-      console.log(chars)
-      console.log(chars.length/5)
-      console.log(typeof chars)
+      // console.log(chars)
+      // console.log(chars.length/5)
+      // console.log(typeof chars)
       // console.log(chars[0].char)
-      console.log(this.chars)
+      // console.log(this.chars)
       let result = []
       for (let i = 0; i < chars.length/5; i++){
         let row = []
@@ -226,7 +234,7 @@ export default {
         result.push(row)
       }
       this.chars = result
-      console.log(this.chars)
+      // console.log(this.chars)
     }
   },
   // computed: {
@@ -241,11 +249,12 @@ export default {
     // this.chars = () => import('../mocks/'+this.mode+'.js')
     // this.loadChars()
   },
-  beforeCreate() {
-  },
+  // beforeCreate() {
+  // },
   // beforeMount(){this.loadChars()},
 
   mounted () {
+    console.log('mounted')
     this.loadChars()
     this.onResize()
     window.addEventListener('resize', this.onResize, { passive: true });
