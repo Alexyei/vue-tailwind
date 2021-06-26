@@ -19,7 +19,12 @@ module.exports = {
       },
       maxWidth: {
         '16': '4rem',
+        'row': '35.125rem',
         '1/6': '15%',
+      },
+      maxHeight: {
+        'row': '35.125rem',
+        'max':'100rem'
       },
       textStrokeWidth: {
         '1': '1px',

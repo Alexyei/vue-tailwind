@@ -6,8 +6,8 @@
       <div class="bg-white px-6 py-4 rounded-3xl flex flex-col justify-center items-center">
           <h2 class="text-4xl font-TT text-text-dark mb-6 font-bold">Выберите:</h2>
         <div class="block z-9">
-          <div v-for="(btn, index) in buttons" :key="btn.value">
-          <input class="absolute invisible" type="radio" name="budget" :id="index" v-model="picked" :value="btn.value" checked>
+          <div v-for="(btn, index) in buttons" :key="index">
+          <input class="absolute invisible" type="radio" name="budget" :id="index" v-model="picked" :value="btn.value">
           <label
               :class="{'hover:shadow-labelh bg-light shadow-npicked text-stroke-dark-blue text-stroke-1':picked!==btn.value,
               'shadow-picked bg-transparent':picked===btn.value}"
