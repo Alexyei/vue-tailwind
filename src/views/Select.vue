@@ -181,7 +181,7 @@
 <!--            </div>-->
 <!--          </div>-->
 <!--          <p>component</p>-->
-          <accordion :title="'N'+(5-index)" @select="selectSection(section.filter(item=>item.char).map(item=>item.char))" v-for="(section, index) in chars" :key="index">
+          <accordion :title="'N'+(5-index)" @select="selectSection([].concat(...section).filter(item => item.char).map(item=>item.char))" v-for="(section, index) in chars" :key="index">
 
             <div
               class="flex justify-between items-stretch"  v-for="(row, index1) in section" :key="index1" >
@@ -320,6 +320,20 @@ export default {
     // isMobile() {
     //   return screen.width <= 760;
     // },
+    startWriting(){
+      if (this.charsList.size === 0){
+        alert("Не выбрано ни одного иероглифа!")
+        return;
+      }
+      this.$store.commit('saveSelected', {
+        charsList: this.charsList,
+        settings: {
+          wordsCount: this.wordsCount,
+          wordLength: this.wordLength
+        }
+      })
+
+    },
     selectRow(chars) {
       // console.log("func")
       // console.log(chars);
@@ -333,13 +347,17 @@ export default {
       // console.log(this.charsList)
       // console.log([3,4].every(v => this.charsList.has(v)))
     },
-    selectSection(){
+    selectSection(chars){
+      this.selectRow(chars)
       console.log("select section")
     },
     selectAll() {
       let chars = []
-      if (useRoute().params.mode === 'kanji')
+      if (this.mode === 'kanji'){
+        console.log(chars)
         chars = [].concat(...([].concat(...this.chars))).filter(item => item.char)
+        console.log(chars)
+      }
       else
         chars = [].concat(...this.chars).filter(item => item.char)
       // console.log(chars)

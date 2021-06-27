@@ -3,6 +3,8 @@ import Home from '../views/Home.vue'
 import NotFound from '../views/404.vue'
 import Start from "../views/Start";
 import Select from "../views/Select";
+import {default as store} from '../store/index.js'
+
 const routes = [
   {
     path: '/',
@@ -14,15 +16,34 @@ const routes = [
     name: 'select',
     component: Select,
     beforeEnter: (to, from, next) => {
-      console.log(to.params.mode)
+      // console.log(to.params.mode)
       if(['hiragana', 'katakana', 'kanji'].includes(to.params.mode)) {
         console.log("OK")
         next()
       } else {
-        next(false)
+        alert("BACK")
+        next(from)
       }
     }
 
+  },
+  {
+    path: '/write',
+    name: 'write',
+    component: Start,
+    beforeEnter: (to, from, next) => {
+
+      console.log(store)
+
+      console.log(store.state.charsList !== null && store.state.settings !== null)
+
+      if((store.state.charsList !== null) && (store.state.settings !== null)) {
+        console.log("OK")
+        next()
+      } else {
+        next(from)
+      }
+    }
   },
   {
     path: '/about',
