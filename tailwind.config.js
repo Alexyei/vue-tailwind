@@ -24,7 +24,7 @@ module.exports = {
       },
       maxHeight: {
         'row': '35.125rem',
-        'max':'100rem'
+        'max':'1000rem'
       },
       textStrokeWidth: {
         '1': '1px',

@@ -78,123 +78,125 @@
           <range-slider class="my-4" v-model="wordsCount"></range-slider>
         </div>
         <div v-if="mode === 'kanji'"
-             class="max-h-max overflow-y-scroll block overflow-x-hidden bg-white h-mobileMain md:h-main w-full md:w-auto py-8 px-1 pr-2 flex-grow rounded-3xl flex flex-col  items-center">
-          <!--          <div class="flex justify-between items-center w-full max-w-row">-->
-          <!--            <svg  @click.stop="selectRow()" class=" absolute hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>-->
-          <!--            <details class="border-b pb-4 hover:cursor-pointer flex-grow">-->
-          <!--            <summary class="border-b mb-2 pb-2 flex items-center text-summary md:text-sm font-normal text-very-dark-grayish-blue hover:text-soft-red">-->
-          <!--              <p class="text-text-dark text-xl font-bold sm:text-2xl leading-none block font-TT hover:text-blue-500 flex-grow" >N1</p>-->
-          <!--              <svg  @click="selectRow()" class="self-center hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>-->
-          <!--            </summary>-->
-          <!--                      <div class="flex justify-between items-stretch">-->
-          <!--                        <svg  @click="selectRow()" class="self-center hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>-->
-          <!--                      <card-checkbox v-model="charsList" value="ф" :cardKey="1"></card-checkbox>-->
-          <!--                      <card-checkbox v-model="charsList" value="п" :cardKey="2" textValue="португальского"></card-checkbox>-->
-          <!--                      <card-checkbox v-model="charsList" value="р" :cardKey="3"></card-checkbox>-->
-          <!--                      <card-checkbox v-model="charsList" value="г" :cardKey="4"></card-checkbox>-->
-          <!--                      <card-checkbox v-model="charsList" value="" textValue=""></card-checkbox>-->
-          <!--                      </div>-->
-          <!--          </details>-->
-          <!--          </div>-->
+             class="overflow-y-scroll block overflow-x-hidden bg-white h-mobileMain md:h-main w-full md:w-auto py-8 px-1 pr-2 flex-grow rounded-3xl flex flex-col  items-center">
 
 
 
-          <div class="transition-all duration-1000 ease-in-out max-h-full" >
-            <div class="flex justify-between items-center w-full max-w-row mt-3 pb-3">
-              <svg @click.stop="selectRow()"
-                   class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"
-                   stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-              <p class="text-text-dark text-xl font-bold sm:text-2xl leading-none block font-TT hover:text-blue-500 flex-grow">
-                N1</p>
-              <svg @click.stop="selectRow()"
-                   class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"
-                   stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </div>
+<!--          <div class="" >-->
+<!--            <div class="flex justify-between items-center w-full max-w-row mt-3 pb-3">-->
+<!--              <svg @click.stop="selectRow()"-->
+<!--                   class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"-->
+<!--                   stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
+<!--                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>-->
+<!--              </svg>-->
+<!--              <p class="text-text-dark text-xl font-bold sm:text-2xl leading-none block font-TT hover:text-blue-500 flex-grow">-->
+<!--                N1</p>-->
+<!--              <svg @click.stop="selectRow()"-->
+<!--                   class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"-->
+<!--                   stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
+<!--                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>-->
+<!--              </svg>-->
+<!--            </div>-->
+
+<!--            <div class="border-text-dark border-b-2 transition-all duration-1000 ease-in-out overflow-hidden" :class="{'max-h-max':isActive,'max-h-0':!isActive }">-->
+<!--            <div-->
+<!--                class="flex justify-between items-stretch pb-2" >-->
+<!--              <div class="h-21 sm:h-25.5 flex justify-center items-center">-->
+<!--                <svg @click="selectRow()"-->
+<!--                     class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"-->
+<!--                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
+<!--                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>-->
+<!--                </svg>-->
+<!--              </div>-->
+<!--              <card-checkbox v-model="charsList" value="ф" :cardKey="1"></card-checkbox>-->
+<!--              <card-checkbox v-model="charsList" value="п" :cardKey="2" textValue="португальского"></card-checkbox>-->
+<!--              <card-checkbox v-model="charsList" value="р" :cardKey="3"></card-checkbox>-->
+<!--              <card-checkbox v-model="charsList" value="г" :cardKey="4"></card-checkbox>-->
+<!--              <card-checkbox v-model="charsList" value="" textValue=""></card-checkbox>-->
+<!--            </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="transition-all duration-1000 ease-in-out max-h-full" >-->
+<!--            <div class="flex justify-between items-center w-full max-w-row mt-3 pb-3">-->
+<!--              <svg @click.stop="selectRow()"-->
+<!--                   class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"-->
+<!--                   stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
+<!--                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>-->
+<!--              </svg>-->
+<!--              <p class="text-text-dark text-xl font-bold sm:text-2xl leading-none block font-TT hover:text-blue-500 flex-grow">-->
+<!--                N1</p>-->
+<!--              <svg @click.stop="selectRow()"-->
+<!--                   class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"-->
+<!--                   stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
+<!--                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>-->
+<!--              </svg>-->
+<!--            </div>-->
+<!--            <div-->
+<!--                class="border-text-dark border-b-2  flex justify-between items-stretch overflow-hidden transition-all duration-1000 ease-in-out"-->
+<!--                :class="{'max-h-max':isActive,'max-h-0':!isActive }">-->
+<!--              <div class="h-21 sm:h-25.5 flex justify-center items-center">-->
+<!--                <svg @click="selectRow()"-->
+<!--                     class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"-->
+<!--                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
+<!--                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>-->
+<!--                </svg>-->
+<!--              </div>-->
+<!--              <card-checkbox v-model="charsList" value="ф" :cardKey="1"></card-checkbox>-->
+<!--              <card-checkbox v-model="charsList" value="п" :cardKey="2" textValue="португальского"></card-checkbox>-->
+<!--              <card-checkbox v-model="charsList" value="р" :cardKey="3"></card-checkbox>-->
+<!--              <card-checkbox v-model="charsList" value="г" :cardKey="4"></card-checkbox>-->
+<!--              <card-checkbox v-model="charsList" value="" textValue=""></card-checkbox>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="transition-all duration-1000 ease-in-out max-h-full">-->
+<!--            <div class="flex justify-between items-center w-full max-w-row mt-3 pb-3">-->
+<!--              <svg @click.stop="selectRow()"-->
+<!--                   class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"-->
+<!--                   stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
+<!--                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>-->
+<!--              </svg>-->
+<!--              <p class="text-text-dark text-xl font-bold sm:text-2xl leading-none block font-TT hover:text-blue-500 flex-grow">-->
+<!--                N1</p>-->
+<!--              <svg @click.stop="selectRow()"-->
+<!--                   class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"-->
+<!--                   stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
+<!--                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>-->
+<!--              </svg>-->
+<!--            </div>-->
+<!--            <div-->
+<!--                class="border-text-dark border-b-2  flex justify-between items-stretch overflow-hidden transition-all duration-1000 ease-in-out"-->
+<!--                :class="{'max-h-max':isActive,'max-h-0':!isActive }">-->
+<!--              <div class="h-21 sm:h-25.5 flex justify-center items-center">-->
+<!--                <svg @click="selectRow()"-->
+<!--                     class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"-->
+<!--                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
+<!--                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>-->
+<!--                </svg>-->
+<!--              </div>-->
+<!--              <card-checkbox v-model="charsList" value="ф" :cardKey="1"></card-checkbox>-->
+<!--              <card-checkbox v-model="charsList" value="п" :cardKey="2" textValue="португальского"></card-checkbox>-->
+<!--              <card-checkbox v-model="charsList" value="р" :cardKey="3"></card-checkbox>-->
+<!--              <card-checkbox v-model="charsList" value="г" :cardKey="4"></card-checkbox>-->
+<!--              <card-checkbox v-model="charsList" value="" textValue=""></card-checkbox>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <p>component</p>-->
+          <accordion :title="'N'+(5-index)" @select="selectSection(section.filter(item=>item.char).map(item=>item.char))" v-for="(section, index) in chars" :key="index">
+
             <div
-                class="border-text-dark border-b-2 flex justify-between items-stretch overflow-hidden transition-all duration-300 ease-in-out"
-                :class="{'max-h-max':isActive,'max-h-0':!isActive }">
-              <div class="h-21 sm:h-25.5 flex justify-center items-center">
-                <svg @click="selectRow()"
-                     class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"
-                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </div>
-              <card-checkbox v-model="charsList" value="ф" :cardKey="1"></card-checkbox>
-              <card-checkbox v-model="charsList" value="п" :cardKey="2" textValue="португальского"></card-checkbox>
-              <card-checkbox v-model="charsList" value="р" :cardKey="3"></card-checkbox>
-              <card-checkbox v-model="charsList" value="г" :cardKey="4"></card-checkbox>
-              <card-checkbox class="pb-5" v-model="charsList" value="" textValue=""></card-checkbox>
+              class="flex justify-between items-stretch"  v-for="(row, index1) in section" :key="index1" >
+            <div class="h-21 sm:h-25.5 flex justify-center items-center">
+              <svg @click="selectRow(row.filter(item=>item.char).map(item=>item.char))"
+                   class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"
+                   stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
             </div>
+            <card-checkbox v-model="charsList" v-for="(item, i) in row" :value="item.char" :textValue="item.translate"
+                           :key="i"></card-checkbox>
           </div>
-          <div class="transition-all duration-1000 ease-in-out max-h-full" >
-            <div class="flex justify-between items-center w-full max-w-row mt-3 pb-3">
-              <svg @click.stop="selectRow()"
-                   class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"
-                   stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-              <p class="text-text-dark text-xl font-bold sm:text-2xl leading-none block font-TT hover:text-blue-500 flex-grow">
-                N1</p>
-              <svg @click.stop="selectRow()"
-                   class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"
-                   stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </div>
-            <div
-                class="border-text-dark border-b-2  flex justify-between items-stretch overflow-hidden transition-all duration-1000 ease-in-out"
-                :class="{'max-h-max':isActive,'max-h-0':!isActive }">
-              <div class="h-21 sm:h-25.5 flex justify-center items-center">
-                <svg @click="selectRow()"
-                     class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"
-                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </div>
-              <card-checkbox v-model="charsList" value="ф" :cardKey="1"></card-checkbox>
-              <card-checkbox v-model="charsList" value="п" :cardKey="2" textValue="португальского"></card-checkbox>
-              <card-checkbox v-model="charsList" value="р" :cardKey="3"></card-checkbox>
-              <card-checkbox v-model="charsList" value="г" :cardKey="4"></card-checkbox>
-              <card-checkbox v-model="charsList" value="" textValue=""></card-checkbox>
-            </div>
-          </div>
-          <div class="transition-all duration-1000 ease-in-out max-h-full">
-            <div class="flex justify-between items-center w-full max-w-row mt-3 pb-3">
-              <svg @click.stop="selectRow()"
-                   class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"
-                   stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-              <p class="text-text-dark text-xl font-bold sm:text-2xl leading-none block font-TT hover:text-blue-500 flex-grow">
-                N1</p>
-              <svg @click.stop="selectRow()"
-                   class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"
-                   stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </div>
-            <div
-                class="border-text-dark border-b-2  flex justify-between items-stretch overflow-hidden transition-all duration-1000 ease-in-out"
-                :class="{'max-h-max':isActive,'max-h-0':!isActive }">
-              <div class="h-21 sm:h-25.5 flex justify-center items-center">
-                <svg @click="selectRow()"
-                     class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"
-                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </div>
-              <card-checkbox v-model="charsList" value="ф" :cardKey="1"></card-checkbox>
-              <card-checkbox v-model="charsList" value="п" :cardKey="2" textValue="португальского"></card-checkbox>
-              <card-checkbox v-model="charsList" value="р" :cardKey="3"></card-checkbox>
-              <card-checkbox v-model="charsList" value="г" :cardKey="4"></card-checkbox>
-              <card-checkbox v-model="charsList" value="" textValue=""></card-checkbox>
-            </div>
-          </div>
+          </accordion>
+
 
 
         </div>
@@ -291,6 +293,7 @@ import NavBar from "../components/Navbar";
 import DualRangeSlider from "../components/DualRangeSlider";
 import RangeSlider from "../components/RangeSlider";
 import CardCheckbox from "../components/CardCheckbox";
+import Accordion from "../components/Accordion";
 
 export default {
   name: "Select",
@@ -298,7 +301,8 @@ export default {
     NavBar,
     DualRangeSlider,
     RangeSlider,
-    CardCheckbox
+    CardCheckbox,
+    Accordion
   },
   data() {
     return {
@@ -329,6 +333,9 @@ export default {
       // console.log(this.charsList)
       // console.log([3,4].every(v => this.charsList.has(v)))
     },
+    selectSection(){
+      console.log("select section")
+    },
     selectAll() {
       let chars = []
       if (useRoute().params.mode === 'kanji')
@@ -357,12 +364,14 @@ export default {
       // import('../mocks/' + mode + '.js').then(module => {console.log('11111');chars=module.default})
       // console.log("chars1")
       // console.log(chars)
+      let emptyItem = {
+        id: 0,
+        char: '',
+        translate: ''
+      }
+
       if (mode !== 'kanji') {
-        let emptyItem = {
-          id: 0,
-          char: '',
-          translate: ''
-        }
+
         chars.splice(36, 0, emptyItem);
         chars.splice(38, 0, emptyItem);
 
@@ -390,7 +399,26 @@ export default {
         }
         this.chars = result
       }
+      else{
+        let result = []
+        for (let sec of chars)
+        {
+          for (let i = 5 - sec.length % 5; i > 0;--i)
+            sec.push(emptyItem)
+          let section = []
+          for (let i = 0; i < sec.length / 5; i++) {
+            let row = []
+            for (let j = 0; j < 5; ++j)
+              row.push(sec[i * 5 + j])
+            section.push(row)
+          }
+          result.push(section)
+        }
+        this.chars = result
+
+      }
       // console.log(this.chars)
+
     }
   },
   // computed: {
