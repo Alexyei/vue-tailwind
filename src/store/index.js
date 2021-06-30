@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import animCJKLib from "./modules/animCJKLib";
 
 export default createStore({
   state: {
@@ -18,5 +19,6 @@ export default createStore({
   actions: {
   },
   modules: {
+    svg: animCJKLib
   }
 })
