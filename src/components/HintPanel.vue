@@ -6,6 +6,7 @@
       9999</p>
 
     <p class="text-text-dark font-TT font-bold text-xl">Количество слов: 150</p>
+    <btn @click.prevent="printsvg()">НАЖМИ МЕНЯ</btn>
     <div v-html="svg" class="relative w-64 h-64 border border-black bg-white">
     </div>
 
@@ -13,7 +14,7 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 export default {
   name: "HintPanel",
   data(){
@@ -23,13 +24,38 @@ export default {
     }
   },
   props: {
-    isActive: {type: Boolean, default: false},
+    isActive: {type: Boolean, default: true},
   },
   mounted() {
     // this.LoadScripts()
-    this.getSvg()
+    // this.getSvg()
+   // axios
+   //      .get('http://localhost:8080/12359.svg')
+   //      .then(response => {
+   //        this.svg =response.data.replace(/<style[\s\S]+\/style>\s/,"");
+   //      })
+   //      .catch(error => {
+   //        // console.log(error);
+   //        alert(error)
+   //        this.errored = true;
+   //      })
+   //      .finally(() => (this.loading = false));
   },
   methods: {
+    printsvg(){
+      this.svg=""
+      axios
+          .get('http://localhost:8080/12359.svg')
+          .then(response => {
+            this.svg =response.data.replace(/<style[\s\S]+\/style>\s/,"");
+          })
+          .catch(error => {
+            // console.log(error);
+            alert(error)
+            this.errored = true;
+          })
+          .finally(() => (this.loading = false));
+    },
     getSvg(){
       this.svg = this.getSvgChar(this.cleanData(this.char),'ja')
     },
@@ -71,9 +97,9 @@ export default {
         }
       }
 
-      if (lang === 'ja'){
-
-      }
+      // if (lang === 'ja'){
+      //
+      // }
 
       // если файл svg не пуст
       if (svg) return svg;
@@ -137,46 +163,5 @@ export default {
 </script>
 
 <style scoped>
-/*размер иероглифа*/
-svg {
-  width: 256px;
-  height: 256px;
 
-}
-
-/*размер текста ошибки*/
-svg.error {
-  font-size: 256px;
-}
-/*цвет иероглифа*/
-@keyframes zk {
-  from {
-    stroke-dashoffset: 3339;
-    stroke: #c00;
-  }
-  75% {
-    stroke-dashoffset: 0;
-    stroke: #c00;
-  }
-  to {
-    stroke-dashoffset: 0;
-    stroke: #000;
-  }
-}
-
-svg.acjk path[clip-path] {
-  --t: 0.8s;
-  animation: zk var(--t) linear forwards var(--d);
-  stroke-dasharray: 3337;
-  stroke-dashoffset: 3339;
-  stroke-width: 128;
-  stroke-linecap: round;
-  fill: none;
-  stroke: #000;
-}
-
-/*цвет серого иероглифа (подложка)*/
-svg.acjk path[id] {
-  fill: #ccc;
-}
 </style>

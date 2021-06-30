@@ -7,6 +7,48 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
       <style>
+          /*размер иероглифа*/
+          svg {
+              width: 256px;
+              height: 256px;
+
+          }
+
+          /*размер текста ошибки*/
+          svg.error {
+              font-size: 256px;
+          }
+          /*цвет иероглифа*/
+          @keyframes zk {
+              from {
+                  stroke-dashoffset: 3339;
+                  stroke: #c00;
+              }
+              75% {
+                  stroke-dashoffset: 0;
+                  stroke: #c00;
+              }
+              to {
+                  stroke-dashoffset: 0;
+                  stroke: #000;
+              }
+          }
+
+          svg.acjk path[clip-path] {
+              --t: 0.8s;
+              animation: zk var(--t) linear forwards var(--d);
+              stroke-dasharray: 3337;
+              stroke-dashoffset: 3339;
+              stroke-width: 128;
+              stroke-linecap: round;
+              fill: none;
+              stroke: #000;
+          }
+
+          /*цвет серого иероглифа (подложка)*/
+          svg.acjk path[id] {
+              fill: #ccc;
+          }
           :root {
               --white: #ffffff;
               --light: #f0eff3;
