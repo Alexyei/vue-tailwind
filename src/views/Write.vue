@@ -77,7 +77,7 @@
 <!--          <p class="text-text-dark font-TT font-bold text-xl">Количество слов: {{ wordsCount }}</p>-->
 <!--          <range-slider class="my-4" v-model="wordsCount"></range-slider>-->
 <!--        </div>-->
-<hint-panel :is-active="isActive"></hint-panel>
+<hint-panel :is-active="isActive" word="a食べました食べました"></hint-panel>
         <div
              class="overflow-y-auto block overflow-x-hidden bg-white h-mobileMain md:h-main w-full md:w-auto py-8 px-1 pr-2 flex-grow rounded-3xl flex flex-col  items-center">
 
