@@ -1,6 +1,6 @@
 <template>
   <div
-      class="z-9 p-8 pb-20 md:pb-0 md:pl-20 transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col justify-center items-center h-64 md:h-full w-full md:w-3/5 bottom-0 md:top-0 left-0  bg-medium-blue bg-120 from-medium-blue to-light-blue"
+      class="z-9 px-4 pt-8 pb-20 md:pb-0 md:pl-20 transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col justify-center items-center md:h-full w-full md:w-auto bottom-0 md:top-0 left-0  bg-medium-blue bg-120 from-medium-blue to-light-blue"
       :class="{'transform translate-y-0 md:translate-x-0':isActive, 'transform translate-y-full md:translate-y-0 md:-translate-x-full':!isActive }">
 <!--    <p class=" text-text-dark font-TT font-bold text-xl">Длина слов: от 0 до-->
 <!--      9999</p>-->
@@ -67,8 +67,11 @@ export default {
   methods: {
     printsvg(i) {
       // console.log(this.svgs)
-      this.svg = ""
-      this.svg = this.svgs[i]
+      // console.log("print")
+      this.svg = ''
+      // console.log(this.svg)
+      setTimeout(() => this.svg = this.svgs[i], 0);
+      // this.svg = this.svgs[i]
       // let grid ="<div class=\"gri grid0\"></div>\n" +
       //     "      <div class=\"gri grid1\"></div>\n" +
       //     "      <div class=\"gri grid2\"></div>\n" +

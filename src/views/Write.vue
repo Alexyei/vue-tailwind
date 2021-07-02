@@ -1,7 +1,7 @@
 <template>
   <div class="bg-whitesmoke w-full min-h-full h-full flex flex-col">
     <nav-bar>
-      <span class="text-text-dark text-xl sm:text-2xl leading-none py-4 block font-TT">Выбрано: {{isActive}} из 9999</span>
+      <span class="text-text-dark text-xl md:text-2xl leading-none py-4 block font-TT">Выбрано: {{isActive}} из 9999</span>
     </nav-bar>
     <div class="flex-grow flex justify-center items-center w-full px-4 md:px-10 py-4 md:py-7">
       <div class=" relative rounded-3xl overflow-hidden flex items-center h-full w-full flex-col-reverse md:flex-row">
