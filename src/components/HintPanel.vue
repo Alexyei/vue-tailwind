@@ -45,7 +45,7 @@ export default {
     //   return this.word.split()
     // },
     svgs(){
-      console.log(this.word.split(""))
+      //console.log(this.word.split(""))
       return this.word.split("").map((char, i)=>this.getSvg(char, i))
     }
   },
@@ -66,11 +66,10 @@ export default {
   },
   methods: {
     printsvg(i) {
-      // console.log(this.svgs)
-      // console.log("print")
+
       this.svg = ''
-      // console.log(this.svg)
-      setTimeout(() => this.svg = this.svgs[i], 0);
+
+      this.$nextTick(() => this.svg = this.svgs[i], 0);
       // this.svg = this.svgs[i]
       // let grid ="<div class=\"gri grid0\"></div>\n" +
       //     "      <div class=\"gri grid1\"></div>\n" +
