@@ -34,7 +34,7 @@
                     d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
             </svg>
           </div>
-          <div @click.prevent="selectAll"
+          <div @click.prevent=""
                class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2   flex justify-center items-center flex-col">
             <svg class="fill-current text-blue-500 hover:text-dark-gray w-8 h-8" height="512" viewBox="-59 0 512 512"
                  width="512" xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +44,7 @@
             </svg>
             <p>Все</p>
           </div>
-          <div class="py-2 md:mx-0 md:py-0 md:my-2 md:px-2 flex justify-center items-center flex-col">
+          <div @click.prevent="checkAnswer" class="py-2 md:mx-0 md:py-0 md:my-2 md:px-2 flex justify-center items-center flex-col">
             <svg class="fill-current text-blue-500 hover:text-dark-gray w-8 h-8" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink"
                  xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
@@ -79,8 +79,15 @@
 <!--        </div>-->
 <hint-panel :is-active="isActive" word="a食べました食べました"></hint-panel>
         <div
-             class="overflow-y-auto block overflow-x-hidden bg-white h-mobileMain md:h-main w-full md:w-auto py-8 px-1 pr-2 flex-grow rounded-3xl flex flex-col  items-center">
-
+            ref="writeAreaParent"
+             class="overflow-y-auto block overflow-x-auto bg-white h-mobileMain md:h-main w-full md:w-auto  flex-grow rounded-3xl flex flex-col  items-center">
+<write-area
+    ref="wa"
+    v-if="parentWidth"
+    :client-width="parentWidth"
+    :client-height="parentHeight"
+    :chars-count="11"
+></write-area>
 
         </div>
       </div>
@@ -94,21 +101,29 @@ import NavBar from "../components/Navbar";
 // import DualRangeSlider from "../components/DualRangeSlider";
 // import RangeSlider from "../components/RangeSlider";
 import HintPanel from "../components/HintPanel";
-
+import WriteArea from "../components/WriteArea";
 export default {
-  name: "Select",
+  name: "Write",
   components: {
     NavBar,
     // DualRangeSlider,
     // RangeSlider,
-    HintPanel
+    HintPanel,
+    WriteArea
 
 
   },
+  // $refs:{
+  //   writeAreaParent:HTMLElement,
+  //   wa:HTMLElement
+  // },
   data() {
     return {
       isActive: false,
-      isMobile: 100,
+      // isMobile: 100,
+      loadingAnswer: false,
+      parentWidth: 0,
+      parentHeight: 0,
       // chars: () => import('../mocks/' + this.mode + '.js'),
 
       // wordLength: [1, 7],
@@ -118,19 +133,32 @@ export default {
   },
   methods: {
     onResize() {
-      this.isMobile = (window.innerWidth
-          || document.documentElement.clientWidth
-          || document.body.clientWidth) < 768;
+      this.parentWidth = this.$refs.writeAreaParent.clientWidth;
+      this.parentHeight = this.$refs.writeAreaParent.clientHeight;
+      // this.isMobile = (window.innerWidth
+      //     || document.documentElement.clientWidth
+      //     || document.body.clientWidth) < 768;
+    },
+    async checkAnswer() {
+      this.loadingAnswer = true
+      // let answer = await this.$refs.wa.recognise()
+      // alert(answer)
+      // console.log(answer)
+      this.loadingAnswer = false
     },
 
   },
-  // computed: {
+  computed: {
+    // getClientWidth(){
+    //   console.log(this.$parent.clientWidth)
+    //   return this.$refs.writeAreaParent.clientWidth
+    // }
   //   isMobile: function(){
   //     return window.innerWidth
   //         || document.documentElement.clientWidth
   //         || document.body.clientWidth;
   //   }
-  // },
+  },
   created() {
     // this.mode: this.$router.currentRoute.params.mode,
     // this.chars = () => import('../mocks/'+this.mode+'.js')
@@ -142,6 +170,8 @@ export default {
 
   mounted() {
 
+    console.log(this.$refs.writeAreaParent.clientWidth)
+    console.log(this.$refs.writeAreaParent.clientHeight)
     this.onResize()
     window.addEventListener('resize', this.onResize, {passive: true});
     // let mode = useRoute().params.mode

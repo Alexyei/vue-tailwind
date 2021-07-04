@@ -1,5 +1,11 @@
 <template>
-  <canvas ref="canvas" :style="{height: height+'px', width: width+'px'}"
+<!--  <p>{{clientWidth}}</p>-->
+<!--  <p>{{clientHeight}}</p>-->
+<!--  <p>{{width}}</p>-->
+<!--  <p>{{height}}</p>-->
+<!--  <p>{{isMounted}}</p>-->
+<!--  :style="{height: height+'px', width: width+'px'}"-->
+  <canvas ref="canvas"
           @pointerdown="mousedown($event)"
           @pointermove="mousemove($event)"
           @pointerup="mouseup($event)"
@@ -13,43 +19,84 @@ export default {
   name: "WriteArea",
   data() {
     return {
-      currentColor: 'black',
-      currentBg: 'white',
-      ctx: this.$refs.canvas.getContext("2d"),
+      currentColor: '#444',
+      currentBg: '#FFF',
+      ctx: null,
       startTime: null,
       stroke: [[], [], []],
       data: [],
       startPaint: false,
       firstPoint: null,
-      secondPoint: null
+      secondPoint: null,
     }
   },
   props: {
-    clientWidth: {type: String,},
-    clientHeight: {type: String},
+    clientWidth: {type: Number},
+    clientHeight: {type: Number},
     charsCount: {type: Number}
   },
+
   computed: {
+
+
     pxPerChar() {
-      return this.clientWidth >= 768 ? 200 : 150;
+      // console.log("m1")
+      // console.log(this.clientWidth)
+      return this.clientWidth >= 768 ? 50 : 50;
     },
     penSize() {
-      return this.clientWidth >= 768 ? 5 : 3;
+     // console.log("m2")
+    //  console.log(this.clientWidth)
+     return this.clientWidth >= 768 ? 5 : 3;
+      //return 5;
     },
     height() {
-      return this.clientHeight
+      console.log("m3")
+   //   console.log(this.clientHeight)
+       return this.clientHeight
+      //return 100
     },
     width() {
-      return Math.max(this.clientWidth, this.charsCount * this.pxPerChar)
+      console.log("m4")
+      //this.reset()
+    //  console.log(this.clientWidth)
+       return Math.max(this.clientWidth, this.charsCount * this.pxPerChar)
+      //return 100
     }
   },
   mounted() {
-    this.startTime = Date.now();
-    this.ctx.fillStyle = this.currentBg;
-    this.ctx.fillRect(0, 0, this.width, this.height);
-    this.data = []
+
+
+    console.log("MOUNTED")
+    console.log(this.$el.parentElement.clientWidth)
+    console.log(this.$el.parentElement.clientHeight)
+    console.log(this.$parent.clientHeight)
+    // this.startTime = Date.now();
+    // this.ctx= this.$refs.canvas.getContext("2d"),
+    // this.ctx.fillStyle = this.currentBg;
+    // this.ctx.fillRect(0, 0, this.width, this.height);
+    // this.data = []
+    this.reset()
+    console.log(this.$refs.canvas)
+    window.addEventListener('resize', this.reset, {passive: true});
   },
   methods: {
+    reset(){
+      // console.log("H!")
+      // if (!this.isMounted) return;
+      // console.log("H?")
+      this.$refs.canvas.width = this.width
+      this.$refs.canvas.height = this.height
+      this.startTime = Date.now();
+      this.ctx= this.$refs.canvas.getContext("2d");
+      console.log(this.ctx)
+      this.ctx.fillStyle = this.currentBg;
+      console.log(this.ctx.fillStyle)
+      console.log(this.width)
+      console.log(this.height)
+      this.ctx.fillRect(0, 0, this.width, this.height);
+      this.data = []
+    },
     mousedown(event) {
       this.firstPoint = this.getMousePos(event);
       this.startPaint = true;
@@ -136,17 +183,24 @@ export default {
             })
             .then(response => {
               let result = JSON.parse(response.data)
-              if (result[0] === 'SUCCESS') {
-                console.log(result[1][0][1]);
-              } else {
-                console.error('something went wrong');
-              }
               console.log("Время выполнения: "+(performance.now() - timeStart).toFixed(4)+" милисекунд");
+              if (result[0] === 'SUCCESS') {
+                return {status:'success', data:result[1][0][1]}
+              } else {
+                // console.error('something went wrong');
+                return {status:'success', data:'something went wrong'}
+              }
             })
             .catch(() => {
-              console.error('something went wrong');
+              // console.error('something went wrong');
+              return {status:'success', data:'something went wrong'}
             })
       }
+    }
+  },
+  beforeUnmount() {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('resize', this.reset, {passive: true})
     }
   }
 }
