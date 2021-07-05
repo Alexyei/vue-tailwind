@@ -1,14 +1,21 @@
 <template>
-<!--  <p>{{clientWidth}}</p>-->
-<!--  <p>{{clientHeight}}</p>-->
-<!--  <p>{{width}}</p>-->
-<!--  <p>{{height}}</p>-->
-<!--  <p>{{isMounted}}</p>-->
-<!--  :style="{height: height+'px', width: width+'px'}"-->
-  <canvas ref="canvas"
-          @pointerdown="mousedown($event)"
+  <!--  <p>{{clientWidth}}</p>-->
+  <!--  <p>{{clientHeight}}</p>-->
+  <!--  <p>{{width}}</p>-->
+  <!--  <p>{{height}}</p>-->
+  <!--  <p>{{isMounted}}</p>-->
+  <!--  :style="{height: height+'px', width: width+'px'}"-->
+<!--  @pointerdown="mousedown($event)"
           @pointermove="mousemove($event)"
-          @pointerup="mouseup($event)"
+          @pointerup="mouseup($event)"-->
+  <canvas ref="canvas"
+          @mousedown="mousedown($event)"
+          @mousemove="mousemove($event)"
+          @mouseup="mouseup($event)"
+
+          @touchstart="mousedown($event)"
+          @touchmove="mousemove($event)"
+          @touchend="mouseup($event)"
   ></canvas>
 </template>
 
@@ -45,22 +52,22 @@ export default {
       return this.clientWidth >= 768 ? 50 : 50;
     },
     penSize() {
-     // console.log("m2")
-    //  console.log(this.clientWidth)
-     return this.clientWidth >= 768 ? 5 : 3;
+      // console.log("m2")
+      //  console.log(this.clientWidth)
+      return this.clientWidth >= 768 ? 10 : 5;
       //return 5;
     },
     height() {
       console.log("m3")
-   //   console.log(this.clientHeight)
-       return this.clientHeight
+      //   console.log(this.clientHeight)
+      return this.clientHeight
       //return 100
     },
     width() {
       console.log("m4")
       //this.reset()
-    //  console.log(this.clientWidth)
-       return Math.max(this.clientWidth, this.charsCount * this.pxPerChar)
+      //  console.log(this.clientWidth)
+      return Math.max(this.clientWidth, this.charsCount * this.pxPerChar)
       //return 100
     }
   },
@@ -81,14 +88,15 @@ export default {
     window.addEventListener('resize', this.reset, {passive: true});
   },
   methods: {
-    reset(){
+    reset() {
       // console.log("H!")
       // if (!this.isMounted) return;
       // console.log("H?")
       this.$refs.canvas.width = this.width
       this.$refs.canvas.height = this.height
       this.startTime = Date.now();
-      this.ctx= this.$refs.canvas.getContext("2d");
+      this.ctx = this.$refs.canvas.getContext("2d");
+      this.ctx.imageSmoothingEnabled = true;
       console.log(this.ctx)
       this.ctx.fillStyle = this.currentBg;
       console.log(this.ctx.fillStyle)
@@ -98,6 +106,10 @@ export default {
       this.data = []
     },
     mousedown(event) {
+      console.log("DOWN")
+      if (event.target.nodeName === 'CANVAS') {
+        event.preventDefault();
+      }
       this.firstPoint = this.getMousePos(event);
       this.startPaint = true;
 
@@ -112,13 +124,21 @@ export default {
       this.ctx.beginPath();
     },
     mousemove(event) {
+      console.log(event.target.nodeName)
+      if (event.target.nodeName === 'CANVAS') {
+        event.preventDefault();
+      }
       if (this.startPaint) {
         this.secondPoint = this.getMousePos(event);
         this.pushStroke(this.secondPoint.x, this.secondPoint.y);
         this.redraw();
       }
     },
-    mouseup() {
+    mouseup(event) {
+      console.log("UP")
+      if (event.target.nodeName === 'CANVAS') {
+        event.preventDefault();
+      }
       if (this.startPaint) {
         this.data.push(this.stroke);
         // console.log(window.storage.data);
@@ -133,18 +153,30 @@ export default {
       this.stroke[1].push(y);
       this.stroke[2].push(Date.now() - this.startTime);
     },
-    getMousePos(event){
+    getMousePos(event) {
       let rect = event.target.getBoundingClientRect();
-      return {
-        x: event.clientX - rect.left,
-        y: event.clientY - rect.top
-      };
+      if (event.type.startsWith("touch"))
+        return {
+          x: event.changedTouches[0].clientX - rect.left,
+          y: event.changedTouches[0].clientY - rect.top
+        }
+      else
+        return {
+          x: event.clientX - rect.left,
+          y: event.clientY - rect.top
+        };
+      // let rect = event.target.getBoundingClientRect();
+      // return {
+      //   x: event.clientX - rect.left,
+      //   y: event.clientY - rect.top
+      // };
     },
-    redraw(){
+    redraw() {
       this.ctx.lineTo(this.secondPoint.x, this.secondPoint.y)
       this.ctx.stroke();
     },
-    recognise(){
+    async recognise() {
+      console.log("RECOGNISE START")
       let timeStart = performance.now();
       // Количество возвращаемых результатов (точность распознавания)
 // не работает, возвращается 10 результатов
@@ -170,32 +202,74 @@ export default {
           }
         ]
       };
+      console.log(data)
 
-
+      //let answer = null;
       let lang = 'ja'
+      // if (lang === 'ja') {
+      //   axios.post('https://inputtools.google.com/request?itc=ja-t-i0-handwrit&app=translate',
+      //       JSON.stringify(data),
+      //       {
+      //         headers: {
+      //           'Content-Type': 'application/json;charset=utf-8'
+      //         },
+      //       })
+      //       .then(response => {
+      //         let result = response.data
+      //         console.log("Время выполнения: "+(performance.now() - timeStart).toFixed(4)+" милисекунд");
+      //         console.log("SUCCESS")
+      //         console.log(result[1][0][1])
+      //         if (result[0] === 'SUCCESS') {
+      //           //return new Promise((resolve) => resolve({status:'success', data:result[1][0][1]}))
+      //            return {status:'success', data:result[1][0][1]}
+      //           //answer = {status:'success', data:result[1][0][1]}
+      //         } else {
+      //           // console.error('something went wrong');
+      //           console.log("ERR1")
+      //           return {status:'error', data:'something went wrong'}
+      //         }
+      //       })
+      //       .catch((err) => {
+      //         console.log(err)
+      //         console.log("ERR2")
+      //         // console.error('something went wrong');
+      //         return {status:'error', data:'something went wrong'}
+      //       })
+      // }
+
       if (lang === 'ja') {
-        axios.post('https://inputtools.google.com/request?itc=ja-t-i0-handwrit&app=translate',
+        let response = await axios.post('https://inputtools.google.com/request?itc=ja-t-i0-handwrit&app=translate',
             JSON.stringify(data),
             {
               headers: {
                 'Content-Type': 'application/json;charset=utf-8'
               },
             })
-            .then(response => {
-              let result = JSON.parse(response.data)
-              console.log("Время выполнения: "+(performance.now() - timeStart).toFixed(4)+" милисекунд");
-              if (result[0] === 'SUCCESS') {
-                return {status:'success', data:result[1][0][1]}
-              } else {
-                // console.error('something went wrong');
-                return {status:'success', data:'something went wrong'}
-              }
-            })
-            .catch(() => {
+            .catch((err) => {
+              console.log(err)
+              console.log("ERR2")
               // console.error('something went wrong');
-              return {status:'success', data:'something went wrong'}
+              return {status: 'error', data: 'something went wrong'}
             })
+
+
+        let result = response.data
+        console.log("Время выполнения: " + (performance.now() - timeStart).toFixed(4) + " милисекунд");
+        console.log("SUCCESS")
+        //console.log(result[1][0][1])
+        if (result[0] === 'SUCCESS') {
+          //return new Promise((resolve) => resolve({status:'success', data:result[1][0][1]}))
+          return {status: 'success', data: result[1][0][1]}
+          //answer = {status:'success', data:result[1][0][1]}
+        } else {
+          // console.error('something went wrong');
+          console.log("ERR1")
+          return {status: 'error', data: 'something went wrong'}
+        }
+
       }
+
+
     }
   },
   beforeUnmount() {
@@ -207,5 +281,7 @@ export default {
 </script>
 
 <style scoped>
+canvas{
 
+}
 </style>

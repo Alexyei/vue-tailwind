@@ -1,7 +1,7 @@
 <template>
   <div class="bg-whitesmoke w-full min-h-full h-full flex flex-col">
     <nav-bar>
-      <span class="text-text-dark text-xl md:text-2xl leading-none py-4 block font-TT">Выбрано: {{isActive}} из 9999</span>
+      <span class="text-text-dark text-xl md:text-2xl leading-none py-4 block font-TT">Выбрано: {{loadingAnswer}} из 9999</span>
     </nav-bar>
     <div class="flex-grow flex justify-center items-center w-full px-4 md:px-10 py-4 md:py-7">
       <div class=" relative rounded-3xl overflow-hidden flex items-center h-full w-full flex-col-reverse md:flex-row">
@@ -80,7 +80,7 @@
 <hint-panel :is-active="isActive" word="a食べました食べました"></hint-panel>
         <div
             ref="writeAreaParent"
-             class="overflow-y-auto block overflow-x-auto bg-white h-mobileMain md:h-main w-full md:w-auto  flex-grow rounded-3xl flex flex-col  items-center">
+             class="overflow-y-auto block overflow-x-scroll bg-white h-mobileMain md:h-main w-full md:w-auto  flex-grow rounded-3xl flex flex-col  items-center">
 <write-area
     ref="wa"
     v-if="parentWidth"
@@ -140,10 +140,11 @@ export default {
       //     || document.body.clientWidth) < 768;
     },
     async checkAnswer() {
-      this.loadingAnswer = true
-      // let answer = await this.$refs.wa.recognise()
+      this.$nextTick(()=>this.loadingAnswer = true)
+
+      let answer = await this.$refs.wa.recognise()
       // alert(answer)
-      // console.log(answer)
+      console.log(answer)
       this.loadingAnswer = false
     },
 
