@@ -8,14 +8,17 @@
 <!--  @pointerdown="mousedown($event)"
           @pointermove="mousemove($event)"
           @pointerup="mouseup($event)"-->
-  <canvas ref="canvas"
-          @mousedown="mousedown($event)"
+<!--  @mousedown="mousedown($event)"
           @mousemove="mousemove($event)"
           @mouseup="mouseup($event)"
 
           @touchstart="mousedown($event)"
           @touchmove="mousemove($event)"
-          @touchend="mouseup($event)"
+          @touchend="mouseup($event)"-->
+  <canvas ref="canvas"
+          @pointerdown="mousedown($event)"
+          @pointermove="mousemove($event)"
+          @pointerup="mouseup($event)"
   ></canvas>
 </template>
 
@@ -106,10 +109,10 @@ export default {
       this.data = []
     },
     mousedown(event) {
-      console.log("DOWN")
-      if (event.target.nodeName === 'CANVAS') {
-        event.preventDefault();
-      }
+      // console.log("DOWN")
+      // if (event.target.nodeName === 'CANVAS') {
+      //   event.preventDefault();
+      // }
       this.firstPoint = this.getMousePos(event);
       this.startPaint = true;
 
@@ -124,21 +127,21 @@ export default {
       this.ctx.beginPath();
     },
     mousemove(event) {
-      console.log(event.target.nodeName)
-      if (event.target.nodeName === 'CANVAS') {
-        event.preventDefault();
-      }
+      // console.log(event.target.nodeName)
+      // if (event.target.nodeName === 'CANVAS') {
+      //   event.preventDefault();
+      // }
       if (this.startPaint) {
         this.secondPoint = this.getMousePos(event);
         this.pushStroke(this.secondPoint.x, this.secondPoint.y);
         this.redraw();
       }
     },
-    mouseup(event) {
-      console.log("UP")
-      if (event.target.nodeName === 'CANVAS') {
-        event.preventDefault();
-      }
+    mouseup() {
+      // console.log("UP")
+      // if (event.target.nodeName === 'CANVAS') {
+      //   event.preventDefault();
+      // }
       if (this.startPaint) {
         this.data.push(this.stroke);
         // console.log(window.storage.data);
@@ -154,22 +157,22 @@ export default {
       this.stroke[2].push(Date.now() - this.startTime);
     },
     getMousePos(event) {
-      let rect = event.target.getBoundingClientRect();
-      if (event.type.startsWith("touch"))
-        return {
-          x: event.changedTouches[0].clientX - rect.left,
-          y: event.changedTouches[0].clientY - rect.top
-        }
-      else
-        return {
-          x: event.clientX - rect.left,
-          y: event.clientY - rect.top
-        };
       // let rect = event.target.getBoundingClientRect();
-      // return {
-      //   x: event.clientX - rect.left,
-      //   y: event.clientY - rect.top
-      // };
+      // if (event.type.startsWith("touch"))
+      //   return {
+      //     x: event.changedTouches[0].clientX - rect.left,
+      //     y: event.changedTouches[0].clientY - rect.top
+      //   }
+      // else
+      //   return {
+      //     x: event.clientX - rect.left,
+      //     y: event.clientY - rect.top
+      //   };
+      let rect = event.target.getBoundingClientRect();
+      return {
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top
+      };
     },
     redraw() {
       this.ctx.lineTo(this.secondPoint.x, this.secondPoint.y)
@@ -282,6 +285,6 @@ export default {
 
 <style scoped>
 canvas{
-
+  touch-action:none
 }
 </style>

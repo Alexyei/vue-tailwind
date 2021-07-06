@@ -14,6 +14,9 @@ module.exports = {
       'msf': { paintOrder: 'markers stroke fill' },
     },
     extend: {
+      animation: {
+        'spin-slow': 'spin 2s linear infinite',
+      },
       minWidth: {
         '1/6': '15%',
       },
