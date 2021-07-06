@@ -81,7 +81,7 @@
 <hint-panel :is-active="isActive" word="a食べました食べました"></hint-panel>
         <div
             ref="writeAreaParent"
-             class="overflow-y-auto block overflow-x-scroll bg-white h-mobileMain md:h-main w-full md:w-auto  flex-grow rounded-3xl flex flex-col  items-center">
+             class="relative overflow-y-auto block overflow-x-scroll bg-white h-mobileMain md:h-main w-full md:w-auto  flex-grow rounded-3xl flex flex-col  items-center">
 <write-area
     ref="wa"
     v-if="parentWidth"

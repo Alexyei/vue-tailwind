@@ -19,7 +19,12 @@
           @pointerdown="mousedown($event)"
           @pointermove="mousemove($event)"
           @pointerup="mouseup($event)"
-  ></canvas>
+  class="relative overflow-hidden"
+  >
+
+<!--    <div ref="cursor" id="cursor"></div>-->
+  </canvas>
+
 </template>
 
 <script>
@@ -137,6 +142,13 @@ export default {
         this.redraw();
       }
     },
+    // cursorMove(event){
+    //   let point = this.getMousePos(event)
+    //   // this.$refs.cursor.style.left = Math.min(point.x, event.target.clientWidth-10) + 'px';
+    //   // this.$refs.cursor.style.top = Math.min(point.y, event.target.clientHeight-10) + 'px';
+    //   this.$refs.cursor.style.left = point.x + 'px';
+    //   this.$refs.cursor.style.top = point.y + 'px';
+    // },
     mouseup() {
       // console.log("UP")
       // if (event.target.nodeName === 'CANVAS') {
@@ -285,6 +297,26 @@ export default {
 
 <style scoped>
 canvas{
-  touch-action:none
+  touch-action:none;
+  cursor: crosshair;
 }
+/*#cursor{*/
+/*  position: absolute;*/
+/*  width: 200px;*/
+/*  height: 200px;*/
+/*  background-color: #444444;*/
+/*  box-sizing: border-box;*/
+/*  transform: translate(-50%, -50%);*/
+/*  border-radius: 50%;*/
+/*  pointer-events: none;*/
+/*  !*visibility: hidden;*!*/
+/*  !*display: none;*!*/
+/*  cursor: none;*/
+/*  z-index: 100;*/
+/* }*/
+
+/*canvas:hover #cursor{*/
+/*  display: block;*/
+/*  visibility: visible;*/
+/*}*/
 </style>
