@@ -66,13 +66,13 @@ export default {
       //return 5;
     },
     height() {
-      console.log("m3")
+      //console.log("m3")
       //   console.log(this.clientHeight)
       return this.clientHeight
       //return 100
     },
     width() {
-      console.log("m4")
+      //console.log("m4")
       //this.reset()
       //  console.log(this.clientWidth)
       return Math.max(this.clientWidth, this.charsCount * this.pxPerChar)
@@ -82,17 +82,17 @@ export default {
   mounted() {
 
 
-    console.log("MOUNTED")
-    console.log(this.$el.parentElement.clientWidth)
-    console.log(this.$el.parentElement.clientHeight)
-    console.log(this.$parent.clientHeight)
+    //console.log("MOUNTED")
+    //console.log(this.$el.parentElement.clientWidth)
+    //console.log(this.$el.parentElement.clientHeight)
+    //console.log(this.$parent.clientHeight)
     // this.startTime = Date.now();
     // this.ctx= this.$refs.canvas.getContext("2d"),
     // this.ctx.fillStyle = this.currentBg;
     // this.ctx.fillRect(0, 0, this.width, this.height);
     // this.data = []
     this.reset()
-    console.log(this.$refs.canvas)
+   // console.log(this.$refs.canvas)
     window.addEventListener('resize', this.reset, {passive: true});
   },
   methods: {
@@ -105,11 +105,11 @@ export default {
       this.startTime = Date.now();
       this.ctx = this.$refs.canvas.getContext("2d");
       this.ctx.imageSmoothingEnabled = true;
-      console.log(this.ctx)
+      //console.log(this.ctx)
       this.ctx.fillStyle = this.currentBg;
-      console.log(this.ctx.fillStyle)
-      console.log(this.width)
-      console.log(this.height)
+     // console.log(this.ctx.fillStyle)
+    //  console.log(this.width)
+    //  console.log(this.height)
       this.ctx.fillRect(0, 0, this.width, this.height);
       this.data = []
     },
@@ -191,7 +191,7 @@ export default {
       this.ctx.stroke();
     },
     async recognise() {
-      console.log("RECOGNISE START")
+     // console.log("RECOGNISE START")
       let timeStart = performance.now();
       // Количество возвращаемых результатов (точность распознавания)
 // не работает, возвращается 10 результатов
@@ -217,7 +217,7 @@ export default {
           }
         ]
       };
-      console.log(data)
+     // console.log(data)
 
       //let answer = null;
       let lang = 'ja'
@@ -270,7 +270,7 @@ export default {
 
         let result = response.data
         console.log("Время выполнения: " + (performance.now() - timeStart).toFixed(4) + " милисекунд");
-        console.log("SUCCESS")
+       // console.log("SUCCESS")
         //console.log(result[1][0][1])
         if (result[0] === 'SUCCESS') {
           //return new Promise((resolve) => resolve({status:'success', data:result[1][0][1]}))
@@ -278,7 +278,7 @@ export default {
           //answer = {status:'success', data:result[1][0][1]}
         } else {
           // console.error('something went wrong');
-          console.log("ERR1")
+        //  console.log("ERR1")
           return {status: 'error', data: 'something went wrong'}
         }
 

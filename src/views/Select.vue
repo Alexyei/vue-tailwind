@@ -44,8 +44,9 @@
             </svg>
             <p>Все</p>
           </div>
-          <div class="py-2 md:mx-0 md:py-0 md:my-2 md:px-2 flex justify-center items-center flex-col">
-            <svg class="fill-current text-blue-500 hover:text-dark-gray w-8 h-8" xmlns="http://www.w3.org/2000/svg"
+          <div @click.prevent="startWriting" :class="{'pointer-events-none':loadingWords}" class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2 flex justify-center items-center flex-col">
+            <svg v-if="loadingWords" class="animate-spin-slow fill-current text-blue-500 w-8 h-8" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="spinner" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z" class=""></path></svg>
+            <svg v-else class="fill-current text-blue-500 hover:text-dark-gray w-8 h-8" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink"
                  xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
                  viewBox="0 0 511.77638 511" style="enable-background:new 0 0 512 512" xml:space="preserve">
@@ -316,11 +317,17 @@ export default {
       charsList: new Set(),//new Set([3,4]),
     }
   },
+  computed:{
+    loadingWords(){
+      console.log(!this.$store.getters.getWords.length)
+      return !this.$store.getters.getWords.length && this.$store.getters.getSelectedChars.size
+    }
+  },
   methods: {
     // isMobile() {
     //   return screen.width <= 760;
     // },
-    startWriting(){
+    async startWriting(){
       if (this.charsList.size === 0){
         alert("Не выбрано ни одного иероглифа!")
         return;
@@ -332,6 +339,8 @@ export default {
           wordLength: this.wordLength
         }
       })
+      await this.$store.dispatch('loadWords')
+      this.$router.push({ name: 'write'})
 
     },
     selectRow(chars) {
