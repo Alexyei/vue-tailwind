@@ -17,7 +17,7 @@
             </svg>
             <p>Назад</p>
           </div>
-          <div class="py-2 md:mx-0 md:py-0 md:my-2 md:px-2  flex justify-center items-center flex-col">
+          <div class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2  flex justify-center items-center flex-col">
             <svg class="text-blue-500 hover:text-dark-gray w-8 h-8" fill="none" stroke="currentColor"
                  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
