@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-whitesmoke w-full min-h-full h-full flex flex-col">
+  <div class="bg-whitesmoke w-full min-h-full h-full flex flex-col items-center">
     <nav-bar>
-      <span class="text-text-dark text-base md:text-2xl leading-none py-4 block font-Abel text-left mr-2 font-bold">{{currentWord.translate}}</span>
+      <span class="text-text-dark text-base md:text-xl leading-none py-4 block font-Abel text-left mr-2 font-bold max-w-lg">{{currentWord.translate}}</span>
     </nav-bar>
     <div class="flex-grow flex justify-center items-center w-full px-4 md:px-10 py-4 md:py-7">
       <div class=" relative rounded-3xl overflow-hidden flex items-center h-full w-full flex-col-reverse md:flex-row">

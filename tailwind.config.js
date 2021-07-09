@@ -27,14 +27,19 @@ module.exports = {
       },
       maxHeight: {
         'row': '35.125rem',
-        'max':'1000rem'
+        'max':'1000rem',
+
+      },
+      minHeight: {
+        '16':'4rem',
+        '22':'5.5rem'
       },
       textStrokeWidth: {
         '1': '1px',
       },
       height: {
-        main: 'calc(100vh - 4rem - 3.5rem)',
-        mobileMain: 'calc(100vh - 3.5rem - 4.5rem - 3rem)'
+        main: 'calc(100vh - 5.5rem - 3.5rem)',
+        mobileMain: 'calc(100vh - 4rem - 4.5rem - 3rem)'
       },
       spacing: {
         '0.75': '0.1875rem',
