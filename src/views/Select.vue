@@ -396,8 +396,11 @@ export default {
         char: '',
         translate: ''
       }
+      console.log(chars)
+      console.log(mode !== 'kanji')
 
       if (mode !== 'kanji') {
+        console.log("not kanji")
 
         chars.splice(36, 0, emptyItem);
         chars.splice(38, 0, emptyItem);
@@ -427,9 +430,12 @@ export default {
         this.chars = result
       }
       else{
+        console.log("kanji")
         let result = []
         for (let sec of chars)
         {
+          // console.log(sec)
+          sec = sec.slice(0)
           for (let i = 5 - sec.length % 5; i > 0;--i)
             sec.push(emptyItem)
           let section = []
@@ -466,6 +472,8 @@ export default {
 
   mounted() {
     console.log('mounted')
+    console.log(this.charsList)
+    console.log(this.$store.getters.getSelectedChars)
     this.loadChars()
     this.onResize()
     window.addEventListener('resize', this.onResize, {passive: true});

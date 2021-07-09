@@ -7,6 +7,21 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
       <style>
+          ::-webkit-scrollbar {
+              height: 12px;
+              /*    background-color: yellow;*/
+              /*    border: 1px solid black;*/
+              border-radius: 0 0 10px 10px;
+              background-color: white;
+          }
+          ::-webkit-scrollbar-thumb {
+              border-radius: 10px;
+              /*background:linear-gradient(transparent, deeppink);*/
+              background-color: blue;
+              background-image: linear-gradient(
+                      120deg,
+                      #a1c4fd,#c2e9fb);
+          }
           /*размер иероглифа*/
           /*svg {*/
           /*    width: 256px;*/

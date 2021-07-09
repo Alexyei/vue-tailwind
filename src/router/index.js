@@ -3,7 +3,7 @@ import Home from '../views/Home.vue'
 import NotFound from '../views/404.vue'
 import Start from "../views/Start";
 import Select from "../views/Select";
-// import {default as store} from '../store/index.js'
+import {default as store} from '../store/index.js'
 import Write from "../views/Write";
 
 const routes = [
@@ -19,10 +19,10 @@ const routes = [
     beforeEnter: (to, from, next) => {
       // console.log(to.params.mode)
       if(['hiragana', 'katakana', 'kanji'].includes(to.params.mode)) {
-        console.log("OK")
+        //console.log("OK")
         next()
       } else {
-        alert("BACK")
+        //alert("BACK")
         next(from)
       }
     }
@@ -32,19 +32,21 @@ const routes = [
     path: '/write',
     name: 'write',
     component: Write,
-    // beforeEnter: (to, from, next) => {
-    //
-    //   console.log(store)
-    //
-    //   console.log(store.state.charsList !== null && store.state.settings !== null)
-    //
-    //   if((store.state.charsList !== null) && (store.state.settings !== null)) {
-    //     console.log("OK")
-    //     next()
-    //   } else {
-    //     next(from)
-    //   }
-    // }
+    beforeEnter: (to, from, next) => {
+
+     // console.log(store)
+
+     // console.log(store.state.charsList !== null && store.state.settings !== null)
+
+      if((store.state.charsList !== null) && (store.state.settings !== null)) {
+       // console.log("OK")
+        next()
+      } else {
+       // alert("BACK")
+        next(from)
+        // this.back()
+      }
+    }
   },
   {
     path: '/about',

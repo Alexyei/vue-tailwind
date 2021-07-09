@@ -4,7 +4,7 @@
       <span class="text-text-dark text-base md:text-xl leading-none py-4 block font-Abel text-left mr-2 font-bold max-w-lg">{{currentWord.translate}}</span>
     </nav-bar>
     <div class="flex-grow flex justify-center items-center w-full px-4 md:px-10 py-4 md:py-7">
-      <div class=" relative rounded-3xl overflow-hidden flex items-center h-full w-full flex-col-reverse md:flex-row">
+      <div class="lg:container relative rounded-3xl overflow-hidden flex items-center h-full w-full flex-col-reverse md:flex-row">
         <div
             class="z-10 font-TT font-bold text-sm sm:text-base bg-white w-full md:w-auto md:h-full mt-4 md:mt-0 md:mr-4 rounded-3xl flex flex-row md:flex-col px-4 md:px-0 justify-between md:justify-center items-center">
 
@@ -227,21 +227,7 @@ export default {
 </script>
 
 <style scoped>
-::-webkit-scrollbar {
-  height: 12px;
-  /*    background-color: yellow;*/
-  /*    border: 1px solid black;*/
-  border-radius: 0 0 10px 10px;
-  background-color: white;
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  /*background:linear-gradient(transparent, deeppink);*/
-  background-color: blue;
-  background-image: linear-gradient(
-      120deg,
-      #a1c4fd,#c2e9fb);
-}
+
 /*.fa-spin {*/
 /*  -webkit-animation: fa-spin 2s linear infinite;*/
 /*  animation: fa-spin 2s linear infinite;*/

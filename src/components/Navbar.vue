@@ -17,14 +17,14 @@
       <li class="transition duration-300 ease-in-out hover:bg-medium-blue lg:hover:bg-white text-center lg:text-left text-3xl leading-none lg:text-lg lg:relative w-full lg:w-auto">
 <!--        <a class="py-6.4 px-4 block hover:text-white lg:hover:text-current" href="#">Главная</a>-->
 <!--         lg:hover:text-current-->
-        <router-link class="lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 py-6.4 lg:py-4 px-4 block" :to="{name: 'Главная'}" :class="{'border-medium-blue':$route.name === 'Главная'}">
+        <router-link class="lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 py-6.4 lg:py-7 px-4 block" :to="{name: 'Главная'}" :class="{'border-medium-blue':$route.name === 'Главная'}">
           Главная</router-link>
       </li>
       <li class="transition duration-300 ease-in-out hover:bg-medium-blue lg:hover:bg-white text-center lg:text-left text-3xl leading-none lg:text-lg lg:relative w-full lg:w-auto">
-        <a class="py-6.4 px-4 block lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 lg:py-4 " href="#">Категории</a>
+        <a class="py-6.4 px-4 block lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 lg:py-7 " href="#">Категории</a>
       </li>
       <li class="transition duration-300 ease-in-out hover:bg-medium-blue lg:hover:bg-white text-center lg:text-left text-3xl leading-none lg:text-lg lg:relative w-full lg:w-auto">
-        <a class="py-6.4 px-4 block lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 lg:py-4 " href="#">Теги</a>
+        <a class="py-6.4 px-4 block lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 lg:py-7 " href="#">Теги</a>
       </li>
 
 <!--      <li class="nav-link">-->
@@ -32,12 +32,12 @@
 <!--      </li>-->
 
       <li class="transition duration-300 ease-in-out hover:bg-medium-blue lg:hover:bg-white text-center lg:text-left text-3xl leading-none lg:text-lg lg:relative w-full lg:w-auto">
-        <a class="py-6.4 px-4 block lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 lg:py-4 " href="#">Войти</a>
+        <a class="py-6.4 px-4 block lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 lg:py-7 " href="#">Войти</a>
       </li>
 
 
       <li class="transition duration-300 ease-in-out hover:bg-medium-blue lg:hover:bg-white text-center lg:text-left text-3xl leading-none lg:text-lg lg:relative w-full lg:w-auto">
-        <a class="py-6.4 px-4 block lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 lg:py-4 " href="#">Контакты</a>
+        <a class="py-6.4 px-4 block lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 lg:py-7 " href="#">Контакты</a>
       </li>
     </ul>
   </div>
