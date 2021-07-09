@@ -14,6 +14,9 @@ module.exports = {
       'msf': { paintOrder: 'markers stroke fill' },
     },
     extend: {
+      flexGrow: {
+        '2': 2,
+      },
       animation: {
         'spin-slow': 'spin 2s linear infinite',
       },

@@ -5,6 +5,7 @@ import Start from "../views/Start";
 import Select from "../views/Select";
 import {default as store} from '../store/index.js'
 import Write from "../views/Write";
+import Results from "../views/Results";
 
 const routes = [
   {
@@ -47,6 +48,22 @@ const routes = [
         // this.back()
       }
     }
+  },
+  {
+    path: '/results',
+    name: 'results',
+    component: Results,
+    // beforeEnter: (to, from, next) => {
+    //   // console.log(to.params.mode)
+    //   if(['hiragana', 'katakana', 'kanji'].includes(to.params.mode)) {
+    //     //console.log("OK")
+    //     next()
+    //   } else {
+    //     //alert("BACK")
+    //     next(from)
+    //   }
+    // }
+
   },
   {
     path: '/about',
