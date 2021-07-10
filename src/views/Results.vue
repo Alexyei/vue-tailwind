@@ -44,7 +44,8 @@
             </svg>
             <p>Все</p>
           </div>
-          <div @click.prevent="" class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2 flex justify-center items-center flex-col">
+          <div @click.prevent=""
+               class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2 flex justify-center items-center flex-col">
             <svg class="fill-current text-blue-500 hover:text-dark-gray w-8 h-8" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink"
                  xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
@@ -79,21 +80,130 @@
         </div>
 
         <div
-             class="overflow-y-auto block overflow-x-hidden bg-white h-mobileMain md:h-main w-full md:w-auto pb-4 px-1 pr-2 flex-grow rounded-3xl flex flex-col  items-center">
+            class="overflow-y-auto block overflow-x-hidden bg-white h-mobileMain md:h-main w-full md:w-auto pb-4 px-3 flex-grow rounded-3xl flex flex-col  items-center">
 
-<!--          <div class="flex justify-center items-stretch w-full sm:w-auto" v-for="(row, index) in chars" :key="index">-->
-<!--           <svg @click.prevent="selectRow(row.filter(item=>item.char).map(item=>item.char))"-->
-<!--                 class="self-center hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1 cursor-pointer"-->
-<!--                 fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
-<!--              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>-->
-<!--            </svg>-->
-<!--            <card-checkbox v-model="charsList" v-for="(item, i) in row" :value="item.char" :textValue="item.translate"-->
-<!--                           :key="i"></card-checkbox>-->
-<!--           </div>-->
-          <div class="table-header flex items-center w-full font-Abel font-bold text-dark-blue border-b-2 border-dark-blue py-4">
-            <div class="flex-grow-2 px-4 text-sm sm:text-xl text-left">Перевод</div>
-            <div class="flex-grow px-4 text-sm sm:text-xl">Слово</div>
-            <div class="flex-grow px-4 text-sm sm:text-xl">Ответ</div>
+          <!--          <div class="flex justify-center items-stretch w-full sm:w-auto" v-for="(row, index) in chars" :key="index">-->
+          <!--           <svg @click.prevent="selectRow(row.filter(item=>item.char).map(item=>item.char))"-->
+          <!--                 class="self-center hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1 cursor-pointer"-->
+          <!--                 fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
+          <!--              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>-->
+          <!--            </svg>-->
+          <!--            <card-checkbox v-model="charsList" v-for="(item, i) in row" :value="item.char" :textValue="item.translate"-->
+          <!--                           :key="i"></card-checkbox>-->
+          <!--           </div>-->
+          <div class="max-w-4xl w-full">
+            <div class="flex flex-wrap">
+              <!--                  border-b-2 border-dark-blue-->
+              <div
+
+                  class="min-h-16 lg:min-h-22 table-header flex items-center w-full font-TT font-bold text-dark-blue  py-4 px-4">
+                <div class="flex-grow w-1/2 text-xl lg:text-2xl text-left">Перевод</div>
+                <div class="flex-grow w-1/4 ml-1 text-xl lg:text-2xl">Слово</div>
+                <div class="flex-grow w-1/4 ml-1 text-xl lg:text-2xl">Ответ</div>
+              </div>
+              <div class="min-h-16 lg:min-h-22 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue px-4">
+                <div
+                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-2 font-Abel text-left font-bold">
+                  по-прежнему, по-старому, как всегда
+                </div>
+                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel ml-1 font-bold">相変わらず</div>
+                <div class="text-medium-blue flex-grow w-1/4 text-xl lg:text-2xl leading-none py-2.5 font-Abel ml-1 font-bold">相変わらず相変わらず</div>
+              </div>
+              <div class="min-h-16 lg:min-h-22 px-4 row flex items-center w-full text-dark-blue ">
+                <div
+                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
+                  раздуть, обмахнуть, веять
+                </div>
+                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">扇ぐ</div>
+                <div class="text-red flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">Ошибка</div>
+              </div>
+              <div class="min-h-16 lg:min-h-22 px-4 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue">
+                <div
+                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
+                  рассвет
+                </div>
+                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">明け方</div>
+                <div class="text-red flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">明</div>
+              </div>
+              <div class="min-h-16 lg:min-h-22 px-4 row flex items-center w-full text-dark-blue">
+                <div
+                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
+                  поднять, повысить, возвысить,
+                  приводить (пример)
+                </div>
+                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">挙げる</div>
+                <div class="text-medium-blue flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">挙げる</div>
+              </div>
+              <div class="min-h-16 lg:min-h-22 px-4 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue">
+                <div
+                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
+                  жарить во фритюре
+                </div>
+                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">揚げる</div>
+                <div class="text-medium-blue flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">揚げる揚げる揚げる</div>
+              </div>
+              <div class="min-h-16 lg:min-h-22 px-4 row flex items-center w-full text-dark-blue">
+                <div
+                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
+                  нормальный, естественный, должный,
+                  разумный
+                </div>
+                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">当たり前</div>
+                <div class="text-red flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">当たり前</div>
+              </div>
+              <div class="min-h-16 lg:min-h-22 px-4 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue">
+                <div
+                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
+                  быть применимым, подходить,
+                  соответствовать
+                </div>
+                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">当てはまる</div>
+                <div class="text-red flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">当てはまる</div>
+              </div>
+              <div class="min-h-16 lg:min-h-22 px-4 row flex items-center w-full text-dark-blue">
+                <div
+                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
+                  жир, масло, смазка
+                </div>
+                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">脂</div>
+                <div class="text-medium-blue flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">脂</div>
+              </div>
+              <div class="min-h-16 lg:min-h-22 px-4 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue">
+                <div
+                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
+                  поклон
+                </div>
+                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">御辞儀</div>
+                <div class="text-medium-blue flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">御辞儀</div>
+              </div>
+              <div class="min-h-16 lg:min-h-22 px-4 row flex items-center w-full text-dark-blue">
+                <div
+                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
+                  неясный, туманный, рассеянный,
+                  двусмысленный, подозрительный
+                </div>
+                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>
+                <div class="text-red flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>
+              </div>
+              <div class="min-h-16 lg:min-h-22 px-4 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue">
+                <div
+                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
+                  неясный, туманный, рассеянный,
+                  двусмысленный, подозрительный
+                </div>
+                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>
+                <div class="text-red flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>
+              </div>
+              <div class="min-h-16 lg:min-h-22 px-4 row flex items-center w-full text-dark-blue">
+                <div
+                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
+                  неясный, туманный, рассеянный,
+                  двусмысленный, подозрительный
+                </div>
+                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>
+                <div class="text-medium-blue flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -124,7 +234,7 @@ export default {
 
     }
   },
-  computed:{
+  computed: {
     // loadingWords(){
     //   console.log(!this.$store.getters.getWords.length)
     //   return !this.$store.getters.getWords.length && this.$store.getters.getSelectedChars.size

@@ -22,6 +22,7 @@ module.exports = {
       },
       minWidth: {
         '1/6': '15%',
+        'lg': '32rem',
       },
       maxWidth: {
         '16': '4rem',
@@ -35,7 +36,9 @@ module.exports = {
       },
       minHeight: {
         '16':'4rem',
-        '22':'5.5rem'
+        '17': '4.25rem',
+        '22':'5.5rem',
+        '23':'5.75rem'
       },
       textStrokeWidth: {
         '1': '1px',
