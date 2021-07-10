@@ -1,7 +1,7 @@
 <template>
   <div class="bg-whitesmoke w-full min-h-full h-full flex flex-col">
     <nav-bar>
-      <span class="text-text-dark text-xl sm:text-2xl leading-none py-4 block font-TT">Выбрано: из 9999</span>
+      <span class="text-text-dark text-xl sm:text-2xl leading-none py-4 block font-TT">Результаты</span>
     </nav-bar>
     <div class="flex-grow flex justify-center items-center w-full px-4 md:px-10 py-4 md:py-7">
       <div class=" relative rounded-3xl overflow-hidden flex items-center h-full w-full flex-col-reverse md:flex-row">
@@ -80,7 +80,7 @@
         </div>
 
         <div
-            class="overflow-y-auto block overflow-x-hidden bg-white h-mobileMain md:h-main w-full md:w-auto pb-4 px-3 flex-grow rounded-3xl flex flex-col  items-center">
+            class="overflow-y-auto block overflow-x-hidden bg-white h-mobileMain md:h-main w-full md:w-auto pb-4 px-2 sm:px-3 flex-grow rounded-3xl flex flex-col  items-center">
 
           <!--          <div class="flex justify-center items-stretch w-full sm:w-auto" v-for="(row, index) in chars" :key="index">-->
           <!--           <svg @click.prevent="selectRow(row.filter(item=>item.char).map(item=>item.char))"-->
@@ -92,47 +92,52 @@
           <!--                           :key="i"></card-checkbox>-->
           <!--           </div>-->
           <div class="max-w-4xl w-full">
-            <div class="flex flex-wrap">
+            <div class="flex flex-wrap py-4 sm:py-0">
               <!--                  border-b-2 border-dark-blue-->
-              <div
-
-                  class="min-h-16 lg:min-h-22 table-header flex items-center w-full font-TT font-bold text-dark-blue  py-4 px-4">
+              <div class="min-h-16 lg:min-h-22 px-4 table-header hidden sm:flex items-center w-full font-TT font-bold text-dark-blue  py-4 ">
                 <div class="flex-grow w-1/2 text-xl lg:text-2xl text-left">Перевод</div>
                 <div class="flex-grow w-1/4 ml-1 text-xl lg:text-2xl">Слово</div>
                 <div class="flex-grow w-1/4 ml-1 text-xl lg:text-2xl">Ответ</div>
               </div>
-              <div class="min-h-16 lg:min-h-22 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue px-4">
-                <div
-                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-2 font-Abel text-left font-bold">
+              <div class="min-h-31 sm:min-h-16 lg:min-h-22 px-2 sm:px-4 rounded-xl bg-whitesmoke row flex flex-col sm:flex-row items-center w-full text-dark-blue ">
+                <div class="flex-grow w-full sm:w-1/2 text-lg lg:text-xl leading-none py-2 font-Abel font-bold  sm:text-left">
+<!--                  <div class="block sm:hidden font-TT font-bold text-dark-blue text-xl lg:text-2xl text-left mr-1">Перевод</div>-->
+<!--                  <div class="flex-grow">по-прежнему, по-старому, как всегда</div>-->
                   по-прежнему, по-старому, как всегда
                 </div>
-                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel ml-1 font-bold">相変わらず</div>
-                <div class="text-medium-blue flex-grow w-1/4 text-xl lg:text-2xl leading-none py-2.5 font-Abel ml-1 font-bold">相変わらず相変わらず</div>
+                <div class="flex-grow  w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">
+<!--                  <div class="block sm:hidden font-TT font-bold text-dark-blue text-xl lg:text-2xl text-left mr-1">Слово</div>-->
+<!--                  <div class="flex-grow">相変わらず</div>-->
+                  相変わらず
+                </div>
+                <div class="text-medium-blue flex-grow  w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">
+<!--                  <div class="block sm:hidden font-TT font-bold text-dark-blue text-xl lg:text-2xl text-left mr-1">Ответ</div>-->
+<!--                  <div class="flex-grow">相変わらず相変わらず</div>-->
+                  相変わらず相変わらず
+                </div>
               </div>
-              <div class="min-h-16 lg:min-h-22 px-4 row flex items-center w-full text-dark-blue ">
-                <div
-                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
+              <div class="min-h-31 sm:min-h-16 lg:min-h-22 px-2 sm:px-4 row flex items-center flex-col sm:flex-row w-full text-dark-blue ">
+                <div class="flex-grow w-full sm:w-1/2 text-lg lg:text-xl leading-none py-2 font-Abel sm:text-left font-bold">
                   раздуть, обмахнуть, веять
                 </div>
-                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">扇ぐ</div>
-                <div class="text-red flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">Ошибка</div>
+                <div class="flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">扇ぐ</div>
+                <div class="text-red flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">Ошибка</div>
               </div>
-              <div class="min-h-16 lg:min-h-22 px-4 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue">
+              <div class="min-h-16 lg:min-h-22 px-2 sm:px-4 rounded-xl bg-whitesmoke row flex-col sm:flex-row flex items-center w-full text-dark-blue">
                 <div
-                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
+                    class="flex-grow w-full sm:w-1/2 text-lg lg:text-xl leading-none py-2 font-Abel sm:text-left font-bold">
                   рассвет
                 </div>
-                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">明け方</div>
-                <div class="text-red flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">明</div>
+                <div class="flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">明け方</div>
+                <div class="text-red flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">明</div>
               </div>
-              <div class="min-h-16 lg:min-h-22 px-4 row flex items-center w-full text-dark-blue">
-                <div
-                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
-                  поднять, повысить, возвысить,
-                  приводить (пример)
+              <div class="min-h-31 sm:min-h-16 lg:min-h-22 px-2 sm:px-4 row flex-col sm:flex-row flex items-center w-full text-dark-blue">
+                <div class="flex-grow w-full sm:w-1/2 text-lg lg:text-xl leading-none py-2 font-Abel sm:text-left font-bold">
+                  неясный, туманный, рассеянный,
+                  двусмысленный, подозрительный
                 </div>
-                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">挙げる</div>
-                <div class="text-medium-blue flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">挙げる</div>
+                <div class="flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">挙げる</div>
+                <div class="text-medium-blue flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">挙げる</div>
               </div>
               <div class="min-h-16 lg:min-h-22 px-4 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue">
                 <div
