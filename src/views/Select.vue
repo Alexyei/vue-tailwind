@@ -319,7 +319,9 @@ export default {
   },
   computed:{
     loadingWords(){
-      console.log(!this.$store.getters.getWords.length)
+      // console.log("ABC")
+      // console.log(!this.$store.getters.getWords.length)
+      // console.log(this.$store.getters.getSelectedChars.size)
       return !this.$store.getters.getWords.length && this.$store.getters.getSelectedChars.size
     }
   },
@@ -471,7 +473,7 @@ export default {
   // beforeMount(){this.loadChars()},
 
   mounted() {
-    console.log('mounted')
+    console.log('mounted select')
     console.log(this.charsList)
     console.log(this.$store.getters.getSelectedChars)
     this.loadChars()
