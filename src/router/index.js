@@ -53,16 +53,18 @@ const routes = [
     path: '/results',
     name: 'results',
     component: Results,
-    // beforeEnter: (to, from, next) => {
-    //   // console.log(to.params.mode)
-    //   if(['hiragana', 'katakana', 'kanji'].includes(to.params.mode)) {
-    //     //console.log("OK")
-    //     next()
-    //   } else {
-    //     //alert("BACK")
-    //     next(from)
-    //   }
-    // }
+    beforeEnter: (to, from, next) => {
+      // console.log(to.params.mode)
+      // console.log(store.getters.getWords)
+      if(store.state.words.length && store.state.words[0].answer) {
+
+
+        next()
+      } else {
+        //alert("BACK")
+        next(from)
+      }
+    }
 
   },
   {

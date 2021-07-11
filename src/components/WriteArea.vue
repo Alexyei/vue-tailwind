@@ -279,7 +279,7 @@ export default {
         } else {
           // console.error('something went wrong');
         //  console.log("ERR1")
-          return {status: 'error', data: 'something went wrong'}
+          return {status: 'success', data: ''}
         }
 
       }

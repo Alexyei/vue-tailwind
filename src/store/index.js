@@ -21,6 +21,7 @@ export default createStore({
      state.charsList = payload.charsList
       state.settings = payload.settings
     },
+
     reset(state){
       state.charsList = null
       state.settings = null

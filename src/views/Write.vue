@@ -158,12 +158,26 @@ export default {
       let answer = await this.$refs.wa.recognise()
       // alert(answer)
        console.log(answer)
-      this.currentWord.answer = answer
-      this.loadingAnswer = false
-      if (this.currentWordIndex === this.words.length - 1)
-        this.showResults()
-      else
+      if (answer.status === 'success'){
+        if (answer.data){
+          this.currentWord.answer = this.currentWord.word in answer.data?this.currentWord.word:answer.data[0]
+          this.currentWordIndex++;
+        }
+        else{
+          // перемещаем элемент в конец массива
+          // функция пропуска слова, когда пользователь ничего не нарисовал
+          this.words.push(this.words.splice(this.currentWordIndex,1)[0] )
+        }
+      }else{
+        this.currentWord.answer = "Ошибка"
         this.currentWordIndex++;
+
+      }
+      //this.currentWord.answer = answer
+      this.clean()
+      this.loadingAnswer = false
+      if (this.currentWordIndex === this.words.length)
+        this.showResults()
     },
     showResults(){
       if (!this.words[0].answer)
@@ -172,8 +186,9 @@ export default {
         return;
       }
       alert("RESULTS")
-      console.log(this.words)
+     // console.log(this.words)
       this.currentWordIndex = 0
+      this.$router.push({ name: 'results'})
     }
   },
   computed: {

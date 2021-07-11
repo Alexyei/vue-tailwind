@@ -99,115 +99,118 @@
                 <div class="flex-grow w-1/4 ml-1 text-xl lg:text-2xl">Слово</div>
                 <div class="flex-grow w-1/4 ml-1 text-xl lg:text-2xl">Ответ</div>
               </div>
-              <div class="min-h-31 sm:min-h-16 lg:min-h-22 px-2 sm:px-4 rounded-xl bg-whitesmoke row flex flex-col sm:flex-row items-center w-full text-dark-blue ">
+              <div v-for="(word, index) in words.filter(word=>word.answer)" :key="index" :class="{'rounded-xl bg-whitesmoke':(index+1)%2}" class="min-h-31 sm:min-h-16 lg:min-h-22 px-2 sm:px-4 row flex flex-col sm:flex-row items-center w-full text-dark-blue ">
                 <div class="flex-grow w-full sm:w-1/2 text-lg lg:text-xl leading-none py-2 font-Abel font-bold  sm:text-left">
 <!--                  <div class="block sm:hidden font-TT font-bold text-dark-blue text-xl lg:text-2xl text-left mr-1">Перевод</div>-->
 <!--                  <div class="flex-grow">по-прежнему, по-старому, как всегда</div>-->
-                  по-прежнему, по-старому, как всегда
+<!--                  по-прежнему, по-старому, как всегда-->
+                  {{word.translate}}
                 </div>
                 <div class="flex-grow  w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">
 <!--                  <div class="block sm:hidden font-TT font-bold text-dark-blue text-xl lg:text-2xl text-left mr-1">Слово</div>-->
 <!--                  <div class="flex-grow">相変わらず</div>-->
-                  相変わらず
+<!--                  相変わらず-->
+                  {{word.word}}
                 </div>
-                <div class="text-medium-blue flex-grow  w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">
+                <div :class="{'text-medium-blue':word.word === word.answer, 'text-red':word.word!==word.answer}" class="flex-grow  w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">
 <!--                  <div class="block sm:hidden font-TT font-bold text-dark-blue text-xl lg:text-2xl text-left mr-1">Ответ</div>-->
 <!--                  <div class="flex-grow">相変わらず相変わらず</div>-->
-                  相変わらず相変わらず
+<!--                  相変わらず相変わらず-->
+                  {{word.answer}}
                 </div>
               </div>
-              <div class="min-h-31 sm:min-h-16 lg:min-h-22 px-2 sm:px-4 row flex items-center flex-col sm:flex-row w-full text-dark-blue ">
-                <div class="flex-grow w-full sm:w-1/2 text-lg lg:text-xl leading-none py-2 font-Abel sm:text-left font-bold">
-                  раздуть, обмахнуть, веять
-                </div>
-                <div class="flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">扇ぐ</div>
-                <div class="text-red flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">Ошибка</div>
-              </div>
-              <div class="min-h-16 lg:min-h-22 px-2 sm:px-4 rounded-xl bg-whitesmoke row flex-col sm:flex-row flex items-center w-full text-dark-blue">
-                <div
-                    class="flex-grow w-full sm:w-1/2 text-lg lg:text-xl leading-none py-2 font-Abel sm:text-left font-bold">
-                  рассвет
-                </div>
-                <div class="flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">明け方</div>
-                <div class="text-red flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">明</div>
-              </div>
-              <div class="min-h-31 sm:min-h-16 lg:min-h-22 px-2 sm:px-4 row flex-col sm:flex-row flex items-center w-full text-dark-blue">
-                <div class="flex-grow w-full sm:w-1/2 text-lg lg:text-xl leading-none py-2 font-Abel sm:text-left font-bold">
-                  неясный, туманный, рассеянный,
-                  двусмысленный, подозрительный
-                </div>
-                <div class="flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">挙げる</div>
-                <div class="text-medium-blue flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">挙げる</div>
-              </div>
-              <div class="min-h-16 lg:min-h-22 px-4 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue">
-                <div
-                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
-                  жарить во фритюре
-                </div>
-                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">揚げる</div>
-                <div class="text-medium-blue flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">揚げる揚げる揚げる</div>
-              </div>
-              <div class="min-h-16 lg:min-h-22 px-4 row flex items-center w-full text-dark-blue">
-                <div
-                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
-                  нормальный, естественный, должный,
-                  разумный
-                </div>
-                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">当たり前</div>
-                <div class="text-red flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">当たり前</div>
-              </div>
-              <div class="min-h-16 lg:min-h-22 px-4 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue">
-                <div
-                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
-                  быть применимым, подходить,
-                  соответствовать
-                </div>
-                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">当てはまる</div>
-                <div class="text-red flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">当てはまる</div>
-              </div>
-              <div class="min-h-16 lg:min-h-22 px-4 row flex items-center w-full text-dark-blue">
-                <div
-                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
-                  жир, масло, смазка
-                </div>
-                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">脂</div>
-                <div class="text-medium-blue flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">脂</div>
-              </div>
-              <div class="min-h-16 lg:min-h-22 px-4 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue">
-                <div
-                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
-                  поклон
-                </div>
-                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">御辞儀</div>
-                <div class="text-medium-blue flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">御辞儀</div>
-              </div>
-              <div class="min-h-16 lg:min-h-22 px-4 row flex items-center w-full text-dark-blue">
-                <div
-                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
-                  неясный, туманный, рассеянный,
-                  двусмысленный, подозрительный
-                </div>
-                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>
-                <div class="text-red flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>
-              </div>
-              <div class="min-h-16 lg:min-h-22 px-4 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue">
-                <div
-                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
-                  неясный, туманный, рассеянный,
-                  двусмысленный, подозрительный
-                </div>
-                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>
-                <div class="text-red flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>
-              </div>
-              <div class="min-h-16 lg:min-h-22 px-4 row flex items-center w-full text-dark-blue">
-                <div
-                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">
-                  неясный, туманный, рассеянный,
-                  двусмысленный, подозрительный
-                </div>
-                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>
-                <div class="text-medium-blue flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>
-              </div>
+<!--              <div class="min-h-31 sm:min-h-16 lg:min-h-22 px-2 sm:px-4 row flex items-center flex-col sm:flex-row w-full text-dark-blue ">-->
+<!--                <div class="flex-grow w-full sm:w-1/2 text-lg lg:text-xl leading-none py-2 font-Abel sm:text-left font-bold">-->
+<!--                  раздуть, обмахнуть, веять-->
+<!--                </div>-->
+<!--                <div class="flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">扇ぐ</div>-->
+<!--                <div class="text-red flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">Ошибка</div>-->
+<!--              </div>-->
+<!--              <div class="min-h-16 lg:min-h-22 px-2 sm:px-4 rounded-xl bg-whitesmoke row flex-col sm:flex-row flex items-center w-full text-dark-blue">-->
+<!--                <div-->
+<!--                    class="flex-grow w-full sm:w-1/2 text-lg lg:text-xl leading-none py-2 font-Abel sm:text-left font-bold">-->
+<!--                  рассвет-->
+<!--                </div>-->
+<!--                <div class="flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">明け方</div>-->
+<!--                <div class="text-red flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">明</div>-->
+<!--              </div>-->
+<!--              <div class="min-h-31 sm:min-h-16 lg:min-h-22 px-2 sm:px-4 row flex-col sm:flex-row flex items-center w-full text-dark-blue">-->
+<!--                <div class="flex-grow w-full sm:w-1/2 text-lg lg:text-xl leading-none py-2 font-Abel sm:text-left font-bold">-->
+<!--                  неясный, туманный, рассеянный,-->
+<!--                  двусмысленный, подозрительный-->
+<!--                </div>-->
+<!--                <div class="flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">挙げる</div>-->
+<!--                <div class="text-medium-blue flex-grow w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">挙げる</div>-->
+<!--              </div>-->
+<!--              <div class="min-h-16 lg:min-h-22 px-4 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue">-->
+<!--                <div-->
+<!--                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">-->
+<!--                  жарить во фритюре-->
+<!--                </div>-->
+<!--                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">揚げる</div>-->
+<!--                <div class="text-medium-blue flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">揚げる揚げる揚げる</div>-->
+<!--              </div>-->
+<!--              <div class="min-h-16 lg:min-h-22 px-4 row flex items-center w-full text-dark-blue">-->
+<!--                <div-->
+<!--                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">-->
+<!--                  нормальный, естественный, должный,-->
+<!--                  разумный-->
+<!--                </div>-->
+<!--                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">当たり前</div>-->
+<!--                <div class="text-red flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">当たり前</div>-->
+<!--              </div>-->
+<!--              <div class="min-h-16 lg:min-h-22 px-4 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue">-->
+<!--                <div-->
+<!--                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">-->
+<!--                  быть применимым, подходить,-->
+<!--                  соответствовать-->
+<!--                </div>-->
+<!--                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">当てはまる</div>-->
+<!--                <div class="text-red flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">当てはまる</div>-->
+<!--              </div>-->
+<!--              <div class="min-h-16 lg:min-h-22 px-4 row flex items-center w-full text-dark-blue">-->
+<!--                <div-->
+<!--                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">-->
+<!--                  жир, масло, смазка-->
+<!--                </div>-->
+<!--                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">脂</div>-->
+<!--                <div class="text-medium-blue flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">脂</div>-->
+<!--              </div>-->
+<!--              <div class="min-h-16 lg:min-h-22 px-4 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue">-->
+<!--                <div-->
+<!--                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">-->
+<!--                  поклон-->
+<!--                </div>-->
+<!--                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">御辞儀</div>-->
+<!--                <div class="text-medium-blue flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">御辞儀</div>-->
+<!--              </div>-->
+<!--              <div class="min-h-16 lg:min-h-22 px-4 row flex items-center w-full text-dark-blue">-->
+<!--                <div-->
+<!--                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">-->
+<!--                  неясный, туманный, рассеянный,-->
+<!--                  двусмысленный, подозрительный-->
+<!--                </div>-->
+<!--                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>-->
+<!--                <div class="text-red flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>-->
+<!--              </div>-->
+<!--              <div class="min-h-16 lg:min-h-22 px-4 rounded-xl bg-whitesmoke row flex items-center w-full text-dark-blue">-->
+<!--                <div-->
+<!--                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">-->
+<!--                  неясный, туманный, рассеянный,-->
+<!--                  двусмысленный, подозрительный-->
+<!--                </div>-->
+<!--                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>-->
+<!--                <div class="text-red flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>-->
+<!--              </div>-->
+<!--              <div class="min-h-16 lg:min-h-22 px-4 row flex items-center w-full text-dark-blue">-->
+<!--                <div-->
+<!--                    class="flex-grow w-1/2 text-left text-lg lg:text-xl leading-none py-4 font-Abel text-left font-bold">-->
+<!--                  неясный, туманный, рассеянный,-->
+<!--                  двусмысленный, подозрительный-->
+<!--                </div>-->
+<!--                <div class="flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>-->
+<!--                <div class="text-medium-blue flex-grow w-1/4 text-xl lg:text-2xl leading-none py-4 font-Abel ml-1 font-bold">曖昧</div>-->
+<!--              </div>-->
             </div>
           </div>
         </div>
@@ -236,6 +239,7 @@ export default {
       isMobile: 100,
       wordLength: [1, 7],
       wordsCount: 10,
+      words: []
 
     }
   },
@@ -381,9 +385,7 @@ export default {
   //   }
   // },
   created() {
-    // this.mode: this.$router.currentRoute.params.mode,
-    // this.chars = () => import('../mocks/'+this.mode+'.js')
-    // this.loadChars()
+    this.words = this.$store.getters.getWords
   },
   // beforeCreate() {
   // },
