@@ -3,7 +3,8 @@
     <nav-bar>
       <span class="text-text-dark text-base md:text-xl leading-none py-4 block font-Abel text-left mr-2 font-bold max-w-lg">{{currentWord.translate}}</span>
     </nav-bar>
-    <div class="flex-grow flex justify-center items-center w-full px-4 md:px-10 py-4 md:py-7">
+    <div class="relative flex-grow flex justify-center items-center w-full px-4 md:px-10 py-4 md:py-7">
+      <div :style="{'width':(currentWordIndex+1)/words.length*100 + '%'}" class="transition-all duration-1000 ease-in-out absolute top-0 left-0 h-1 bg-medium-blue"></div>
       <div class="lg:container relative rounded-3xl overflow-hidden flex items-center h-full w-full flex-col-reverse md:flex-row">
         <div
             class="z-10 font-TT font-bold text-sm sm:text-base bg-white w-full md:w-auto md:h-full mt-4 md:mt-0 md:mr-4 rounded-3xl flex flex-row md:flex-col px-4 md:px-0 justify-between md:justify-center items-center">
@@ -88,13 +89,13 @@
 <hint-panel :is-active="isActive" :word="currentWord.word"></hint-panel>
         <div
             ref="writeAreaParent"
-             class="relative overflow-y-auto block overflow-x-scroll bg-white h-mobileMain md:h-main w-full md:w-auto  flex-grow rounded-3xl flex flex-col  items-center">
+             class="relative overflow-y-auto block overflow-x-scroll bg-white h-mobileMain md:h-main w-full md:w-auto  flex-grow rounded-3xl">
 <write-area
     ref="wa"
     v-if="parentWidth"
     :client-width="parentWidth"
     :client-height="parentHeight"
-    :chars-count="11"
+    :chars-count="currentWord.word.length"
 ></write-area>
 
         </div>
@@ -193,6 +194,7 @@ export default {
   },
   computed: {
     currentWord(){
+      console.log(this.words[this.currentWordIndex])
       return this.words[this.currentWordIndex]
     }
     // getClientWidth(){

@@ -16,9 +16,10 @@
           @touchmove="mousemove($event)"
           @touchend="mouseup($event)"-->
   <canvas ref="canvas"
-          @pointerdown="mousedown($event)"
-          @pointermove="mousemove($event)"
-          @pointerup="mouseup($event)"
+          @pointerdown.prevent="mousedown($event)"
+          @pointermove.prevent="mousemove($event)"
+          @pointerup.prevent="mouseup($event)"
+          @pointerleave.prevent="mouseup($event)"
   class="relative overflow-hidden"
   >
 
@@ -57,12 +58,12 @@ export default {
     pxPerChar() {
       // console.log("m1")
       // console.log(this.clientWidth)
-      return this.clientWidth >= 768 ? 50 : 50;
+      return this.clientWidth >= 768 ? 350 : 280;
     },
     penSize() {
       // console.log("m2")
       //  console.log(this.clientWidth)
-      return this.clientWidth >= 768 ? 10 : 5;
+      return this.clientWidth >= 768 ? 8 : 5;
       //return 5;
     },
     height() {
@@ -74,7 +75,9 @@ export default {
     width() {
       //console.log("m4")
       //this.reset()
-      //  console.log(this.clientWidth)
+      console.log("MAX")
+      console.log(this.clientWidth)
+      console.log(this.charsCount)
       return Math.max(this.clientWidth, this.charsCount * this.pxPerChar)
       //return 100
     }
@@ -125,6 +128,7 @@ export default {
 
       this.ctx.lineWidth = this.penSize;
       this.ctx.lineCap = "round";
+      this.ctx.lineJoin = "round";
       this.ctx.strokeStyle = this.currentColor;
       this.ctx.fillStyle = this.currentColor;
 
