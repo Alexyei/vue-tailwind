@@ -175,7 +175,7 @@ export default {
 
       }
       //this.currentWord.answer = answer
-      this.clean()
+      this.$nextTick(()=>this.clean())
       this.loadingAnswer = false
       if (this.currentWordIndex === this.words.length)
         this.showResults()
@@ -194,7 +194,9 @@ export default {
   },
   computed: {
     currentWord(){
+      console.log("COMPUTED WORDS")
       console.log(this.words[this.currentWordIndex])
+      console.log(this.words[this.currentWordIndex].word.length)
       return this.words[this.currentWordIndex]
     }
     // getClientWidth(){
