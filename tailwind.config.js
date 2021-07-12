@@ -99,7 +99,7 @@ module.exports = {
       fontSize: {
         // card: ['8px', '8px'],
         radio: ['52px', '52px'],
-        radioM: ['24px','30px'],
+        radioM: ['30px','30px'],
       },
       letterSpacing: {
         one: '1px',

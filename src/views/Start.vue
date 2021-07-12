@@ -2,8 +2,9 @@
 
   <div class="bg-whitesmoke w-full min-h-full h-full flex flex-col">
     <nav-bar></nav-bar>
-    <div class="flex-grow flex justify-center items-center w-full px-4 md:px-14 py-4 md:py-7">
-      <div class="bg-white px-6 py-4 rounded-3xl flex flex-col justify-center items-center">
+    <div class="relative flex-grow flex justify-center items-center w-full px-4 md:px-10 py-4 md:py-7">
+      <div class="bg-white px-6 py-4 rounded-3xl flex flex-col justify-center items-center w-full h-full w-auto h-auto  sm:w-auto sm:h-auto">
+
           <h2 class="text-4xl font-TT text-text-dark mb-6 font-bold">Выберите:</h2>
         <div class="block z-9">
           <div v-for="(btn, index) in buttons" :key="index">
