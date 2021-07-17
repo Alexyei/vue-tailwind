@@ -257,34 +257,38 @@ export default {
       // }
 
       if (lang === 'ja') {
-        let response = await axios.post('https://inputtools.google.com/request?itc=ja-t-i0-handwrit&app=translate',
-            JSON.stringify(data),
-            {
-              headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-              },
-            })
-            .catch((err) => {
-              console.log(err)
-              console.log("ERR2")
-              // console.error('something went wrong');
-              return {status: 'error', data: 'something went wrong'}
-            })
+        try {
+          let response = await axios.post('https://inputtools.google.com/request?itc=ja-t-i0-handwrit&app=translate',
+              JSON.stringify(data),
+              {
+                headers: {
+                  'Content-Type': 'application/json;charset=utf-8'
+                },
+              })
 
+          console.log("return")
+          let result = response.data
+          console.log("Время выполнения: " + (performance.now() - timeStart).toFixed(4) + " милисекунд");
+          // console.log("SUCCESS")
+          //console.log(result[1][0][1])
+          if (result[0] === 'SUCCESS') {
+            //return new Promise((resolve) => resolve({status:'success', data:result[1][0][1]}))
+            return {status: 'success', data: result[1][0][1]}
+            //answer = {status:'success', data:result[1][0][1]}
+          } else {
+            // console.error('something went wrong');
+            //  console.log("ERR1")
+            return {status: 'success', data: ''}
+          }
 
-        let result = response.data
-        console.log("Время выполнения: " + (performance.now() - timeStart).toFixed(4) + " милисекунд");
-       // console.log("SUCCESS")
-        //console.log(result[1][0][1])
-        if (result[0] === 'SUCCESS') {
-          //return new Promise((resolve) => resolve({status:'success', data:result[1][0][1]}))
-          return {status: 'success', data: result[1][0][1]}
-          //answer = {status:'success', data:result[1][0][1]}
-        } else {
-          // console.error('something went wrong');
-        //  console.log("ERR1")
-          return {status: 'success', data: ''}
         }
+        catch(err){
+          console.log(err)
+          console.log("ERR2")
+          // console.error('something went wrong');
+          return {status: 'error', data: 'something went wrong'}
+        }
+
 
       }
 

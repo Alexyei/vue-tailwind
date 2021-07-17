@@ -54,7 +54,7 @@ export default {
       // }
       // setLeftValue();
 
-      this.value = value;
+      this.value = Number(value);
 
 
       // function setRightValue() {

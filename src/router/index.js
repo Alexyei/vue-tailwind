@@ -21,6 +21,7 @@ const routes = [
       // console.log(to.params.mode)
       if(['hiragana', 'katakana', 'kanji'].includes(to.params.mode)) {
         //console.log("OK")
+        store.commit('SET_MODE', to.params.mode);
         next()
       } else {
         //alert("BACK")
@@ -39,8 +40,9 @@ const routes = [
 
      // console.log(store.state.charsList !== null && store.state.settings !== null)
 
-      if((store.state.charsList !== null) && (store.state.settings !== null)) {
-       // console.log("OK")
+      //if((store.state.charsList !== null) && (store.state.settings !== null)) {
+      if(store.state.words.length){
+      // console.log("OK")
         next()
       } else {
        // alert("BACK")
