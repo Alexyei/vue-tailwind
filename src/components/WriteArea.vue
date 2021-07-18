@@ -283,8 +283,9 @@ export default {
 
         }
         catch(err){
+          console.log("RECOGNISE METHOD ERROR")
           console.log(err)
-          console.log("ERR2")
+
           // console.error('something went wrong');
           return {status: 'error', data: 'something went wrong'}
         }

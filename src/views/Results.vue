@@ -243,24 +243,32 @@ export default {
       isMobile: 100,
       wordLength: [1, 7],
       wordsCount: 10,
-      words: []
+      words: [],
+      loadingWords: false
 
     }
   },
   computed: {
-    loadingWords(){
-      //console.log(!this.$store.getters.getWords.length)
-      return !this.$store.getters.getWords.length //&& this.$store.getters.getSelectedChars.size
-    }
+    // loadingWords(){
+    //   //console.log(!this.$store.getters.getWords.length)
+    //   return !this.$store.getters.getWords.length //&& this.$store.getters.getSelectedChars.size
+    // }
   },
   methods: {
     async repeat(){
+      this.$nextTick(()=>this.loadingWords = true)
       this.$store.commit('saveSettings', {
           wordsCount: this.wordsCount,
           wordLength: this.wordLength
       })
-      await this.$store.dispatch('loadWords')
-      this.$router.push({ name: 'write'})
+      let answer = await this.$store.dispatch('loadWords')
+      this.loadingWords = false
+      if (answer.status === 'success')
+        this.$router.push({ name: 'write'})
+      else if (answer.status === 'warning')
+        alert("Не найдено слов по заданным критериям")
+      else
+        alert("Ошибка! Не удалось загрузить слова!")
 
     },
     // selectRow(chars) {

@@ -19,9 +19,9 @@ export default {
   name: "DualRangeSlider",
   props: {
     left_p: { type: Number, default: 1, },
-    right_p: { type: Number, default: 7, },
+    right_p: { type: Number, default: 8, },
     min_p: { type: Number, default: 1, },
-    max_p: { type: Number, default: 7, },
+    max_p: { type: Number, default: 8, },
   },
   data() {
     return {

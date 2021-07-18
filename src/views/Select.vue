@@ -311,6 +311,7 @@ export default {
       isMobile: 100,
       mode: useRoute().params.mode,
       // chars: () => import('../mocks/' + this.mode + '.js'),
+      loadingWords: false,
       chars: null,
       wordLength: [1, 7],
       wordsCount: 10,
@@ -318,12 +319,12 @@ export default {
     }
   },
   computed:{
-    loadingWords(){
-      // console.log("ABC")
-      // console.log(!this.$store.getters.getWords.length)
-      // console.log(this.$store.getters.getSelectedChars.size)
-      return !this.$store.getters.getWords.length && this.$store.getters.getSelectedChars.size
-    }
+    // loadingWords(){
+    //   // console.log("ABC")
+    //   // console.log(!this.$store.getters.getWords.length)
+    //   // console.log(this.$store.getters.getSelectedChars.size)
+    //   return !this.$store.getters.getWords.length && this.$store.getters.getSelectedChars.size
+    // }
   },
   methods: {
     // isMobile() {
@@ -334,6 +335,8 @@ export default {
         alert("Не выбрано ни одного иероглифа!")
         return;
       }
+
+      this.$nextTick(()=>this.loadingWords = true)
       this.$store.commit('saveSelected', {
         charsList: this.charsList,
         settings: {
@@ -341,8 +344,14 @@ export default {
           wordLength: this.wordLength
         }
       })
-      await this.$store.dispatch('loadWords')
-      this.$router.push({ name: 'write'})
+      let answer = await this.$store.dispatch('loadWords')
+      this.loadingWords = false
+      if (answer.status === 'success')
+        this.$router.push({ name: 'write'})
+      else if (answer.status === 'warning')
+        alert("Не найдено слов по заданным критериям")
+      else
+        alert("Ошибка! Не удалось загрузить слова!")
 
     },
     selectRow(chars) {

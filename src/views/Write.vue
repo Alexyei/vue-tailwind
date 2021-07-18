@@ -170,9 +170,9 @@ export default {
           this.words.push(this.words.splice(this.currentWordIndex,1)[0] )
         }
       }else{
+        alert("Ошибка! Не удалось получить ответ сервера!")
         this.currentWord.answer = "Ошибка"
         this.currentWordIndex++;
-
       }
       //this.currentWord.answer = answer
       this.$nextTick(()=>this.clean())
