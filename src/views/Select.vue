@@ -79,6 +79,7 @@
           <range-slider class="my-4" v-model="wordsCount"></range-slider>
         </div>
         <div v-if="mode === 'kanji'"
+             :class="{'justify-center':loadingChars}"
              class="overflow-y-scroll block overflow-x-hidden bg-white h-mobileMain md:h-main w-full md:w-auto py-8 px-1 pr-2 flex-grow rounded-3xl flex flex-col  items-center">
 
 
@@ -182,7 +183,9 @@
 <!--            </div>-->
 <!--          </div>-->
 <!--          <p>component</p>-->
-          <accordion :title="'N'+(5-index)" @select="selectSection([].concat(...section).filter(item => item.char).map(item=>item.char))" v-for="(section, index) in chars" :key="index">
+          <svg v-if="loadingChars" class="animate-spin-slow fill-current text-blue-500 w-8 h-8" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="spinner" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z" class=""></path></svg>
+
+          <accordion v-else :title="'N'+(5-index)" @select="selectSection([].concat(...section).filter(item => item.char).map(item=>item.char))" v-for="(section, index) in chars" :key="index">
 
             <div
               class="flex justify-between items-stretch"  v-for="(row, index1) in section" :key="index1" >
@@ -202,6 +205,7 @@
 
         </div>
         <div v-else
+             :class="{'justify-center':loadingChars}"
              class="overflow-y-auto block overflow-x-hidden bg-white h-mobileMain md:h-main w-full md:w-auto py-8 px-1 pr-2 flex-grow rounded-3xl flex flex-col  items-center">
           <!--          <span class="text-text-dark text-2xl leading-none pb-4 pl-2 block font-TT">Выбрано: {{charsList.size}} из 9999</span>-->
           <!--          <div class="flex justify-between items-stretch">-->
@@ -266,7 +270,9 @@
           <!--          </div>-->
           <!--          {{charsList}}-->
           <!--{{chars}}-->
-          <div class="flex justify-center items-stretch w-full sm:w-auto" v-for="(row, index) in chars" :key="index">
+          <svg v-if="loadingChars" class="animate-spin-slow fill-current text-blue-500 w-8 h-8" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="spinner" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z" class=""></path></svg>
+
+          <div v-else class="flex justify-center items-stretch w-full sm:w-auto" v-for="(row, index) in chars" :key="index">
             <!--            {{row}}-->
             <!--          <button @click="selectRow()">селект стр</button>-->
             <!--          <svg  @click="selectRow()" class="self-center text-blue-500 hover:text-dark-gray w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"></path></svg>-->
@@ -312,6 +318,7 @@ export default {
       mode: useRoute().params.mode,
       // chars: () => import('../mocks/' + this.mode + '.js'),
       loadingWords: false,
+      loadingChars: true,
       chars: null,
       wordLength: [1, 7],
       wordsCount: 10,
@@ -396,6 +403,7 @@ export default {
       let mode = useRoute().params.mode
       // console.log(mode)
       // let chars = (() => import('../mocks/' + mode + '.js').then(module => ))()
+      //slice 0 копировать массив
       let chars = (await import('../mocks/' + mode + '.js')).default.slice(0)
       // console.log("chars11")
       // let chars = []
@@ -461,6 +469,7 @@ export default {
         this.chars = result
 
       }
+      this.loadingChars = false
       // console.log(this.chars)
 
     }
