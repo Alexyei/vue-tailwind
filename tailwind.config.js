@@ -98,6 +98,7 @@ module.exports = {
       },
       fontSize: {
         // card: ['8px', '8px'],
+        'xxs': '.6rem',
         radio: ['52px', '52px'],
         radioM: ['30px','30px'],
       },

@@ -86,6 +86,47 @@ export default createStore({
                 console.log(err);
                 return {status: "error"}
             }
+        },
+        async loadKanji() {
+            //   console.log(context)
+            //context.commit('SET_WORDS', [])
+            // let response = await axios.get('http://localhost:8080/words.json',
+            try {
+
+
+                let response = await axios.post('http://localhost:8000/api/kanji',
+                    JSON.stringify({
+                        lang: "ja",
+                    }),
+                    {
+                        headers: {
+                            'Content-Type': 'application/json;charset=utf-8'
+                        },
+                    })
+
+                console.log(response.data)
+              //  if (response.data.length)
+                    return {status: "success", data: response.data}
+               // else return {status: "warning", data: 'Не найдено ни одно по заданным критериям'}
+                // .then((response) => {
+                //     console.log(response.data)
+                //     context.commit('SET_WORDS', response.data)
+                // })
+                // .catch((err) => {
+                //console.log("ERROR!")
+
+                // console.log(err)
+                // context.state.charsList = new Set();
+
+
+                // console.error('something went wrong');
+                //return {status: 'error', data: 'something went wrong'}
+                // })
+            } catch (err) {
+                console.log("LOAD KANJI ACTION ERROR");
+                console.log(err);
+                return {status: "error"}
+            }
         }
     },
     // modules: {

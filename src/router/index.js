@@ -18,7 +18,7 @@ const routes = [
     name: 'select',
     component: Select,
     beforeEnter: (to, from, next) => {
-      // console.log(to.params.mode)
+      console.log("TRY SELECT")
       if(['hiragana', 'katakana', 'kanji'].includes(to.params.mode)) {
         //console.log("OK")
         store.commit('SET_MODE', to.params.mode);
