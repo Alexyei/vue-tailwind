@@ -1,12 +1,12 @@
 <template>
   <div
-      class="z-9 px-4 pt-8 pb-20 md:pb-0 md:pl-20 transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col justify-center items-center md:h-full w-full md:w-auto bottom-0 md:top-0 left-0  bg-medium-blue bg-120 from-medium-blue to-light-blue"
+      class="z-9 px-4 pt-8 pb-28 md:pb-0 md:pl-23.28 transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col justify-center items-center md:h-full w-full md:w-auto bottom-0 md:top-0 left-0  bg-medium-blue bg-120 from-medium-blue to-light-blue"
       :class="{'transform translate-y-0 md:translate-x-0':isActive, 'transform translate-y-full md:translate-y-0 md:-translate-x-full':!isActive }">
 <!--    <p class=" text-text-dark font-TT font-bold text-xl">Длина слов: от 0 до-->
 <!--      9999</p>-->
 
 <!--    <p class="text-text-dark font-TT font-bold text-xl">Количество слов: 150</p>-->
-    <div class="flex justify-center flex-wrap mb-6 max-w-xs sm:mx-8">
+    <div class="flex justify-center flex-wrap mb-4 max-w-xs sm:mx-8">
       <div class="box-border" v-for="(_, index) in svgs" :key="index">
           <div class="cursor-pointer transition-all duration-500 ease-in-out hover:text-blue-500 flex justify-center items-center bg-white rounded m-1 text-sm font-TT font-bold text-text-dark w-8 h-8" @click.prevent="printsvg(index)">{{ index+1 }}</div>
       </div>

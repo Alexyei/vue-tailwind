@@ -135,6 +135,7 @@ export default {
       loadingAnswer: false,
       parentWidth: 0,
       parentHeight: 0,
+
       // chars: () => import('../mocks/' + this.mode + '.js'),
 
       // wordLength: [1, 7],

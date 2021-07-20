@@ -1,7 +1,7 @@
 <template>
   <div class="bg-whitesmoke w-full min-h-full h-full flex flex-col">
     <nav-bar>
-      <span class="text-text-dark text-xl sm:text-2xl leading-none py-4 block font-TT">Выбрано: {{ charsList.size }} из 9999</span>
+      <span class="text-text-dark text-xl sm:text-2xl leading-none py-4 block font-TT">Выбрано: {{ charsList.size }} из {{ charsLength}}</span>
     </nav-bar>
     <div class="flex-grow flex justify-center items-center w-full px-4 md:px-10 py-4 md:py-7">
       <div class=" relative rounded-3xl overflow-hidden flex items-center h-full w-full flex-col-reverse md:flex-row">
@@ -34,7 +34,7 @@
                     d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
             </svg>
           </div>
-          <div @click.prevent="selectAll"
+          <div @click.prevent="selectAll(mode === 'kanji'?new Set([].concat(...([].concat(...chars))).filter(item => item.word).map(item => item.word)):new Set([].concat(...chars).filter(item => item.char).map(item => item.char)))"
                class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2   flex justify-center items-center flex-col">
             <svg class="fill-current text-blue-500 hover:text-dark-gray w-8 h-8" height="512" viewBox="-59 0 512 512"
                  width="512" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +70,7 @@
           </div>
         </div>
         <div
-            class="z-9 p-8 pb-20 md:pb-0 md:pl-20 transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col justify-center items-center h-64 md:h-full w-full md:w-3/5 bottom-0 md:top-0 left-0  bg-medium-blue bg-120 from-medium-blue to-light-blue"
+            class="z-9 px-4 py-8 pb-28 md:pb-0 md:pl-22 transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col justify-center items-center h-64 md:h-full w-full md:w-96 bottom-0 md:top-0 left-0  bg-medium-blue bg-120 from-medium-blue to-light-blue"
             :class="{'transform translate-y-0 md:translate-x-0':isActive, 'transform translate-y-full md:translate-y-0 md:-translate-x-full':!isActive }">
           <p class=" text-text-dark font-TT font-bold text-xl">Длина слов: от {{ wordLength[0] }} до
             {{ wordLength[1] }}</p>
@@ -220,12 +220,18 @@ export default {
       loadingWords: false,
       loadingChars: true,
       chars: null,
+      charsLength: 0,
       wordLength: [1, 7],
       wordsCount: 10,
       charsList: new Set(),//new Set([3,4]),
     }
   },
   computed:{
+    // currentCharsList(){
+    //   console.log("WTF")
+    //   return this.charsList
+    //
+    // }
     // loadingWords(){
     //   // console.log("ABC")
     //   // console.log(!this.$store.getters.getWords.length)
@@ -278,22 +284,25 @@ export default {
       this.selectRow(chars)
       console.log("select section")
     },
-    selectAll() {
-      let chars = []
-      if (this.mode === 'kanji'){
-        console.log(chars)
-        chars = [].concat(...([].concat(...this.chars))).filter(item => item.word)
-        console.log(chars)
-      }
-      else
-        chars = [].concat(...this.chars).filter(item => item.char)
-      // console.log(chars)
-      if (this.charsList.size === chars.length)
+    selectAll(chars) {
+      // let chars = []
+      // if (this.mode === 'kanji'){
+      //   console.log(chars)
+      //   chars = [].concat(...([].concat(...this.chars))).filter(item => item.word)
+      //   console.log(chars)
+      // }
+      // else
+      //   chars = [].concat(...this.chars).filter(item => item.char)
+
+      if (this.charsList.size === chars.size)
         this.charsList.clear()
       else{
-        if (this.mode === 'kanji')
-        chars.forEach(item => this.charsList.add(item.word))
-        else chars.forEach(item => this.charsList.add(item.char))
+       // if (this.mode === 'kanji')
+       //  chars.forEach(item => this.charsList.add(item.word))
+       //  else chars.forEach(item => this.charsList.add(item.char))
+        console.log(chars)
+        this.charsList = chars
+
       }
 
     },
@@ -393,6 +402,8 @@ export default {
         this.chars = result
 
       }
+      this.charsLength = (this.mode === 'kanji'?new Set([].concat(...([].concat(...this.chars))).filter(item => item.word).map(item => item.word)):new Set([].concat(...this.chars).filter(item => item.char).map(item => item.char))).size
+
       this.loadingChars = false
       // console.log(this.chars)
 

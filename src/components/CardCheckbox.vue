@@ -40,6 +40,7 @@ export default {
   },
   computed: {
     isChecked(){
+     console.log("TRY CHECKED")
       return this.value && this.modelValue.has(this.value)
     }
   },
@@ -60,6 +61,7 @@ export default {
 
     // },
     setSync(){
+      console.log("TRY SYNC CHECKED")
       if (this.value==='')
             return;
       // this.picked = !this.picked;
