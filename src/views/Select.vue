@@ -87,7 +87,7 @@
           <accordion v-else :title="'N'+(5-index)" @select="selectSection([].concat(...section).filter(item => item.word).map(item=>item.word))" v-for="(section, index) in chars" :key="index">
 
             <div
-              class="flex justify-between items-stretch"  v-for="(row, index1) in section" :key="index1" >
+              class="flex justify-center items-stretch"  v-for="(row, index1) in section" :key="index1" >
             <div class="h-21 sm:h-25.5 flex justify-center items-center">
               <svg @click="selectRow(row.filter(item=>item.word).map(item=>item.word))"
                    class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"
@@ -293,7 +293,8 @@ export default {
       // }
       // else
       //   chars = [].concat(...this.chars).filter(item => item.char)
-
+      // console.log("SELECT ALL")
+      // console.log(chars)
       if (this.charsList.size === chars.size)
         this.charsList.clear()
       else{

@@ -14,10 +14,12 @@ const routes = [
     component: Start
   },
   {
-    path: '/select/:mode/:link?',
+    path: '/select/:mode/:link?/:settings?',
     name: 'select',
     component: Select,
     beforeEnter: (to, from, next) => {
+      console.log("LINK: "+to.params.link)
+      console.log("LINK: "+to.params.settings)
       console.log("TRY SELECT")
       if(['hiragana', 'katakana', 'kanji'].includes(to.params.mode)) {
         //console.log("OK")

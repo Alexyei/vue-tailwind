@@ -1,6 +1,6 @@
 <template>
-  <div class="" >
-    <div class="flex justify-between items-center w-full max-w-row mt-3 pb-3">
+  <div class="w-full max-w-mobile-row sm:max-w-row" >
+    <div class="flex justify-between items-center w-full max-w-mobile-row sm:max-w-row mt-3 pb-3">
       <svg @click.prevent="$emit('select')"
            class="cursor-pointer hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"
            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

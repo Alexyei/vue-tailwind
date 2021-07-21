@@ -26,6 +26,7 @@ module.exports = {
       },
       maxWidth: {
         '16': '4rem',
+        'mobile-row':'24rem',
         'row': '35.125rem',
         '1/6': '15%',
       },
