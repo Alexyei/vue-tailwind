@@ -27,7 +27,7 @@
 <!--          </div>-->
           <!--          transform hover:rotate-45 -->
           <div :class="{'transform rotate-45':isActive}" @click.prevent="isActive=!isActive"
-               class="py-2 md:mx-0 md:py-0 md:my-2 md:px-2  border-2 hover:border-dark-gray border-white bg-120 from-medium-blue to-light-blue transition duration-300 ease-in-out hover:bg-none text-dark-gray hover:text-dark-gray flex justify-center items-center flex-col w-12 h-12 rounded-full">
+               class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2  border-2 hover:border-dark-gray border-white bg-120 from-medium-blue to-light-blue transition duration-300 ease-in-out hover:bg-none text-dark-gray hover:text-dark-gray flex justify-center items-center flex-col w-12 h-12 rounded-full">
             <svg class=" w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                  xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

@@ -17,7 +17,7 @@
             </svg>
             <p>Назад</p>
           </div>
-          <div class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2  flex justify-center items-center flex-col">
+          <div :class="{'pointer-events-none':loadingWords || loadingChars}" class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2  flex justify-center items-center flex-col">
             <svg class="text-blue-500 hover:text-dark-gray w-8 h-8" fill="none" stroke="currentColor"
                  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -27,14 +27,14 @@
           </div>
           <!--          transform hover:rotate-45 -->
           <div :class="{'transform rotate-45':isActive}" @click.prevent="isActive=!isActive"
-               class="py-2 md:mx-0 md:py-0 md:my-2 md:px-2  border-2 hover:border-dark-gray border-white bg-120 from-medium-blue to-light-blue transition duration-300 ease-in-out hover:bg-none text-dark-gray hover:text-dark-gray flex justify-center items-center flex-col w-12 h-12 rounded-full">
+               class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2  border-2 hover:border-dark-gray border-white bg-120 from-medium-blue to-light-blue transition duration-300 ease-in-out hover:bg-none text-dark-gray hover:text-dark-gray flex justify-center items-center flex-col w-12 h-12 rounded-full">
             <svg class=" w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                  xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
             </svg>
           </div>
-          <div @click.prevent="selectAll(mode === 'kanji'?new Set([].concat(...([].concat(...chars))).filter(item => item.word).map(item => item.word)):new Set([].concat(...chars).filter(item => item.char).map(item => item.char)))"
+          <div :class="{'pointer-events-none':loadingWords || loadingChars}" @click.prevent="selectAll(mode === 'kanji'?new Set([].concat(...([].concat(...chars))).filter(item => item.word).map(item => item.word)):new Set([].concat(...chars).filter(item => item.char).map(item => item.char)))"
                class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2   flex justify-center items-center flex-col">
             <svg class="fill-current text-blue-500 hover:text-dark-gray w-8 h-8" height="512" viewBox="-59 0 512 512"
                  width="512" xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +44,7 @@
             </svg>
             <p>Все</p>
           </div>
-          <div @click.prevent="startWriting" :class="{'pointer-events-none':loadingWords}" class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2 flex justify-center items-center flex-col">
+          <div @click.prevent="startWriting" :class="{'pointer-events-none':loadingWords || loadingChars}" class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2 flex justify-center items-center flex-col">
             <svg v-if="loadingWords" class="animate-spin-slow fill-current text-blue-500 w-8 h-8" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="spinner" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z" class=""></path></svg>
             <svg v-else class="fill-current text-blue-500 hover:text-dark-gray w-8 h-8" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -191,6 +191,7 @@
       </div>
     </div>
   </div>
+  <Popup ref="popup"></Popup>
 </template>
 
 <script>
@@ -200,6 +201,7 @@ import DualRangeSlider from "../components/DualRangeSlider";
 import RangeSlider from "../components/RangeSlider";
 import CardCheckbox from "../components/CardCheckbox";
 import Accordion from "../components/Accordion";
+import Popup from "../components/Popup";
 //import axios from "axios";
 
 export default {
@@ -209,7 +211,8 @@ export default {
     DualRangeSlider,
     RangeSlider,
     CardCheckbox,
-    Accordion
+    Accordion,
+    Popup
   },
   data() {
     return {
@@ -244,8 +247,10 @@ export default {
     //   return screen.width <= 760;
     // },
     async startWriting(){
+
       if (this.charsList.size === 0){
-        alert("Не выбрано ни одного иероглифа!")
+        this.$refs.popup.show("Не выбрано ни одного иероглифа!")
+        //alert("Не выбрано ни одного иероглифа!")
         return;
       }
 
@@ -262,9 +267,11 @@ export default {
       if (answer.status === 'success')
         this.$router.push({ name: 'write'})
       else if (answer.status === 'warning')
-        alert("Не найдено слов по заданным критериям")
+        //alert("Не найдено слов по заданным критериям")
+        this.$refs.popup.show("Не найдено слов по заданным критериям", "error")
       else
-        alert("Ошибка! Не удалось загрузить слова!")
+        this.$refs.popup.show("Ошибка! Не удалось загрузить слова!", "error")
+        //alert("Ошибка! Не удалось загрузить слова!")
 
     },
     selectRow(chars) {
