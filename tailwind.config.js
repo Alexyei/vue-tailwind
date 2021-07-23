@@ -14,6 +14,8 @@ module.exports = {
       'msf': { paintOrder: 'markers stroke fill' },
     },
     extend: {
+      scale: {
+        '25': '.25',},
       transitionDuration: { '10000':'10000ms'},
       transitionTimingFunction: {
         'popup': 'cubic-bezier(0.18,0.89,0.43,1.19)',},
@@ -36,6 +38,7 @@ module.exports = {
         '16': '4rem',
         'mobile-row':'24rem',
         'row': '35.125rem',
+        '112.5':'28.125rem',
         '1/6': '15%',
       },
       maxHeight: {
@@ -102,7 +105,9 @@ module.exports = {
         'dark-blue': '#1f2029',
         'light': '#f0eff3',
         'red-start': '#da2c4d',
-        'yellow-start': '#f8ab37'
+        'yellow-start': '#f8ab37',
+        'popup-orange':'#ffc300',
+        'popup-green':'#73a942'
       },
       fontFamily: {
         Abel : ['Abel'],

@@ -221,13 +221,14 @@
       </div>
     </div>
   </div>
+  <Popup ref="popup"></Popup>
 </template>
 
 <script>
 import NavBar from "../components/Navbar";
 import DualRangeSlider from "../components/DualRangeSlider";
 import RangeSlider from "../components/RangeSlider";
-
+import Popup from "../components/Popup";
 
 export default {
   name: "Results",
@@ -235,6 +236,7 @@ export default {
     NavBar,
     DualRangeSlider,
     RangeSlider,
+    Popup
 
   },
   data() {
@@ -266,9 +268,9 @@ export default {
       if (answer.status === 'success')
         this.$router.push({ name: 'write'})
       else if (answer.status === 'warning')
-        alert("Не найдено слов по заданным критериям")
+        this.$refs.popup.show("Не найдено слов по заданным критериям!", "error")
       else
-        alert("Ошибка! Не удалось загрузить слова!")
+        this.$refs.popup.show("Не удалось загрузить слова!", "error")
 
     },
     // selectRow(chars) {

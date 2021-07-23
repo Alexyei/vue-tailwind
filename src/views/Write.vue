@@ -102,11 +102,13 @@
       </div>
     </div>
   </div>
+  <Popup ref="popup"></Popup>
 </template>
 
 <script>
 // import {useRoute} from 'vue-router';
 import NavBar from "../components/Navbar";
+import Popup from "../components/Popup";
 // import DualRangeSlider from "../components/DualRangeSlider";
 // import RangeSlider from "../components/RangeSlider";
 import HintPanel from "../components/HintPanel";
@@ -118,7 +120,8 @@ export default {
     // DualRangeSlider,
     // RangeSlider,
     HintPanel,
-    WriteArea
+    WriteArea,
+    Popup
 
 
   },
@@ -171,7 +174,8 @@ export default {
           this.words.push(this.words.splice(this.currentWordIndex,1)[0] )
         }
       }else{
-        alert("Ошибка! Не удалось получить ответ сервера!")
+       // alert("Ошибка! Не удалось получить ответ сервера!")
+        this.$refs.popup.show("Не удалось получить ответ сервера!", "error")
         this.currentWord.answer = "Ошибка"
         this.currentWordIndex++;
       }
@@ -184,10 +188,11 @@ export default {
     showResults(){
       if (!this.words[0].answer)
       {
-        alert("Вы не ввели ниодного ответа")
+       // alert("Вы не ввели ниодного ответа")
+        this.$refs.popup.show("Вы не ввели ниодного ответа!", "error")
         return;
       }
-      alert("RESULTS")
+     // alert("RESULTS")
      // console.log(this.words)
       this.currentWordIndex = 0
       this.$router.push({ name: 'results'})

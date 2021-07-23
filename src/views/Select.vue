@@ -191,7 +191,7 @@
       </div>
     </div>
   </div>
-  <Popup ref="popup" key="1"></Popup>
+  <Popup ref="popup"></Popup>
 </template>
 
 <script>
@@ -249,7 +249,7 @@ export default {
     async startWriting(){
 
       if (this.charsList.size === 0){
-        this.$refs.popup.show("Не выбрано ни одного иероглифа!")
+        this.$refs.popup.show("Не выбрано ни одного иероглифа!", "warning")
         //alert("Не выбрано ни одного иероглифа!")
         return;
       }
@@ -268,9 +268,9 @@ export default {
         this.$router.push({ name: 'write'})
       else if (answer.status === 'warning')
         //alert("Не найдено слов по заданным критериям")
-        this.$refs.popup.show("Не найдено слов по заданным критериям", "error")
+        this.$refs.popup.show("Не найдено слов по заданным критериям!", "error")
       else
-        this.$refs.popup.show("Ошибка! Не удалось загрузить слова!", "error")
+        this.$refs.popup.show("Не удалось загрузить слова!", "error")
         //alert("Ошибка! Не удалось загрузить слова!")
 
     },
