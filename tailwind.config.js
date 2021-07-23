@@ -14,6 +14,14 @@ module.exports = {
       'msf': { paintOrder: 'markers stroke fill' },
     },
     extend: {
+      transitionDuration: { '10000':'10000ms'},
+      transitionTimingFunction: {
+        'popup': 'cubic-bezier(0.18,0.89,0.43,1.19)',},
+      transitionProperty: {
+        'top': 'top',},
+    inset: {
+      '-2full': '-200%',
+    },
       flexGrow: {
         '2': 2,
       },
@@ -55,6 +63,7 @@ module.exports = {
         '2.75': '0.6875rem',
         '6.4': '1.6rem',
         '7.5': '1.875rem',
+        '11' : '2.75rem',
         '12.5': '3.125rem',
         '21':'5.25rem',
         '22':'5.5rem',
@@ -67,6 +76,7 @@ module.exports = {
         '72': '18rem',
         '84': '21rem',
         '96': '24rem',
+        '112.5':'28.125rem',
         '10vh': '10vh',
         '90vh' :'90vh'
       },
@@ -74,9 +84,12 @@ module.exports = {
         checkbox: '0 2px 4px 0 rgba(0, 0, 0, 0.1)',
         npicked: '0 1px 4px 0 rgba(0, 0, 0, 0.05)',
         picked: '0 8px 16px 0 rgba(0, 0, 0, 0.2)',
-        labelh: '0 8px 16px 0 rgba(0, 0, 0, 0.2)'
+        labelh: '0 8px 16px 0 rgba(0, 0, 0, 0.2)',
+        popup: '0 1px 4px rgba(0 ,0 ,0,0.09), 0 3px 8px rgba(0, 0, 0 , 0.09), 0 4px 13px rgba(0,0,0,0.13)'
       },
       colors: {
+        'text-popup':'#686666',
+        'popup-gray': 'rgba(12,13,14,0.5)',
         'dark-gray': '#474747',
         'dark-light': '#353746',
         'text-gray': '#3f4954',
@@ -88,8 +101,8 @@ module.exports = {
         'light-blue': '#c2e9fb',
         'dark-blue': '#1f2029',
         'light': '#f0eff3',
-        'red': '#da2c4d',
-        'yellow': '#f8ab37'
+        'red-start': '#da2c4d',
+        'yellow-start': '#f8ab37'
       },
       fontFamily: {
         Abel : ['Abel'],
@@ -113,9 +126,10 @@ module.exports = {
         '298':'linear-gradient(120deg, var(--tw-gradient-stops))'
       },
       zIndex: {
+        '-1':-1,
         '2': 2,
         '9': 9,
-        '-1':-1
+        '9000':9000
       }
     },
   },

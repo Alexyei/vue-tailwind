@@ -55,15 +55,15 @@ export default {
       buttons: [
         {name: 'ХИРАГАНА',
           value: 'hiragana',
-          grad: 'bg-120 from-red to-light-blue'
+          grad: 'bg-120 from-red-start to-light-blue'
         },
         {name: 'КАТАКАНА',
           value: 'katakana',
-          grad: 'bg-120 from-medium-blue to-yellow'
+          grad: 'bg-120 from-medium-blue to-yellow-start'
         },
         {name: 'ИЕРОГЛИФЫ',
           value: 'kanji',
-          grad: 'bg-120 from-yellow to-red'
+          grad: 'bg-120 from-yellow-start to-red-start'
         }
       ]
     }

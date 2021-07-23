@@ -116,7 +116,7 @@
 <!--                  相変わらず-->
                   {{word.word}}
                 </div>
-                <div :class="{'text-medium-blue':word.word === word.answer, 'text-red':word.word!==word.answer}" class="flex-grow  w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">
+                <div :class="{'text-medium-blue':word.word === word.answer, 'text-red-start':word.word!==word.answer}" class="flex-grow  w-full sm:w-1/4 text-xl lg:text-2xl leading-none py-2 font-Abel sm:ml-1 font-bold">
 <!--                  <div class="block sm:hidden font-TT font-bold text-dark-blue text-xl lg:text-2xl text-left mr-1">Ответ</div>-->
 <!--                  <div class="flex-grow">相変わらず相変わらず</div>-->
 <!--                  相変わらず相変わらず-->

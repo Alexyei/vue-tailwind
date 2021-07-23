@@ -191,7 +191,7 @@
       </div>
     </div>
   </div>
-  <Popup ref="popup"></Popup>
+  <Popup ref="popup" key="1"></Popup>
 </template>
 
 <script>
