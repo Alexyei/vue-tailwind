@@ -17,7 +17,7 @@
             </svg>
             <p>Назад</p>
           </div>
-          <div :class="{'pointer-events-none':loadingWords || loadingChars}" class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2  flex justify-center items-center flex-col">
+          <div  @click.prevent="createLink()" :class="{'pointer-events-none':loadingWords || loadingChars}" class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2  flex justify-center items-center flex-col">
             <svg class="text-blue-500 hover:text-dark-gray w-8 h-8" fill="none" stroke="currentColor"
                  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -415,6 +415,48 @@ export default {
       this.loadingChars = false
       // console.log(this.chars)
 
+    },
+    createLink(){
+      let link = "";
+
+      let section = "";
+      //50 символов
+      let part = "";
+      const partsDelimiter = '-';
+      const sectionsDelimiter = ':';
+      if (this.mode === 'kanji'){
+        for(const sec of this.chars){
+        let chars = [].concat(...sec).filter(item => item.word).map(item => item.word)
+          console.log(chars);
+          console.log(section);
+          console.log(sectionsDelimiter);
+        }
+      }else{
+        let chars = [].concat(...this.chars).filter(item => item.char).map(item => item.char);
+       // console.log(chars)
+       // console.log(this.charsList);
+        for(let i=0;i<chars.length;++i){
+            if (this.charsList.has(chars[i]))
+            //{
+            //  console.log("1")
+              part+="1";
+            //}
+
+            else
+              part+="0";
+            if (!((i+1)%50)){
+              link+=parseInt(part,2).toString(36)+partsDelimiter;
+              part="";
+            }
+        }
+        link+=parseInt(part,2).toString(36).padEnd(10,'0');
+
+      }
+
+      alert(link);
+    },
+    readLink(){
+
     }
   },
   // computed: {
@@ -434,10 +476,22 @@ export default {
   // beforeMount(){this.loadChars()},
 
   mounted() {
+    console.log(parseInt("1000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000001",2).toString(36))
+    console.log(parseInt("10000000001000000000100000000010000000001000000001",2).toString(36))
+    console.log(parseInt("11111111111111111111111111111111111111111111111111",2).toString(36))
     console.log('mounted select')
     console.log(this.charsList)
     console.log(this.$store.getters.getSelectedChars)
     this.loadChars()
+    // if (this.mode === 'kanji'){
+    //   this.charsList.add('四');
+    //   this.charsList.add('九');
+    // }
+    // else{
+    //   this.charsList.add('し');
+    //   this.charsList.add('た');
+    // }
+
     this.onResize()
     window.addEventListener('resize', this.onResize, {passive: true});
     // let mode = useRoute().params.mode
