@@ -20,13 +20,14 @@
             <p>Назад</p>
           </div>
           <div @click.prevent="createLink()" :class="{'pointer-events-none':loadingWords || loadingChars}"
-               class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2  flex justify-center items-center flex-col">
+               class="relative cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2  flex justify-center items-center flex-col">
             <svg class="text-blue-500 hover:text-dark-gray w-8 h-8" fill="none" stroke="currentColor"
                  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
             </svg>
             <p>Ссылка</p>
+            <Tooltip ref="linkTooltip"></Tooltip>
           </div>
           <!--          transform hover:rotate-45 -->
           <div :class="{'transform rotate-45':isActive}" @click.prevent="isActive=!isActive"
@@ -228,6 +229,7 @@ import RangeSlider from "../components/RangeSlider";
 import CardCheckbox from "../components/CardCheckbox";
 import Accordion from "../components/Accordion";
 import Popup from "../components/Popup";
+import Tooltip from "../components/Tooltip";
 //import axios from "axios";
 
 export default {
@@ -238,7 +240,8 @@ export default {
     RangeSlider,
     CardCheckbox,
     Accordion,
-    Popup
+    Popup,
+    Tooltip
   },
   data() {
     return {
@@ -495,7 +498,9 @@ export default {
         link += part;
       }
 
-      alert(link);
+      //alert(link);
+      console.log(link);
+      this.$refs.linkTooltip.show("Ссылка скопирована!","error")
     },
     readLink() {
       let link = this.$route.params.link
