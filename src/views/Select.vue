@@ -498,31 +498,33 @@ export default {
       alert(link);
     },
     readLink() {
-      let link = useRoute().params.link
+      let link = this.$route.params.link
       const partsDelimiter = '-';
       const sectionsDelimiter = ':';
 
       if (link) {
         if (this.mode === 'kanji') {
           let sections = link.split(sectionsDelimiter)
-          console.log(sections)
+        //  console.log(sections)
           for (let i = 0; i < sections.length && i < this.chars.length; ++i) {
             let parts = sections[i].split(partsDelimiter);
-            console.log(parts)
-            let decode = parts.map(p => parseInt(p, 36)).map(n => n ? n.toString(2) : "".padEnd(50, "0")).join("");
-            console.log(decode)
+           // console.log(parts)
+            let decode = parts.map(p => parseInt(p, 36)).map(n => (n ? n.toString(2) : "").padEnd(50, "0")).join("");
+           // console.log(decode.length)
             let chars = [].concat(...this.chars[i]).filter(item => item.word).map(item => item.word)
-            console.log(chars)
+          //  console.log(chars.length)
             for (let j = 0; j < decode.length && j < chars.length; ++j)
-              if (decode[i])
-                this.charsList.add(chars[i])
+              if (decode[j] === "1"){
+             //   console.log(chars[])
+                this.charsList.add(chars[j])
+              }
           }
         } else {
           let chars = [].concat(...this.chars).filter(item => item.char).map(item => item.char);
           let parts = link.split(partsDelimiter);
-          let decode = parts.map(p => parseInt(p, 36)).map(n => n ? n.toString(2) : "".padEnd(50, "0")).join("");
+          let decode = parts.map(p => parseInt(p, 36)).map(n => (n ? n.toString(2) : "").padEnd(50, "0")).join("");
           for (let i = 0; i < decode.length && i < chars.length; ++i)
-            if (decode[i])
+            if (decode[i] === "1")
               this.charsList.add(chars[i])
         }
       }
