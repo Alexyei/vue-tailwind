@@ -1,7 +1,9 @@
 <template>
   <div class="bg-whitesmoke w-full min-h-full h-full flex flex-col">
     <nav-bar>
-      <span class="text-text-dark text-xl sm:text-2xl leading-none py-4 block font-TT">Выбрано: {{ charsList.size }} из {{ charsLength}}</span>
+      <span class="text-text-dark text-xl sm:text-2xl leading-none py-4 block font-TT">Выбрано: {{ charsList.size }} из {{
+          charsLength
+        }}</span>
     </nav-bar>
     <div class="flex-grow flex justify-center items-center w-full px-4 md:px-10 py-4 md:py-7">
       <div class=" relative rounded-3xl overflow-hidden flex items-center h-full w-full flex-col-reverse md:flex-row">
@@ -17,7 +19,8 @@
             </svg>
             <p>Назад</p>
           </div>
-          <div  @click.prevent="createLink()" :class="{'pointer-events-none':loadingWords || loadingChars}" class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2  flex justify-center items-center flex-col">
+          <div @click.prevent="createLink()" :class="{'pointer-events-none':loadingWords || loadingChars}"
+               class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2  flex justify-center items-center flex-col">
             <svg class="text-blue-500 hover:text-dark-gray w-8 h-8" fill="none" stroke="currentColor"
                  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -34,7 +37,8 @@
                     d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
             </svg>
           </div>
-          <div :class="{'pointer-events-none':loadingWords || loadingChars}" @click.prevent="selectAll(mode === 'kanji'?new Set([].concat(...([].concat(...chars))).filter(item => item.word).map(item => item.word)):new Set([].concat(...chars).filter(item => item.char).map(item => item.char)))"
+          <div :class="{'pointer-events-none':loadingWords || loadingChars}"
+               @click.prevent="selectAll(mode === 'kanji'?new Set([].concat(...([].concat(...chars))).filter(item => item.word).map(item => item.word)):new Set([].concat(...chars).filter(item => item.char).map(item => item.char)))"
                class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2   flex justify-center items-center flex-col">
             <svg class="fill-current text-blue-500 hover:text-dark-gray w-8 h-8" height="512" viewBox="-59 0 512 512"
                  width="512" xmlns="http://www.w3.org/2000/svg">
@@ -44,9 +48,17 @@
             </svg>
             <p>Все</p>
           </div>
-          <div @click.prevent="startWriting" :class="{'pointer-events-none':loadingWords || loadingChars}" class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2 flex justify-center items-center flex-col">
-            <svg v-if="loadingWords" class="animate-spin-slow fill-current text-blue-500 w-8 h-8" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="spinner" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z" class=""></path></svg>
-            <svg v-else class="fill-current text-blue-500 hover:text-dark-gray w-8 h-8" xmlns="http://www.w3.org/2000/svg"
+          <div @click.prevent="startWriting" :class="{'pointer-events-none':loadingWords || loadingChars}"
+               class="cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2 flex justify-center items-center flex-col">
+            <svg v-if="loadingWords" class="animate-spin-slow fill-current text-blue-500 w-8 h-8" aria-hidden="true"
+                 focusable="false" data-prefix="fas" data-icon="spinner" role="img" xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 512 512">
+              <path fill="currentColor"
+                    d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"
+                    class=""></path>
+            </svg>
+            <svg v-else class="fill-current text-blue-500 hover:text-dark-gray w-8 h-8"
+                 xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink"
                  xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
                  viewBox="0 0 511.77638 511" style="enable-background:new 0 0 512 512" xml:space="preserve">
@@ -82,24 +94,31 @@
              :class="{'justify-center':loadingChars}"
              class="overflow-y-scroll block overflow-x-hidden bg-white h-mobileMain md:h-main w-full md:w-auto py-8 px-1 pr-2 flex-grow rounded-3xl flex flex-col  items-center">
 
-          <svg v-if="loadingChars" class="animate-spin-slow fill-current text-blue-500 w-8 h-8" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="spinner" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z" class=""></path></svg>
+          <svg v-if="loadingChars" class="animate-spin-slow fill-current text-blue-500 w-8 h-8" aria-hidden="true"
+               focusable="false" data-prefix="fas" data-icon="spinner" role="img" xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 512 512">
+            <path fill="currentColor"
+                  d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"
+                  class=""></path>
+          </svg>
 
-          <accordion v-else :title="'N'+(5-index)" @select="selectSection([].concat(...section).filter(item => item.word).map(item=>item.word))" v-for="(section, index) in chars" :key="index">
+          <accordion v-else :title="'N'+(5-index)"
+                     @select="selectSection([].concat(...section).filter(item => item.word).map(item=>item.word))"
+                     v-for="(section, index) in chars" :key="index">
 
             <div
-              class="flex justify-center items-stretch"  v-for="(row, index1) in section" :key="index1" >
-            <div class="h-21 sm:h-25.5 flex justify-center items-center">
-              <svg @click="selectRow(row.filter(item=>item.word).map(item=>item.word))"
-                   class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"
-                   stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
+                class="flex justify-center items-stretch" v-for="(row, index1) in section" :key="index1">
+              <div class="h-21 sm:h-25.5 flex justify-center items-center">
+                <svg @click="selectRow(row.filter(item=>item.word).map(item=>item.word))"
+                     class="hover:text-blue-500 text-dark-gray w-5 h-5 sm:w-7 sm:h-7 sm:mr-1" fill="none"
+                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+              <card-checkbox v-model="charsList" v-for="(item, i) in row" :value="item.word" :textValue="item.translate"
+                             :key="i"></card-checkbox>
             </div>
-            <card-checkbox v-model="charsList" v-for="(item, i) in row" :value="item.word" :textValue="item.translate"
-                           :key="i"></card-checkbox>
-          </div>
           </accordion>
-
 
 
         </div>
@@ -169,9 +188,16 @@
           <!--          </div>-->
           <!--          {{charsList}}-->
           <!--{{chars}}-->
-          <svg v-if="loadingChars" class="animate-spin-slow fill-current text-blue-500 w-8 h-8" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="spinner" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z" class=""></path></svg>
+          <svg v-if="loadingChars" class="animate-spin-slow fill-current text-blue-500 w-8 h-8" aria-hidden="true"
+               focusable="false" data-prefix="fas" data-icon="spinner" role="img" xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 512 512">
+            <path fill="currentColor"
+                  d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"
+                  class=""></path>
+          </svg>
 
-          <div v-else class="flex justify-center items-stretch w-full sm:w-auto" v-for="(row, index) in chars" :key="index">
+          <div v-else class="flex justify-center items-stretch w-full sm:w-auto" v-for="(row, index) in chars"
+               :key="index">
             <!--            {{row}}-->
             <!--          <button @click="selectRow()">селект стр</button>-->
             <!--          <svg  @click="selectRow()" class="self-center text-blue-500 hover:text-dark-gray w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"></path></svg>-->
@@ -229,7 +255,7 @@ export default {
       charsList: new Set(),//new Set([3,4]),
     }
   },
-  computed:{
+  computed: {
     // currentCharsList(){
     //   console.log("WTF")
     //   return this.charsList
@@ -246,15 +272,15 @@ export default {
     // isMobile() {
     //   return screen.width <= 760;
     // },
-    async startWriting(){
+    async startWriting() {
 
-      if (this.charsList.size === 0){
+      if (this.charsList.size === 0) {
         this.$refs.popup.show("Не выбрано ни одного иероглифа!", "warning")
         //alert("Не выбрано ни одного иероглифа!")
         return;
       }
 
-      this.$nextTick(()=>this.loadingWords = true)
+      this.$nextTick(() => this.loadingWords = true)
       this.$store.commit('saveSelected', {
         charsList: this.charsList,
         settings: {
@@ -265,13 +291,13 @@ export default {
       let answer = await this.$store.dispatch('loadWords')
       this.loadingWords = false
       if (answer.status === 'success')
-        this.$router.push({ name: 'write'})
+        this.$router.push({name: 'write'})
       else if (answer.status === 'warning')
-        //alert("Не найдено слов по заданным критериям")
+          //alert("Не найдено слов по заданным критериям")
         this.$refs.popup.show("Не найдено слов по заданным критериям!", "error")
       else
         this.$refs.popup.show("Не удалось загрузить слова!", "error")
-        //alert("Ошибка! Не удалось загрузить слова!")
+      //alert("Ошибка! Не удалось загрузить слова!")
 
     },
     selectRow(chars) {
@@ -287,7 +313,7 @@ export default {
       // console.log(this.charsList)
       // console.log([3,4].every(v => this.charsList.has(v)))
     },
-    selectSection(chars){
+    selectSection(chars) {
       this.selectRow(chars)
       console.log("select section")
     },
@@ -304,10 +330,10 @@ export default {
       // console.log(chars)
       if (this.charsList.size === chars.size)
         this.charsList.clear()
-      else{
-       // if (this.mode === 'kanji')
-       //  chars.forEach(item => this.charsList.add(item.word))
-       //  else chars.forEach(item => this.charsList.add(item.char))
+      else {
+        // if (this.mode === 'kanji')
+        //  chars.forEach(item => this.charsList.add(item.word))
+        //  else chars.forEach(item => this.charsList.add(item.char))
         console.log(chars)
         this.charsList = chars
 
@@ -333,7 +359,7 @@ export default {
       // console.log(chars)
 
       //console.log(chars)
-     // console.log(mode !== 'kanji')
+      // console.log(mode !== 'kanji')
 
       if (mode !== 'kanji') {
         let emptyItem = {
@@ -371,8 +397,7 @@ export default {
           result.push(row)
         }
         this.chars = result
-      }
-      else{
+      } else {
         console.log("kanji")
         let emptyItem = {
           id: 0,
@@ -381,23 +406,22 @@ export default {
         }
 
         let chars;
-       do{
-         let answer = await this.$store.dispatch('loadKanji')
-         console.log(answer)
-         if (answer.status === 'success'){
-           chars = answer.data
-           break;
-         }
-       }while(true)
+        do {
+          let answer = await this.$store.dispatch('loadKanji')
+          console.log(answer)
+          if (answer.status === 'success') {
+            chars = answer.data
+            break;
+          }
+        } while (true)
 
         let result = []
-        for (let sec of chars)
-        {
+        for (let sec of chars) {
           // console.log(sec)
           sec = sec.slice(0)
           if (sec.length % 5)
-          for (let i = 5 - sec.length % 5; i > 0;--i)
-            sec.push(emptyItem)
+            for (let i = 5 - sec.length % 5; i > 0; --i)
+              sec.push(emptyItem)
           let section = []
           for (let i = 0; i < sec.length / 5; i++) {
             let row = []
@@ -410,13 +434,14 @@ export default {
         this.chars = result
 
       }
-      this.charsLength = (this.mode === 'kanji'?new Set([].concat(...([].concat(...this.chars))).filter(item => item.word).map(item => item.word)):new Set([].concat(...this.chars).filter(item => item.char).map(item => item.char))).size
+      this.charsLength = (this.mode === 'kanji' ? new Set([].concat(...([].concat(...this.chars))).filter(item => item.word).map(item => item.word)) : new Set([].concat(...this.chars).filter(item => item.char).map(item => item.char))).size
 
+      this.readLink();
       this.loadingChars = false
       // console.log(this.chars)
 
     },
-    createLink(){
+    createLink() {
       let link = "";
 
       let section = "";
@@ -424,39 +449,86 @@ export default {
       let part = "";
       const partsDelimiter = '-';
       const sectionsDelimiter = ':';
-      if (this.mode === 'kanji'){
-        for(const sec of this.chars){
-        let chars = [].concat(...sec).filter(item => item.word).map(item => item.word)
-          console.log(chars);
-          console.log(section);
-          console.log(sectionsDelimiter);
-        }
-      }else{
-        let chars = [].concat(...this.chars).filter(item => item.char).map(item => item.char);
-       // console.log(chars)
-       // console.log(this.charsList);
-        for(let i=0;i<chars.length;++i){
-            if (this.charsList.has(chars[i]))
-            //{
-            //  console.log("1")
-              part+="1";
-            //}
 
-            else
-              part+="0";
-            if (!((i+1)%50)){
-              link+=parseInt(part,2).toString(36)+partsDelimiter;
-              part="";
+
+      if (this.mode === 'kanji') {
+        for (const sec of this.chars) {
+          let chars = [].concat(...sec).filter(item => item.word).map(item => item.word)
+          for (let i = 0; i < chars.length; ++i) {
+            // console.log(this.charsList.has(chars[i]))
+            part += this.charsList.has(chars[i]) ? "1" : "0";
+            if (!((i + 1) % 50)) {
+              //   console.log(part)
+              section += parseInt(part, 2).toString(36) + ((i + 1 < chars.length) ? partsDelimiter : "");
+              part = "";
             }
-        }
-        link+=parseInt(part,2).toString(36).padEnd(10,'0');
+          }
+          if (part) {
+            part = parseInt(part.padEnd(50,"0"), 2).toString(36);
+            if (part !== "0")
+              part = part.padEnd(10, '0');
+            section += part;
+          }
 
+          link += section + sectionsDelimiter;
+          section = part = ""
+        }
+        //  console.log(link);
+        link = link.slice(0, -1)
+      } else {
+        let chars = [].concat(...this.chars).filter(item => item.char).map(item => item.char);
+
+        for (let i = 0; i < chars.length; ++i) {
+          part += this.charsList.has(chars[i]) ? "1" : "0";
+          if (!((i + 1) % 50)) {
+            link += parseInt(part, 2).toString(36) + ((i + 1 < chars.length) ? partsDelimiter : "");
+            console.log(part)
+            part = "";
+          }
+        }
+        console.log(part)
+        if (part) {
+          part = parseInt(part.padEnd(50,"0"), 2).toString(36);
+          if (part !== "0")
+            part = part.padEnd(10, '0');
+        }
+        link += part;
       }
 
       alert(link);
     },
-    readLink(){
+    readLink() {
+      let link = useRoute().params.link
+      const partsDelimiter = '-';
+      const sectionsDelimiter = ':';
 
+      if (link) {
+        if (this.mode === 'kanji') {
+          let sections = link.split(sectionsDelimiter)
+          console.log(sections)
+          for (let i = 0; i < sections.length && i < this.chars.length; ++i) {
+            let parts = sections[i].split(partsDelimiter);
+            console.log(parts)
+            let decode = parts.map(p => parseInt(p, 36)).map(n => n ? n.toString(2) : "".padEnd(50, "0")).join("");
+            console.log(decode)
+            let chars = [].concat(...this.chars[i]).filter(item => item.word).map(item => item.word)
+            console.log(chars)
+            for (let j = 0; j < decode.length && j < chars.length; ++j)
+              if (decode[i])
+                this.charsList.add(chars[i])
+          }
+        } else {
+          let chars = [].concat(...this.chars).filter(item => item.char).map(item => item.char);
+          let parts = link.split(partsDelimiter);
+          let decode = parts.map(p => parseInt(p, 36)).map(n => n ? n.toString(2) : "".padEnd(50, "0")).join("");
+          for (let i = 0; i < decode.length && i < chars.length; ++i)
+            if (decode[i])
+              this.charsList.add(chars[i])
+        }
+      }
+
+    },
+    readSettings() {
     }
   },
   // computed: {
@@ -476,13 +548,14 @@ export default {
   // beforeMount(){this.loadChars()},
 
   mounted() {
-    console.log(parseInt("1000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000001",2).toString(36))
-    console.log(parseInt("10000000001000000000100000000010000000001000000001",2).toString(36))
-    console.log(parseInt("11111111111111111111111111111111111111111111111111",2).toString(36))
+    //console.log(parseInt("1000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000001",2).toString(36))
+    // console.log(parseInt("10000000001000000000100000000010000000001000000001",2).toString(36))
+    // console.log(parseInt("11111111111111111111111111111111111111111111111111",2).toString(36))
     console.log('mounted select')
-    console.log(this.charsList)
-    console.log(this.$store.getters.getSelectedChars)
+    // console.log(this.charsList)
+    // console.log(this.$store.getters.getSelectedChars)
     this.loadChars()
+
     // if (this.mode === 'kanji'){
     //   this.charsList.add('四');
     //   this.charsList.add('九');
