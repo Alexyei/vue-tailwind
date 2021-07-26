@@ -21,10 +21,11 @@ export default {
     value_p: { type: Number, default: 10, },
     min_p: { type: Number, default: 1, },
     max_p: { type: Number, default: 100, },
+    modelValue: Number,
   },
   data() {
     return {
-      value: this.value_p,
+      //value: this.value_p,
       min: this.min_p,
       max: this.max_p,
       isActive : false,
@@ -32,6 +33,9 @@ export default {
     }
   },
   computed:{
+    value(){
+      return this.modelValue;
+    },
     percent() {
       // `this` points to the vm instance
       return ((this.value - this.min) / (this.max - this.min)) * 100 + '%'
@@ -54,7 +58,7 @@ export default {
       // }
       // setLeftValue();
 
-      this.value = Number(value);
+      //this.value = Number(value);
 
 
       // function setRightValue() {
@@ -70,7 +74,8 @@ export default {
       //   range.style.right = (100 - percent) + "%";
       // }
       // setRightValue();
-      this.$emit('update:modelValue', this.value)
+      //this.$emit('update:modelValue', this.value)
+      this.$emit('update:modelValue', Number(value))
     }
   }
 }

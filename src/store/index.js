@@ -11,6 +11,14 @@ export default createStore({
         mode: null,
     },
     getters: {
+        // getSettingsInfo(){
+        //   return {
+        //       minWordLength: 1,
+        //       maxWordLength: 8,
+        //       minWordsCount: 1,
+        //       maxWordCount: 100
+        //   }
+        // },
         getWords(state) {
             return state.words
         },

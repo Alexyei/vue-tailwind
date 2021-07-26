@@ -243,7 +243,7 @@ export default {
     return {
       isActive: false,
       isMobile: 100,
-      wordLength: [1, 7],
+      wordLength: [1, 8],
       wordsCount: 10,
       words: [],
       loadingWords: false

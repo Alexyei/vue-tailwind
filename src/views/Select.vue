@@ -87,9 +87,9 @@
             :class="{'transform translate-y-0 md:translate-x-0':isActive, 'transform translate-y-full md:translate-y-0 md:-translate-x-full':!isActive }">
           <p class=" text-text-dark font-TT font-bold text-xl">Длина слов: от {{ wordLength[0] }} до
             {{ wordLength[1] }}</p>
-          <dual-range-slider class="my-4" v-model="wordLength"></dual-range-slider>
+          <dual-range-slider ref="wordLength" class="my-4" v-model="wordLength"></dual-range-slider>
           <p class="text-text-dark font-TT font-bold text-xl">Количество слов: {{ wordsCount }}</p>
-          <range-slider class="my-4" v-model="wordsCount"></range-slider>
+          <range-slider ref="wordsCount" class="my-4" v-model="wordsCount"></range-slider>
         </div>
         <div v-if="mode === 'kanji'"
              :class="{'justify-center':loadingChars}"
@@ -232,6 +232,7 @@ import Popup from "../components/Popup";
 import Tooltip from "../components/Tooltip";
 //import axios from "axios";
 
+
 export default {
   name: "Select",
   components: {
@@ -253,7 +254,7 @@ export default {
       loadingChars: true,
       chars: null,
       charsLength: 0,
-      wordLength: [1, 7],
+      wordLength: [1, 8],
       wordsCount: 10,
       charsList: new Set(),//new Set([3,4]),
     }
@@ -467,7 +468,7 @@ export default {
             }
           }
           if (part) {
-            part = parseInt(part.padEnd(50,"0"), 2).toString(36);
+            part = parseInt(part.padEnd(50, "0"), 2).toString(36);
             if (part !== "0")
               part = part.padEnd(10, '0');
             section += part;
@@ -491,7 +492,7 @@ export default {
         }
         console.log(part)
         if (part) {
-          part = parseInt(part.padEnd(50,"0"), 2).toString(36);
+          part = parseInt(part.padEnd(50, "0"), 2).toString(36);
           if (part !== "0")
             part = part.padEnd(10, '0');
         }
@@ -500,34 +501,40 @@ export default {
 
       //alert(link);
       console.log(link);
-      navigator.clipboard.writeText([location.origin,this.$route.name,this.mode,link,this.$route.params.settings].join("/")).then(function() {
+      console.log(Math.min(7, NaN))
+      // console.log(this.$refs.wordLength);
+      // console.log(this.$refs.wordsCount);
+      let settings = [this.$refs.wordLength.left, this.$refs.wordLength.right, this.$refs.wordsCount.value].join(":").replace([this.$refs.wordLength.left_p, this.$refs.wordLength.right_p, this.$refs.wordsCount.value_p].join(":"), "")
+      console.log(settings)
+      navigator.clipboard.writeText([location.origin, this.$route.name, this.mode, link, settings].join("/")).then(function () {
         //console.log('Async: Copying to clipboard was successful!');
         this.$refs.linkTooltip.show("Ссылка скопирована!")
-      }.bind(this), function() {
+      }.bind(this), function () {
         //console.error('Async: Could not copy text: ', err);
-        this.$refs.linkTooltip.show("Ошибка!","error")
+        this.$refs.linkTooltip.show("Ошибка!", "error")
       }.bind(this));
 
     },
     readLink() {
       let link = this.$route.params.link
+      let settings = this.$route.params.settings
       const partsDelimiter = '-';
       const sectionsDelimiter = ':';
 
       if (link) {
         if (this.mode === 'kanji') {
           let sections = link.split(sectionsDelimiter)
-        //  console.log(sections)
+          //  console.log(sections)
           for (let i = 0; i < sections.length && i < this.chars.length; ++i) {
             let parts = sections[i].split(partsDelimiter);
-           // console.log(parts)
+            // console.log(parts)
             let decode = parts.map(p => parseInt(p, 36)).map(n => (n ? n.toString(2) : "").padEnd(50, "0")).join("");
-           // console.log(decode.length)
+            // console.log(decode.length)
             let chars = [].concat(...this.chars[i]).filter(item => item.word).map(item => item.word)
-          //  console.log(chars.length)
+            //  console.log(chars.length)
             for (let j = 0; j < decode.length && j < chars.length; ++j)
-              if (decode[j] === "1"){
-             //   console.log(chars[])
+              if (decode[j] === "1") {
+                //   console.log(chars[])
                 this.charsList.add(chars[j])
               }
           }
@@ -539,6 +546,34 @@ export default {
             if (decode[i] === "1")
               this.charsList.add(chars[i])
         }
+      }
+
+      if (settings) {
+        console.log(settings);
+        let parts = settings.split(":").map(p=>parseInt(p,10))
+        if (parts.length !== 3) return;
+        let [minLength, maxLength, wordsCount] = parts;
+        console.log(minLength)
+        console.log(maxLength)
+        console.log(wordsCount)
+        //if (!isNaN(minLength))
+          minLength = Math.min(Math.max(minLength, this.$refs.wordLength.min_p),this.$refs.wordLength.max_p-1)
+       // if (!isNaN(maxLength))
+          maxLength = Math.max(Math.min(maxLength, this.$refs.wordLength.max_p),minLength+1)
+       // if (!isNaN(wordsCount))
+          wordsCount = Math.min(Math.max(wordsCount, this.$refs.wordsCount.min_p),this.$refs.wordsCount.max_p)
+
+        console.log(minLength)
+        console.log(maxLength)
+        console.log(wordsCount)
+        if (!isNaN(minLength) )
+          this.wordLength[0] = minLength;
+
+        if (!isNaN(maxLength))
+          this.wordLength[1] = maxLength;
+
+        if (!isNaN(wordsCount))
+          this.wordsCount = wordsCount;
       }
 
     },

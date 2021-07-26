@@ -22,11 +22,12 @@ export default {
     right_p: { type: Number, default: 8, },
     min_p: { type: Number, default: 1, },
     max_p: { type: Number, default: 8, },
+    modelValue: Array,
   },
   data() {
     return {
-      left: this.left_p,
-      right: this.right_p,
+      // left: this.modelValue[0],
+      // right: this.modelValue[1],
       min: this.min_p,
       max: this.max_p,
       isLeftActive : false,
@@ -36,7 +37,14 @@ export default {
     }
   },
   computed:{
+    left(){
+      return  this.modelValue[0];
+    },
+    right(){
+      return  this.modelValue[1];
+    },
     percentLeft() {
+
       // `this` points to the vm instance
       return ((this.left - this.min) / (this.max - this.min)) * 100 + '%'
     },
@@ -61,10 +69,10 @@ export default {
       //   range.style.left = percent + "%";
       // }
       // setLeftValue();
-      if (left)
-        this.left = Math.min(value, this.right-1)
-      else
-        this.right = Math.max(value,this.left+1)
+      // if (left)
+      //   this.left = Math.min(value, this.right-1)
+      // else
+      //   this.right = Math.max(value,this.left+1)
 
       // function setRightValue() {
       //   var _this = inputRight,
@@ -79,7 +87,7 @@ export default {
       //   range.style.right = (100 - percent) + "%";
       // }
       // setRightValue();
-        this.$emit('update:modelValue', [this.left, this.right])
+        this.$emit('update:modelValue', [left?Math.min(value, this.right-1):this.left, !left?Math.max(value,this.left+1):this.right])
     }
   }
 }
