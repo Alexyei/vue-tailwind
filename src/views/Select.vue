@@ -500,7 +500,14 @@ export default {
 
       //alert(link);
       console.log(link);
-      this.$refs.linkTooltip.show("Ссылка скопирована!","error")
+      navigator.clipboard.writeText([location.origin,this.$route.name,this.mode,link,this.$route.params.settings].join("/")).then(function() {
+        //console.log('Async: Copying to clipboard was successful!');
+        this.$refs.linkTooltip.show("Ссылка скопирована!")
+      }.bind(this), function() {
+        //console.error('Async: Could not copy text: ', err);
+        this.$refs.linkTooltip.show("Ошибка!","error")
+      }.bind(this));
+
     },
     readLink() {
       let link = this.$route.params.link
@@ -559,6 +566,8 @@ export default {
     // console.log(parseInt("10000000001000000000100000000010000000001000000001",2).toString(36))
     // console.log(parseInt("11111111111111111111111111111111111111111111111111",2).toString(36))
     console.log('mounted select')
+    console.log(this.$route)
+    console.log(location)
     // console.log(this.charsList)
     // console.log(this.$store.getters.getSelectedChars)
     this.loadChars()
