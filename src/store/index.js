@@ -11,14 +11,20 @@ export default createStore({
         mode: null,
     },
     getters: {
-        // getSettingsInfo(){
-        //   return {
-        //       minWordLength: 1,
-        //       maxWordLength: 8,
-        //       minWordsCount: 1,
-        //       maxWordCount: 100
-        //   }
-        // },
+        getDefaultSettings(){
+          return {
+              minWordLength: 1,
+              maxWordLength: 8,
+              minWordLengthDefault: 1,
+              maxWordLengthDefault: 8,
+              minWordsCount: 1,
+              maxWordsCount: 100,
+              wordsCountDefault: 10
+          }
+        },
+        getMode(state){
+            return state.mode
+        },
         getSettings(state){
             return state.settings
         },
@@ -33,6 +39,7 @@ export default createStore({
         saveSelected(state, payload) {
             state.charsList = payload.charsList
             state.settings = payload.settings
+            state.mode = payload.mode
         },
         saveSettings(state, payload) {
             state.settings = payload

@@ -6,6 +6,7 @@
     <div class="flex-grow flex justify-center items-center w-full px-4 md:px-10 py-4 md:py-7">
       <div class=" relative rounded-3xl overflow-hidden flex items-center h-full w-full flex-col-reverse md:flex-row">
         <div
+            style="user-select: none"
             class="z-10 font-TT font-bold text-sm sm:text-base bg-white w-full md:w-auto md:h-full mt-4 md:mt-0 md:mr-4 rounded-3xl flex flex-row md:flex-col px-4 md:px-0 justify-between md:justify-center items-center">
 
           <div @click.prevent="$router.push({ name: 'select', params: { mode: $store.state.mode } })"
@@ -74,6 +75,7 @@
           </div>
         </div>
         <div
+            style="user-select: none"
             class="z-9 px-4 py-8 pb-28 md:pb-0 md:pl-22 transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col justify-center items-center h-64 md:h-full w-full md:w-96 bottom-0 md:top-0 left-0  bg-medium-blue bg-120 from-medium-blue to-light-blue"
             :class="{'transform translate-y-0 md:translate-x-0':isActive, 'transform translate-y-full md:translate-y-0 md:-translate-x-full':!isActive }">
           <p class=" text-text-dark font-TT font-bold text-xl">Длина слов: от {{ wordLength[0] }} до

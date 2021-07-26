@@ -1,13 +1,14 @@
 <template>
   <div class="bg-whitesmoke w-full min-h-full h-full flex flex-col">
     <nav-bar>
-      <span class="text-text-dark text-xl sm:text-2xl leading-none py-4 block font-TT">Выбрано: {{ charsList.size }} из {{
+      <span class="text-text-dark text-xl sm:text-2xl leading-none py-4 block font-TT">Выбрано: {{ charsLength?charsList.size:0 }} из {{
           charsLength
         }}</span>
     </nav-bar>
     <div class="flex-grow flex justify-center items-center w-full px-4 md:px-10 py-4 md:py-7">
       <div class=" relative rounded-3xl overflow-hidden flex items-center h-full w-full flex-col-reverse md:flex-row">
         <div
+            style="user-select: none"
             class="z-10 font-TT font-bold text-sm sm:text-base bg-white w-full md:w-auto md:h-full mt-4 md:mt-0 md:mr-4 rounded-3xl flex flex-row md:flex-col px-4 md:px-0 justify-between md:justify-center items-center">
 
           <div @click.prevent="$router.push({ name: 'Главная'})"
@@ -19,7 +20,7 @@
             </svg>
             <p>Назад</p>
           </div>
-          <div @click.prevent="createLink()" :class="{'pointer-events-none':loadingWords || loadingChars}"
+          <div @click.prevent="createLink()"  :class="{'pointer-events-none':loadingWords || loadingChars}"
                class="relative cursor-pointer py-2 md:mx-0 md:py-0 md:my-2 md:px-2  flex justify-center items-center flex-col">
             <svg class="text-blue-500 hover:text-dark-gray w-8 h-8" fill="none" stroke="currentColor"
                  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -83,6 +84,7 @@
           </div>
         </div>
         <div
+            style="user-select: none"
             class="z-9 px-4 py-8 pb-28 md:pb-0 md:pl-22 transition-all duration-500 ease-in-out absolute rounded-3xl flex flex-col justify-center items-center h-64 md:h-full w-full md:w-96 bottom-0 md:top-0 left-0  bg-medium-blue bg-120 from-medium-blue to-light-blue"
             :class="{'transform translate-y-0 md:translate-x-0':isActive, 'transform translate-y-full md:translate-y-0 md:-translate-x-full':!isActive }">
           <p class=" text-text-dark font-TT font-bold text-xl">Длина слов: от {{ wordLength[0] }} до
@@ -290,7 +292,8 @@ export default {
         settings: {
           wordsCount: this.wordsCount,
           wordLength: this.wordLength
-        }
+        },
+        mode: this.mode
       })
       let answer = await this.$store.dispatch('loadWords')
       this.loadingWords = false
@@ -586,6 +589,21 @@ export default {
   //   }
   // },
   created() {
+    let settings = this.$store.getters.getSettings
+    if (settings)
+    {
+      this.wordLength[0] = settings.wordLength[0]
+      this.wordLength[1] = settings.wordLength[1]
+      this.wordsCount = settings.wordsCount
+    }
+    else{
+      settings = this.$store.getters.getDefaultSettings
+      this.wordLength[0] = settings.minWordLengthDefault
+      this.wordLength[1] = settings.maxWordLengthDefault
+      this.wordsCount = settings.wordsCountDefault
+    }
+    if (this.mode === this.$store.getters.getMode)
+      this.charsList = new Set(this.$store.getters.getSelectedChars)
     // this.mode: this.$router.currentRoute.params.mode,
     // this.chars = () => import('../mocks/'+this.mode+'.js')
     // this.loadChars()
@@ -599,8 +617,8 @@ export default {
     // console.log(parseInt("10000000001000000000100000000010000000001000000001",2).toString(36))
     // console.log(parseInt("11111111111111111111111111111111111111111111111111",2).toString(36))
     console.log('mounted select')
-    console.log(this.$route)
-    console.log(location)
+    //console.log(this.$route)
+   // console.log(location)
     // console.log(this.charsList)
     // console.log(this.$store.getters.getSelectedChars)
     this.loadChars()

@@ -8,7 +8,7 @@
 <!--    <p class="text-text-dark font-TT font-bold text-xl">Количество слов: 150</p>-->
     <div class="flex justify-center flex-wrap mb-4 max-w-xs sm:mx-8">
       <div class="box-border" v-for="(_, index) in svgs" :key="index">
-          <div class="cursor-pointer transition-all duration-500 ease-in-out hover:text-blue-500 flex justify-center items-center bg-white rounded m-1 text-sm font-TT font-bold text-text-dark w-8 h-8" @click.prevent="printsvg(index)">{{ index+1 }}</div>
+          <div style="user-select: none" class="cursor-pointer transition-all duration-500 ease-in-out hover:text-blue-500 flex justify-center items-center bg-white rounded m-1 text-sm font-TT font-bold text-text-dark w-8 h-8" @click.prevent="printsvg(index)">{{ index+1 }}</div>
       </div>
     </div>
     <div class="relative bg-white">

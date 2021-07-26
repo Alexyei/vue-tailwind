@@ -15,13 +15,15 @@
 </template>
 
 <script>
+import {default as store} from '../store/index.js'
+
 export default {
   name: "DualRangeSlider",
   props: {
-    left_p: { type: Number, default: 1, },
-    right_p: { type: Number, default: 8, },
-    min_p: { type: Number, default: 1, },
-    max_p: { type: Number, default: 8, },
+    //left_p: { type: Number, default: 1, },
+    //right_p: { type: Number, default: 8, },
+    min_p: { type: Number, default: store.getters.getDefaultSettings.minWordLength, },
+    max_p: { type: Number, default: store.getters.getDefaultSettings.maxWordLength, },
     modelValue: Array,
   },
   data() {

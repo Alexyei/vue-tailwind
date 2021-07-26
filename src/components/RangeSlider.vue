@@ -15,12 +15,13 @@
 </template>
 
 <script>
+import {default as store} from '../store/index.js'
 export default {
   name: "RangeSlider",
   props: {
-    value_p: { type: Number, default: 10, },
-    min_p: { type: Number, default: 1, },
-    max_p: { type: Number, default: 100, },
+   // value_p: { type: Number, default: 10, },
+    min_p: { type: Number, default: store.getters.getDefaultSettings.minWordsCount, },
+    max_p: { type: Number, default: store.getters.getDefaultSettings.maxWordsCount, },
     modelValue: Number,
   },
   data() {

@@ -75,9 +75,9 @@ export default {
     width() {
       //console.log("m4")
       //this.reset()
-      console.log("MAX")
-      console.log(this.clientWidth)
-      console.log(this.charsCount)
+      //console.log("MAX")
+     // console.log(this.clientWidth)
+      //console.log(this.charsCount)
       return Math.max(this.clientWidth, this.charsCount * this.pxPerChar)
       //return 100
     }

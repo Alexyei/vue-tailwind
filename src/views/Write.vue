@@ -7,6 +7,7 @@
       <div :style="{'width':(currentWordIndex+1)/words.length*100 + '%'}" class="transition-all duration-1000 ease-in-out absolute top-0 left-0 h-1 bg-medium-blue"></div>
       <div class="lg:container relative rounded-3xl overflow-hidden flex items-center h-full w-full flex-col-reverse md:flex-row">
         <div
+            style="user-select: none"
             class="z-10 font-TT font-bold text-sm sm:text-base bg-white w-full md:w-auto md:h-full mt-4 md:mt-0 md:mr-4 rounded-3xl flex flex-row md:flex-col px-4 md:px-0 justify-between md:justify-center items-center">
 
           <div @click.prevent="$router.push({ name: 'select', params: { mode: $store.state.mode } })"

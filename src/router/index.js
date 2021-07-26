@@ -23,7 +23,7 @@ const routes = [
       console.log("TRY SELECT")
       if(['hiragana', 'katakana', 'kanji'].includes(to.params.mode)) {
         //console.log("OK")
-        store.commit('SET_MODE', to.params.mode);
+       // store.commit('SET_MODE', to.params.mode);
         next()
       } else {
         //alert("BACK")
