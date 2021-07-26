@@ -19,6 +19,9 @@ export default createStore({
         //       maxWordCount: 100
         //   }
         // },
+        getSettings(state){
+            return state.settings
+        },
         getWords(state) {
             return state.words
         },

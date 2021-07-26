@@ -393,6 +393,9 @@ export default {
   // },
   created() {
     this.words = this.$store.getters.getWords
+    let settings = this.$store.getters.getSettings
+    this.wordLength = settings.wordLength.slice(0)
+    this.wordsCount = settings.wordsCount
   },
   // beforeCreate() {
   // },

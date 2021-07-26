@@ -501,7 +501,7 @@ export default {
 
       //alert(link);
       console.log(link);
-      console.log(Math.min(7, NaN))
+     // console.log(Math.min(7, NaN))
       // console.log(this.$refs.wordLength);
       // console.log(this.$refs.wordsCount);
       let settings = [this.$refs.wordLength.left, this.$refs.wordLength.right, this.$refs.wordsCount.value].join(":").replace([this.$refs.wordLength.left_p, this.$refs.wordLength.right_p, this.$refs.wordsCount.value_p].join(":"), "")
@@ -553,9 +553,9 @@ export default {
         let parts = settings.split(":").map(p=>parseInt(p,10))
         if (parts.length !== 3) return;
         let [minLength, maxLength, wordsCount] = parts;
-        console.log(minLength)
-        console.log(maxLength)
-        console.log(wordsCount)
+        // console.log(minLength)
+        // console.log(maxLength)
+        // console.log(wordsCount)
         //if (!isNaN(minLength))
           minLength = Math.min(Math.max(minLength, this.$refs.wordLength.min_p),this.$refs.wordLength.max_p-1)
        // if (!isNaN(maxLength))
@@ -563,9 +563,9 @@ export default {
        // if (!isNaN(wordsCount))
           wordsCount = Math.min(Math.max(wordsCount, this.$refs.wordsCount.min_p),this.$refs.wordsCount.max_p)
 
-        console.log(minLength)
-        console.log(maxLength)
-        console.log(wordsCount)
+        // console.log(minLength)
+        // console.log(maxLength)
+        // console.log(wordsCount)
         if (!isNaN(minLength) )
           this.wordLength[0] = minLength;
 
@@ -577,8 +577,6 @@ export default {
       }
 
     },
-    readSettings() {
-    }
   },
   // computed: {
   //   isMobile: function(){
