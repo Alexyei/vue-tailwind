@@ -1,4 +1,5 @@
 <template>
+  <preloader></preloader>
   <div class="bg-whitesmoke w-full min-h-full h-full flex flex-col">
     <nav-bar>
       <span class="text-text-dark text-xl sm:text-2xl leading-none py-4 block font-TT">Результаты</span>
@@ -231,11 +232,12 @@ import NavBar from "../components/Navbar";
 import DualRangeSlider from "../components/DualRangeSlider";
 import RangeSlider from "../components/RangeSlider";
 import Popup from "../components/Popup";
-
+import Preloader from "../components/Preloader";
 export default {
   name: "Results",
   components: {
     NavBar,
+    Preloader,
     DualRangeSlider,
     RangeSlider,
     Popup

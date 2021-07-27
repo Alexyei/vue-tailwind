@@ -1,4 +1,5 @@
 <template>
+  <preloader></preloader>
   <div class="bg-whitesmoke w-full min-h-full h-full flex flex-col items-center">
     <nav-bar>
       <span class="text-text-dark text-base md:text-xl leading-none py-4 block font-Abel text-left mr-2 font-bold max-w-lg">{{currentWord.translate}}</span>
@@ -110,6 +111,7 @@
 // import {useRoute} from 'vue-router';
 import NavBar from "../components/Navbar";
 import Popup from "../components/Popup";
+import Preloader from "../components/Preloader";
 // import DualRangeSlider from "../components/DualRangeSlider";
 // import RangeSlider from "../components/RangeSlider";
 import HintPanel from "../components/HintPanel";
@@ -118,6 +120,7 @@ export default {
   name: "Write",
   components: {
     NavBar,
+    Preloader,
     // DualRangeSlider,
     // RangeSlider,
     HintPanel,

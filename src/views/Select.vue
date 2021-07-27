@@ -1,4 +1,5 @@
 <template>
+  <preloader></preloader>
   <div class="bg-whitesmoke w-full min-h-full h-full flex flex-col">
     <nav-bar>
       <span class="text-text-dark text-xl sm:text-2xl leading-none py-4 block font-TT">Выбрано: {{ charsLength?charsList.size:0 }} из {{
@@ -224,6 +225,7 @@
 </template>
 
 <script>
+import Preloader from "../components/Preloader";
 import {useRoute} from 'vue-router';
 import NavBar from "../components/Navbar";
 import DualRangeSlider from "../components/DualRangeSlider";
@@ -232,12 +234,14 @@ import CardCheckbox from "../components/CardCheckbox";
 import Accordion from "../components/Accordion";
 import Popup from "../components/Popup";
 import Tooltip from "../components/Tooltip";
+
 //import axios from "axios";
 
 
 export default {
   name: "Select",
   components: {
+    Preloader,
     NavBar,
     DualRangeSlider,
     RangeSlider,
