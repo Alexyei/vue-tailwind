@@ -122,6 +122,7 @@ module.exports = {
         'xxs': '.6rem',
         radio: ['52px', '52px'],
         radioM: ['30px','30px'],
+        notfound: ['11rem','11rem']
       },
       letterSpacing: {
         one: '1px',

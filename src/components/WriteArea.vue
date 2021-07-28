@@ -196,7 +196,7 @@ export default {
     },
     async recognise() {
      // console.log("RECOGNISE START")
-      let timeStart = performance.now();
+     // let timeStart = performance.now();
       // Количество возвращаемых результатов (точность распознавания)
 // не работает, возвращается 10 результатов
       let resultCount = 10;
@@ -266,9 +266,9 @@ export default {
                 },
               })
 
-          console.log("return")
+          //console.log("return")
           let result = response.data
-          console.log("Время выполнения: " + (performance.now() - timeStart).toFixed(4) + " милисекунд");
+          //console.log("Время выполнения: " + (performance.now() - timeStart).toFixed(4) + " милисекунд");
           // console.log("SUCCESS")
           //console.log(result[1][0][1])
           if (result[0] === 'SUCCESS') {

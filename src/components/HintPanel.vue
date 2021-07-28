@@ -120,7 +120,7 @@ export default {
                   .then(response => {
                     this.svgs[index] = response.data.replace(/<style[\s\S]+\/style>\s/, "")
                   }).catch(() => {
-                    console.log("SVG")
+                   // console.log("SVG")
                 this.svgs[index] = this.errorSvg(3, lang, char + " не найден", "в нашем", "репозитории");
               })
             })

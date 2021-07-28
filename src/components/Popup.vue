@@ -1,6 +1,6 @@
 <template>
   <teleport to="body">
-    <div class="fixed top-0 bottom-0 right-0 left-0 flex items-center justify-center bg-popup-gray" :class="{'opacity-100 z-9000':isActive, 'opacity-0 -z-1':!isActive}">
+    <div style="user-select: none" class="fixed top-0 bottom-0 right-0 left-0 flex items-center justify-center bg-popup-gray" :class="{'opacity-100 z-9000':isActive, 'opacity-0 -z-1':!isActive}">
       <div class="px-4  popup center absolute w-full max-w-112.5 z-2 transform scale-25 opacity-0 transition-all duration-500 ease-in-out" :class="{'opacity-100 top-1/2 scale-100 -translate-y-1/2':isActive, '-top-full ':!isActive}">
       <div class="shadow-popup bg-white rounded-lg p-6 w-full box-border text-center ">
         <div class="icon my-1.5 w-14 h-14 text-center inline-block text-6xl opacity-100" v-html="icon">

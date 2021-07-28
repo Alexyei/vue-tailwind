@@ -166,7 +166,7 @@ export default {
 
       let answer = await this.$refs.wa.recognise()
       // alert(answer)
-       console.log(answer)
+      // console.log(answer)
       if (answer.status === 'success'){
         if (answer.data){
           this.currentWord.answer = this.currentWord.word in answer.data?this.currentWord.word:answer.data[0]

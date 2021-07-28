@@ -57,7 +57,7 @@ export default {
   },
   methods:{
     onChange(value, left=true) {
-      console.log("here")
+      //console.log("here")
       // function setLeftValue() {
       //   var _this = inputLeft,
       //       min = parseInt(_this.min),

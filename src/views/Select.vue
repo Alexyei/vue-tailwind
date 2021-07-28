@@ -326,7 +326,7 @@ export default {
     },
     selectSection(chars) {
       this.selectRow(chars)
-      console.log("select section")
+     // console.log("select section")
     },
     selectAll(chars) {
       // let chars = []
@@ -345,7 +345,7 @@ export default {
         // if (this.mode === 'kanji')
         //  chars.forEach(item => this.charsList.add(item.word))
         //  else chars.forEach(item => this.charsList.add(item.char))
-        console.log(chars)
+        //console.log(chars)
         this.charsList = chars
 
       }
@@ -378,7 +378,7 @@ export default {
           char: '',
           translate: ''
         }
-        console.log("not kanji")
+        //console.log("not kanji")
         let chars = (await import('../mocks/' + mode + '.js')).default.slice(0)
 
 
@@ -409,7 +409,7 @@ export default {
         }
         this.chars = result
       } else {
-        console.log("kanji")
+       // console.log("kanji")
         let emptyItem = {
           id: 0,
           word: '',
@@ -419,7 +419,7 @@ export default {
         let chars;
         do {
           let answer = await this.$store.dispatch('loadKanji')
-          console.log(answer)
+          //console.log(answer)
           if (answer.status === 'success') {
             chars = answer.data
             break;
@@ -493,11 +493,11 @@ export default {
           part += this.charsList.has(chars[i]) ? "1" : "0";
           if (!((i + 1) % 50)) {
             link += parseInt(part, 2).toString(36) + ((i + 1 < chars.length) ? partsDelimiter : "");
-            console.log(part)
+           // console.log(part)
             part = "";
           }
         }
-        console.log(part)
+        //console.log(part)
         if (part) {
           part = parseInt(part.padEnd(50, "0"), 2).toString(36);
           if (part !== "0")
@@ -507,12 +507,12 @@ export default {
       }
 
       //alert(link);
-      console.log(link);
+      //console.log(link);
      // console.log(Math.min(7, NaN))
       // console.log(this.$refs.wordLength);
       // console.log(this.$refs.wordsCount);
       let settings = [this.$refs.wordLength.left, this.$refs.wordLength.right, this.$refs.wordsCount.value].join(":").replace([this.$refs.wordLength.left_p, this.$refs.wordLength.right_p, this.$refs.wordsCount.value_p].join(":"), "")
-      console.log(settings)
+      //console.log(settings)
       navigator.clipboard.writeText([location.origin, this.$route.name, this.mode, link, settings].join("/")).then(function () {
         //console.log('Async: Copying to clipboard was successful!');
         this.$refs.linkTooltip.show("Ссылка скопирована!")
@@ -556,7 +556,7 @@ export default {
       }
 
       if (settings) {
-        console.log(settings);
+        //console.log(settings);
         let parts = settings.split(":").map(p=>parseInt(p,10))
         if (parts.length !== 3) return;
         let [minLength, maxLength, wordsCount] = parts;
@@ -620,7 +620,7 @@ export default {
     //console.log(parseInt("1000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000000100000000010000000001000000001",2).toString(36))
     // console.log(parseInt("10000000001000000000100000000010000000001000000001",2).toString(36))
     // console.log(parseInt("11111111111111111111111111111111111111111111111111",2).toString(36))
-    console.log('mounted select')
+   // console.log('mounted select')
     //console.log(this.$route)
    // console.log(location)
     // console.log(this.charsList)

@@ -1,6 +1,6 @@
 <template>
 
-  <div :class="{'opacity-100':isActive,'bg-120 from-medium-blue to-light-blue':status === 'success', 'bg-red-500':status === 'error'}" class="mb-4 md:mb-0 md:ml-6 opacity-0 transition-all duration-500 ease-in-out w-28 text-white text-center text-xs rounded-lg py-2 absolute z-10 bottom-full left-1/2 transform -translate-x-1/2 md:translate-x-0 md:translate-y-1/2 md:left-full md:bottom-1/2 px-3 pointer-events-none">
+  <div style="user-select: none" :class="{'opacity-100':isActive,'bg-120 from-medium-blue to-light-blue':status === 'success', 'bg-red-500':status === 'error'}" class="mb-4 md:mb-0 md:ml-6 opacity-0 transition-all duration-500 ease-in-out w-28 text-white text-center text-xs rounded-lg py-2 absolute z-10 bottom-full left-1/2 transform -translate-x-1/2 md:translate-x-0 md:translate-y-1/2 md:left-full md:bottom-1/2 px-3 pointer-events-none">
     {{message}}
 <!--    <svg class="absolute text-black h-2 w-full left-0 top-full" x="0px" y="0px" viewBox="0 0 255 255" xml:space="preserve"><polygon class="fill-current" points="0,0 127.5,127.5 255,0"/></svg>-->
 

@@ -80,7 +80,7 @@ export default createStore({
                         },
                     })
 
-                console.log(response.data)
+                //console.log(response.data)
                 context.commit('SET_WORDS', response.data)
                 if (response.data.length)
                     return {status: "success"}
