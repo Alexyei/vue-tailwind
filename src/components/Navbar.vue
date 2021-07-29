@@ -3,7 +3,7 @@
   <nav class="min-h-16 md:min-h-22 px-4 md:px-10 box-border  bg-white w-full justify-center items-center flex" :class="{'z-20':isActive}">
   <div class="lg:container  w-full flex justify-between items-center">
     <div>
-      <slot><a href="#" class="text-text-dark text-2xl leading-none py-4 pl-2 block font-TT">Мой блог</a></slot>
+      <slot><a href="#" class="text-text-dark text-2xl leading-none py-4 pl-2 block font-TT">Kana.ru</a></slot>
     </div>
     <div class="flex flex-col justify-between items-center relative w-7.5 h-7.5 cursor-pointer z-10 lg:invisible lg:opacity-0"  @click="isActive = !isActive">
 
@@ -20,36 +20,38 @@
         <router-link class="lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 py-6.4 lg:py-7 px-4 block" :to="{name: 'Главная'}" :class="{'border-medium-blue':$route.name === 'Главная'}">
           Главная</router-link>
       </li>
-      <li class="transition duration-300 ease-in-out hover:bg-medium-blue lg:hover:bg-white text-center lg:text-left text-3xl leading-none lg:text-lg lg:relative w-full lg:w-auto">
-        <a class="py-6.4 px-4 block lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 lg:py-7 " href="#">Категории</a>
-      </li>
-      <li class="transition duration-300 ease-in-out hover:bg-medium-blue lg:hover:bg-white text-center lg:text-left text-3xl leading-none lg:text-lg lg:relative w-full lg:w-auto">
-        <a class="py-6.4 px-4 block lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 lg:py-7 " href="#">Теги</a>
-      </li>
-
-<!--      <li class="nav-link">-->
-<!--        <a href="{{route('logout')}}">Выйти</a>-->
+<!--      <li class="transition duration-300 ease-in-out hover:bg-medium-blue lg:hover:bg-white text-center lg:text-left text-3xl leading-none lg:text-lg lg:relative w-full lg:w-auto">-->
+<!--        <a class="py-6.4 px-4 block lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 lg:py-7 " href="#">Категории</a>-->
+<!--      </li>-->
+<!--      <li class="transition duration-300 ease-in-out hover:bg-medium-blue lg:hover:bg-white text-center lg:text-left text-3xl leading-none lg:text-lg lg:relative w-full lg:w-auto">-->
+<!--        <a class="py-6.4 px-4 block lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 lg:py-7 " href="#">Теги</a>-->
 <!--      </li>-->
 
-      <li class="transition duration-300 ease-in-out hover:bg-medium-blue lg:hover:bg-white text-center lg:text-left text-3xl leading-none lg:text-lg lg:relative w-full lg:w-auto">
-        <a class="py-6.4 px-4 block lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 lg:py-7 " href="#">Войти</a>
-      </li>
+<!--&lt;!&ndash;      <li class="nav-link">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a href="{{route('logout')}}">Выйти</a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </li>&ndash;&gt;-->
+
+<!--      <li class="transition duration-300 ease-in-out hover:bg-medium-blue lg:hover:bg-white text-center lg:text-left text-3xl leading-none lg:text-lg lg:relative w-full lg:w-auto">-->
+<!--        <a class="py-6.4 px-4 block lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 lg:py-7 " href="#">Войти</a>-->
+<!--      </li>-->
 
 
       <li class="transition duration-300 ease-in-out hover:bg-medium-blue lg:hover:bg-white text-center lg:text-left text-3xl leading-none lg:text-lg lg:relative w-full lg:w-auto">
-        <a class="py-6.4 px-4 block lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 lg:py-7 " href="#">Контакты</a>
+        <a class="py-6.4 px-4 block lg:hover:text-current hover:text-white transition duration-300 ease-in-out border-white hover:border-medium-blue lg:border-b-4 lg:py-7 " href="#" @click.prevent="showContacts()">Контакты</a>
       </li>
     </ul>
   </div>
   </nav>
-
+  <Popup ref="popup"></Popup>
 </template>
 
 <script>
-
+import Popup from "./Popup";
 
 export default {
   name: "NavBar",
+  components: {
+    Popup,},
   data(){
     return {
       isActive: false
@@ -63,6 +65,9 @@ export default {
     //   //элементы меню
     //   document.querySelector(".nav-items").classList.toggle('active');
     // }
+    showContacts(){
+      this.$refs.popup.show("Впоросы и предложения присылайте на: example@mail.ru", "info")
+    }
   }
 }
 </script>
