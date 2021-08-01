@@ -89,7 +89,13 @@ const routes = [
   //   component: Home
   // },
   {
-    path: "/:catchAll(^(?!animCJK).*)",
+    path: "/animCJK/:catchAll(.*)",
+    beforeEnter: (to, from, next) => {
+      next()
+    }
+  },
+  {
+    path: "/:catchAll(.*)",
     name: 'NotFound',
     component: NotFound
   },
