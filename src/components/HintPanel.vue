@@ -111,12 +111,13 @@ export default {
       // let svg = null
       // const fs = require('fs')
       if (lang === 'ja') {
-        axios.get('http://localhost:8080/animCJK/svgsKana/' + dec + '.svg')
+        //for dev http://localhost:8080 for prod http://194.67.109.77
+        axios.get('http://194.67.109.77/animCJK/svgsKana/' + dec + '.svg')
             .then(response => {
               this.svgs[index] = response.data.replace(/<style[\s\S]+\/style>\s/, "")
             })
             .catch(() => {
-              axios.get('http://localhost:8080/animCJK/svgsJa/' + dec + '.svg')
+              axios.get('http://194.67.109.77/animCJK/svgsJa/' + dec + '.svg')
                   .then(response => {
                     this.svgs[index] = response.data.replace(/<style[\s\S]+\/style>\s/, "")
                   }).catch(() => {
@@ -134,7 +135,7 @@ export default {
         // if (fs.existsSync(__dirname + "/src/animCJK/svgsZhHant/" + dec + ".svg")) {
         //   svg = fs.readFileSync(__dirname + "/src/animCJK/svgsZhHant/" + dec + ".svg").toString()
         // }
-        axios.get('http://localhost:8080/animCJK/svgsZhHant/' + dec + '.svg')
+        axios.get('http://194.67.109.77/animCJK/svgsZhHant/' + dec + '.svg')
             .then(response => {
               this.svgs[index] = response.data.replace(/<style[\s\S]+\/style>\s/, "")
             })
@@ -149,7 +150,7 @@ export default {
         // if (fs.existsSync(__dirname + "/src/animCJK/svgsZhHans/" + dec + ".svg")) {
         //   svg = fs.readFileSync(__dirname + "/src/animCJK/svgsZhHans/" + dec + ".svg").toString()
         // }
-        axios.get('http://localhost:8080/animCJK/svgsZhHans/' + dec + '.svg')
+        axios.get('http://194.67.109.77/animCJK/svgsZhHans/' + dec + '.svg')
             .then(response => {
               this.svgs[index] = response.data.replace(/<style[\s\S]+\/style>\s/, "")
             })
