@@ -113,7 +113,7 @@ export default createStore({
 
 
                 //for dev http://localhost:8080 for prod http:/194.67.109.77
-                let response = await axios.post('http:/194.67.109.77/api/kanji',
+                let response = await axios.post('http://194.67.109.77/api/kanji',
                     JSON.stringify({
                         lang: "ja",
                     }),
