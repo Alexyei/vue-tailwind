@@ -64,8 +64,8 @@ export default createStore({
             // let response = await axios.get('http://localhost:8080/words.json',
             try {
 
-                //for dev http://localhost:8080 for prod http://localhost
-                let response = await axios.post('http://localhost/api/words',
+                //for dev http://localhost:8080 for prod http://194.67.109.77
+                let response = await axios.post('http://194.67.109.77/api/words',
                     JSON.stringify({
                         lang: "ja",
                         chars: [...context.state.charsList].join(''),
@@ -112,8 +112,8 @@ export default createStore({
             try {
 
 
-                //for dev http://localhost:8080 for prod http://localhost
-                let response = await axios.post('http://localhost/api/kanji',
+                //for dev http://localhost:8080 for prod http:/194.67.109.77
+                let response = await axios.post('http:/194.67.109.77/api/kanji',
                     JSON.stringify({
                         lang: "ja",
                     }),
