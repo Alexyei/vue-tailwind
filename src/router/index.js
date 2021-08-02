@@ -88,12 +88,12 @@ const routes = [
   //   // which is lazy-loaded when the route is visited.
   //   component: Home
   // },
-  {
-    path: "/animCJK/:catchAll(.*)",
-    beforeEnter: (to, from, next) => {
-      next()
-    }
-  },
+  // {
+  //   path: "/animCJK/:catchAll(.*)",
+  //   beforeEnter: (to, from, next) => {
+  //     next()
+  //   }
+  // },
   {
     path: "/:catchAll(.*)",
     name: 'NotFound',
