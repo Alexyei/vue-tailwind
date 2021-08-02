@@ -3,7 +3,7 @@
   <nav class="min-h-16 md:min-h-22 px-4 md:px-10 box-border  bg-white w-full justify-center items-center flex" :class="{'z-20':isActive}">
   <div class="lg:container  w-full flex justify-between items-center">
     <div>
-      <slot><a href="#" class="text-text-dark text-2xl leading-none py-4 pl-2 block font-TT">Kana.ru</a></slot>
+      <slot><a href="#" class="text-text-dark text-2xl leading-none py-4 pl-2 block font-TT">learn-kana.ru</a></slot>
     </div>
     <div class="flex flex-col justify-between items-center relative w-7.5 h-7.5 cursor-pointer z-10 lg:invisible lg:opacity-0"  @click="isActive = !isActive">
 
