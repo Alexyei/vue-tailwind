@@ -66,7 +66,7 @@ export default {
     //   document.querySelector(".nav-items").classList.toggle('active');
     // }
     showContacts(){
-      this.$refs.popup.show("Впоросы и предложения присылайте на: example@mail.ru", "info")
+      this.$refs.popup.show("Впоросы и предложения присылайте на: admin@learn-kana.ru", "info")
     }
   }
 }
