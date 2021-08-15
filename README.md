@@ -1,3 +1,6 @@
+# Демо гифки
+![Desktop](demo/desktop.gif)
+![Mobile](demo/mobile.gif)
 # vue-tailwind
 
 ## Project setup
